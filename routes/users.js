@@ -16,7 +16,7 @@ const {singleUpload, deleteFile, deleteFolder} = require('../helper/cloudinaryUp
 const formDataHandler = memoryUploadSingle('photo');
 
 returnUser = user => {
-    return _.pick(user, ['_id', 'isAdmin', 'isDisabled', 'email', 'displayName', 'photo']);
+    return _.pick(user, ['_id', 'isAdmin', 'isDisabled', 'email', 'displayName', 'mainPhotoURL']);
 }
 
 
