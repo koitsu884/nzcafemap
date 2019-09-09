@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "NZ カフェマップ",
+  "name": "ニュージーランド カフェマップ",
   "icons": [
     {
       "src": "favicon.ico",
