@@ -224,7 +224,7 @@ class ReviewEditForm extends Component {
                     isOpen={this.state.modalIsOpen}
                     style={{
                         content: {
-                            width: '40rem',
+                            maxWidth: '40rem',
                             height: '30rem',
                             margin: 'auto'
                         }

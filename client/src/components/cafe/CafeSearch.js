@@ -9,6 +9,7 @@ import CafeCard from './CafeCard';
 import AreaDropDown from '../common/AreaDropDown';
 import Ogp from '../common/Ogp';
 import siteImage from '../../img/ogpImage.jpg';
+import Spinner from '../common/Spinner';
 
 class CafeSearch extends Component {
     constructor(props) {
@@ -96,14 +97,9 @@ class CafeSearch extends Component {
                         <li id="order-food" className="btn" onClick={this.handleOrderClick}>食事</li>
                         <li id="order-vibe" className="btn" onClick={this.handleOrderClick}>雰囲気</li>
                     </ul>
-                    {/* <select className="form__input" name="order" onChange={this.onChange} value={this.state.order}>
-                        <option value=""></option>
-                        <option value="coffee">コーヒーの評価が高い順</option>
-                        <option value="food">食事の評価が高い順</option>
-                        <option value="vibe">雰囲気の評価が高い順</option>
-                    </select> */}
                 </div>
                 <div className="cafeSearch__result">
+                    {this.props.loading ? <Spinner /> : null}
                     <TransitionGroup component={null}>
                         {this.renderCafes()}
                     </TransitionGroup>
