@@ -1,0 +1,29 @@
+.placeSearch {
+    background-color: $color-secondary-light;
+    width: 100%;
+    min-height: 35rem;
+    
+    &__result {
+        &--map{
+            height: 30rem;
+            margin: 2rem 0;
+            background-color: aqua;
+        }
+
+        &--name{
+            color:blue;
+        }
+
+        &--placeID{
+            color:red;
+        }
+
+        &--openingHours {
+            color: orange;
+        }
+    }
+}
+
+.mapSearch.inactive{
+    display:none;
+}

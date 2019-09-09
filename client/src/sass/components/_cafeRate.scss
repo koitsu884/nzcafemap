@@ -1,0 +1,20 @@
+.cafeRate {
+    &__row {
+        display: inline-flex;
+        align-items: center;
+        margin: 0 1rem;
+        font-weight: 700;
+        font-size: 2rem;
+        svg {
+            fill: $color-primary;
+            width: 2.4rem;
+            height: 2.4rem;
+        }
+    }
+
+    &__rate {
+        color:$color-primary;
+        cursor: pointer;
+        border-bottom: solid 1px $color-primary-dark;
+    }
+}

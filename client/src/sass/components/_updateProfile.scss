@@ -1,0 +1,14 @@
+.updateProfile {
+    max-width: $content-max-width;
+    margin: auto;
+
+    div {
+        // width: 80%;
+        // margin: auto;
+        // padding: 2rem 4rem;
+        border-radius: 5px;
+        background-color: $color-secondary-light;
+        display:flex;
+        align-items: center;
+    }
+}

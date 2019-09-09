@@ -1,0 +1,22 @@
+.globalNav {
+    grid-column: full-start / full-end;
+    display: flex;
+    align-items: center;
+    padding: .5rem 5rem;
+    color: $color-black;
+    background-color: $color-secondary;
+
+    list-style: none;
+
+    &__item {
+        color: $color-primary-dark;
+        text-align: center;
+        flex: 1;
+        transition: all .3s;
+
+        &:hover {
+            color: red;
+            background-color: $color-secondary-light;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.header{
+    background-color: $color-primary-dark;
+    color: $color-white;
+    position: relative;
+    height: 10rem;
+
+    &__logo{
+        font-size: 4rem;
+        font-weight: 300;
+        margin-left: 2rem;
+        font-family: "Nico Moji";
+    }
+
+    &__content {
+        position: absolute;
+        right: 5rem;
+        bottom: 1rem;
+    }
+
+    &__link:link,
+    &__link:visited {
+        // font-size: $default-font-size;
+        color: $color-white;
+        text-decoration: none;
+        padding: 1rem;
+        transition: color .2s;
+
+        &:hover {
+            color: $color-secondary-light;
+        }
+    }
+}

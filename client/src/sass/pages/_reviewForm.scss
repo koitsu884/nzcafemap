@@ -1,0 +1,12 @@
+.reviewForm {
+    @extend %container;
+    .btn {
+        margin: auto;
+        display: block;
+    }
+
+    // &__articlePreview{
+    //     min-width: 10rem;
+    //     min-height: 10rem;
+    // }
+}

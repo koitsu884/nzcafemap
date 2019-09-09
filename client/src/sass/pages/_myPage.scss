@@ -1,0 +1,48 @@
+.myPage {
+    @extend %container;
+
+    &__account{
+        display: flex;
+
+        @include respond(phone){
+            flex-direction: column;
+        }
+    }
+
+    &__section{
+        &__title{
+            font-size: 20rem;
+        }
+
+        &__container{
+            background-color: #fff;
+            border: solid 1px $color-secondary;
+            padding: 1rem;
+        }
+        margin-bottom: 2rem;
+
+        h3{
+            background-color: $color-secondary;
+        }
+    }
+
+}
+
+.editUserProfile{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &__item{
+        margin: 0 1rem;
+    }
+
+    a {
+        color: $color-primary;
+        cursor: pointer;
+    }
+
+    @include respond(phone){
+        flex-direction: column;
+    }
+}

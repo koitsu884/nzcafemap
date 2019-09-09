@@ -1,0 +1,17 @@
+.pagination{
+    display: flex;
+    list-style: none;
+    background-color: $color-secondary-light;
+    li {
+        margin: 1rem;
+        a {
+            color: $color-primary;
+        }
+        
+        &.active {
+            a {
+                color: $color-secondary;
+            }
+        }
+    }
+}

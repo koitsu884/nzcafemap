@@ -1,0 +1,29 @@
+.cafeEditForm {
+    @extend %container;
+
+    &__inputFields {
+        display:flex;
+        justify-content: space-between;
+
+        @include respond(phone){
+            flex-direction: column;
+        }
+    }
+}
+
+.form textarea{
+width: 100%;
+  height: 20rem;
+}
+
+.form input {
+    width: 100%;
+}
+
+// .mapSearch{
+//     display: flex;
+
+//     @include respond(phone) {
+//         flex-direction: column;
+//     }
+// }

@@ -1,0 +1,17 @@
+.signUp {
+    @extend %userForm;
+
+    &__form {
+        width: 80%;
+        margin: auto;
+        background-color: $color-secondary-light;
+
+        input{
+            width: 100%;
+        }
+
+        @include respond(tab-port){
+            width: 100%;
+        }
+    }
+}

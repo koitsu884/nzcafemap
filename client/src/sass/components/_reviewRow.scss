@@ -1,0 +1,52 @@
+.reviewRow {
+    margin: 2rem;
+    padding-bottom: 2px;
+    &__header{
+        display: flex;
+        align-items: center;
+        background-color: $color-secondary;
+
+        h3 {
+            margin: 0 2rem;
+            flex-grow: 1;
+            font-size: 2.4rem;
+        }
+    }
+    &__photos {
+        display:flex;
+        overflow-x: auto;
+        margin: auto;
+        &__image {
+            margin: 1rem;
+            width: 15rem;
+            height: 15rem;
+            object-fit: cover; 
+        }
+    }
+    &__content {
+        white-space: pre-line;
+    }
+    &__user{
+        display: inline-flex;
+        align-items: center;
+        font-weight: 700;
+        padding: 1rem;
+
+        &__image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: solid 1px $color-primary;
+            font-size: 1rem;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 2.5rem;
+            margin-right: 1rem;
+            overflow: hidden;
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

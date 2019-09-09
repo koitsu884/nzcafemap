@@ -1,0 +1,15 @@
+.userPhotoEditor{
+    &__photo{
+        max-width: 100%;
+        min-height: 18rem;
+        object-fit: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-secondary;
+        
+        img {
+            width: 100%;
+        }
+    }
+}

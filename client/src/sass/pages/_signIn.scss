@@ -1,0 +1,19 @@
+.signIn {
+    @extend %userForm;
+
+    &__form {
+        width: 80%;
+        margin: auto;
+        // padding: 2rem 4rem;
+        border-radius: 5px;
+        background-color: $color-secondary-light;
+
+        input{
+            width: 100%;
+        }
+
+        @include respond(tab-port){
+            width: 100%;
+        }
+    }
+}

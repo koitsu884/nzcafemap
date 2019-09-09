@@ -1,0 +1,45 @@
+.myCafeList {
+    &__result {
+        display: flex;
+        flex-wrap: wrap;
+        @include respond(phone){
+            justify-content: center;
+        }
+    }
+
+    &__container {
+        margin: 2px;
+    }
+
+    &__tools {
+        display: flex;
+        justify-content: center;
+        &--edit {
+            fill: $color-primary;
+            margin-right: 1rem;
+            cursor: pointer;
+        }
+
+        &--delete {
+            fill: orangered;
+            cursor: pointer;
+        }
+        // margin-right: 2rem;
+    }
+
+    // &__tools {
+    //     display: flex;
+    //     &__edit {
+    //         fill: $color-primary;
+    //         margin-right: 1rem;
+    //         cursor: pointer;
+    //     }
+
+    //     &__delete {
+    //         fill: orangered;
+    //         cursor: pointer;
+    //     }
+    //     margin-right: 2rem;
+    // }
+    
+}

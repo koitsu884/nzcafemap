@@ -1,0 +1,127 @@
+.cafeDetails {
+    @extend %container;
+
+    h2{
+        text-align: center;
+    }
+
+    &__image{
+        max-width: 100%;
+        font-size: 5rem;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 100%;
+        }
+    }
+
+    &__data {
+        display: flex;
+        @include respond(tab-port){
+            flex-direction: column;
+        }
+
+        &__garelly{
+            margin: 1rem;
+            min-width: 0;
+            max-width: 100%;
+            flex-grow: 1;
+            align-self: center;
+
+            a {
+                color:$color-primary;
+                cursor: pointer;
+                border-bottom: solid 1px $color-primary-dark;
+            }
+        }
+
+        &__rate {
+            min-width: 30rem;
+            background-color: #fff;
+            margin: 1rem;
+            padding: 2rem;
+            border: solid 1px $color-secondary;
+
+            &__container {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1rem;
+                @include respond(tab-port){
+                    flex-direction: row;
+                }
+                @include respond(phone){
+                    flex-direction: column;
+                }
+                &>div{
+                    margin: 0 1rem;
+                }
+            }
+
+            &__title{
+                display:flex;
+                align-items: center;
+                font-size: 2.2rem;
+                fill: $color-secondary-dark;
+                svg {
+                    margin-right: 1rem;
+                }
+                @include respond(phone){
+                    font-size:2rem;
+                    svg {
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+            }
+
+            .starRate {
+                fill: orange;
+                svg {
+                    width: 2.2rem;
+                    height: 2.2rem;
+                }
+                @include respond(phone){
+                    svg {
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    &__info {
+        display: flex;
+    
+        @include respond(tab-port){
+            flex-direction: column;
+        }
+
+        &__hours {
+            margin: 2rem 1rem;
+            white-space: pre-line;
+        }
+    }
+
+    &__location {
+        padding: 1rem;
+        &__area {
+            display: flex;
+            align-items: center;
+            font-size: 2.2rem;
+            fill: orangered;
+        }
+    }
+
+    &__reviews {
+        a {
+            color: $color-secondary-dark;
+            border-bottom: solid 1px $color-secondary-dark;
+        }
+    }
+
+    &__addReview {
+        text-align: center;
+    }
+}

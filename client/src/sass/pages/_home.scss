@@ -1,0 +1,28 @@
+.home {
+    h2 {
+        color: #fff;
+    }
+
+    max-width: $content-max-width;
+    min-height: $content-min-height;
+    margin: auto;
+    padding: 2rem;
+
+    &__newcafes {
+        // background-color: $color-secondary-light;
+        padding: 2rem;
+        display: grid;
+        justify-items: center;
+        width: 100%;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+        @include respond(tab-port){
+            display: flex;
+            overflow-x: auto;
+        }
+    }
+
+    @include respond(big-desktop){
+        max-width: 1600px;
+    }
+}

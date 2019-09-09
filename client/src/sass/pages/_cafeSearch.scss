@@ -1,0 +1,87 @@
+.cafeSearch {
+    &__header{
+        text-align: center;
+        h2 {
+            font-size: 5rem;
+            margin: auto;
+            color: $color-primary-dark;
+        }
+        background-image: url('../img/search_header.jpg');;
+        background-size: cover;
+        height: 40rem;
+        &__filter{
+            padding: 5rem;
+            max-width: 80rem;
+            margin:auto;
+            display: flex;
+            background-color: $color-secondary-light;
+            opacity: 0.7;
+        }
+        @include respond(tab-port){
+            height: 30rem;
+        }
+    }
+
+    &__order {
+        background-color: $color-secondary-light;
+        padding: 3rem;
+        display: flex;
+        align-items: center;
+        ul {
+            list-style: none;
+            li {
+                display: inline-block;
+                margin: .5rem 2rem;
+                // background-color: $color-primary;
+                // color: #fff;
+                // padding: 1rem 2rem;
+            }
+            li:hover {
+                cursor: pointer;
+
+            }
+        }
+    }
+
+    // @extend %container;
+    // overflow: hidden;
+    // // padding: 3rem;
+    // display: flex;
+    // @include respond(tab-port){
+    //     flex-direction: column;
+    // }
+
+    // &__filter {
+    //     border: 1px solid $color-primary-light;
+    //     width: 30rem;
+    //     padding: 3rem;
+    //     background-color: $color-primary;
+
+    //     h2 {
+    //         color: #fff;
+    //     }
+    //     @include respond(tab-port){
+    //         width: 100%;   
+    //     }
+    // }
+
+    &__result {
+        @supports (display: grid){
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        }
+
+        @supports not (display:grid){
+            display: flex;
+            flex-wrap: wrap;
+            .cafeCard {
+                margin: 1rem;
+            }
+        }
+
+        padding: 1rem;
+        width: 100%;
+        min-height: 60rem;
+    }
+}

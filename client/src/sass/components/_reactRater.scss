@@ -1,0 +1,43 @@
+$react-rater-link: $color-secondary-light;
+$react-rater-hover: $color-secondary-dark;
+$react-rater-active: $color-secondary;
+
+.react-rater {
+  display: block;
+  line-height: normal;
+  > * {
+    display: inline-block;
+  }
+}
+.react-rater-star {
+  cursor: pointer;
+  font-size: 4rem;
+  color: $react-rater-link;
+  position: relative;
+  &.will-be-active {
+    color: $react-rater-hover;
+  }
+  &.is-active {
+    color: $react-rater-active;
+  }
+  &.is-active-half:before {
+    color: $react-rater-active;
+    content: '\2605';
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+  &.is-disabled {
+    cursor: default;
+  }
+}
+
+.cafeRateEditor {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    h3 {
+        margin-top: 2rem;
+    }
+}

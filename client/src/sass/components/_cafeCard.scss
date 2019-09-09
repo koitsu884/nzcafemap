@@ -1,0 +1,238 @@
+.cafeCardSimple {
+    margin: 1rem;
+    max-width:24rem;
+    border-radius: 5px;
+    background-color: $color-secondary-light;
+    color: $color-primary-dark;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    overflow: hidden;
+    transition: all .3s;
+
+    &__image {
+        width: 24rem;
+        height: 16rem;
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        img {
+            width: 100%;
+        }
+        div{
+            height: 100%;
+            display:flex;
+            font-size: 1.6rem;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 1.8rem;
+        text-align: center;
+        width: 100%;
+        z-index: 10;
+        display:block;
+        background: $color-primary-dark;
+        color: #fff;
+    }
+}
+
+.cafeCard {
+    margin: 1.2rem;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    overflow: hidden;
+    transition: all .8s;
+
+    &:hover {
+        transform: translateY(-.5rem);
+        box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+    }
+
+    h3 {
+        padding: 1rem 2rem;
+        color: #fff;
+        background-color: $color-primary-light;
+        width: 100%;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+    }
+
+    &__info {
+        fill: orangered;
+        color: $color-primary-dark;
+        padding: 0 1rem;
+    }
+
+    &__image{
+        width: 16rem;
+        height: 12rem;
+        // padding: 2px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem;
+        border: 2px solid $color-primary-light;
+        border-radius: 4px;
+        overflow: hidden;
+        // display:block;
+        // object-fit: cover;
+
+        img {
+            // margin:3px;
+            width: 100%;
+            height: 100%;
+            display:block;
+            object-fit: cover;
+        }
+    }
+
+    &__details {
+
+    }
+
+    &__rate {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        &__icon {
+            width: 1.6rem;
+            height: 1.6rem;
+            fill: $color-primary-light;
+            margin-right:.5rem;
+        }
+
+        .starRate{
+            svg {
+                fill: rgb(247, 203, 8);
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+    }
+}
+
+//For animation
+.test-enter {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.test-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity .3s, transform .3s;
+}
+
+.test-exit {
+    opacity: 1;
+}
+
+.test-exit-active {
+    opacity:0;
+    transform: scale(0.5);
+    transition: opacity .3s, transform .3s;
+}
+
+.reviewCafeCard {
+    margin: 1rem;
+    max-width:32rem;
+    border-radius: 5px;
+    background-color: $color-secondary-light;
+    color: $color-primary-dark;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    overflow: hidden;
+    transition: all .3s;
+
+    &__image {
+        width: 32rem;
+        height: 21rem;
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        img {
+            width: 100%;
+        }
+        div{
+            height: 100%;
+            display:flex;
+            font-size: 2.4rem;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+        }
+    }
+
+    &__name{
+        height: 7rem;
+        background-color: $color-primary-dark;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h3 {
+            margin: 0;
+            font-size: 2.2rem;
+            text-align: center;
+            color: #fff;
+        }
+    }
+
+    &__info {
+        &__area {
+            display: flex;
+            align-items: center;
+            color: $color-primary;
+            font-weight: 700;
+            fill: orangered;
+            padding-left: 2rem;
+        }
+        &__rate {
+            display: flex;
+            align-content: center;
+            padding-left: 3rem;
+
+            &__icon {
+                width: 2.4rem;
+                height: 2.4rem;
+                fill: $color-primary-light;
+                margin-right: 1.6rem;
+                // svg {
+                //     width: 2.4rem;
+                //     height: 2.4rem;
+                // }
+            }
+
+            .starRate{
+                svg {
+                    fill: rgb(247, 203, 8);
+                    width: 2.4rem;
+                    height: 2.4rem;
+                }
+            }
+        }
+    }
+
+    &__user{
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+
+        img{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1.5rem;
+            margin: 0 1rem;
+        }
+
+        p {
+            font-size: 1.6rem;
+        }
+    }
+}

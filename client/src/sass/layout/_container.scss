@@ -1,0 +1,30 @@
+.container {
+    font-size: inherit;
+    // display: grid;
+    // grid-template-rows: 6rem  50vh 10rem; //Hader nav main footer
+    // grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] minmax(min-content, 1280px) [center-end] minmax(6rem, 1fr) [full-end];
+}
+
+.grid-contents {
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax( 25rem, 1fr));
+}
+
+%container{
+    background-color: $color-secondary-light;
+    max-width: $content-max-width;
+    min-height: 50vh;
+    margin: 3rem auto;
+    border-radius: 5px;
+    padding: 3rem;
+
+    @include respond(tab-land){
+        margin: 3rem;
+    }
+
+    @include respond(phone){
+        margin: 0;
+        border-radius: 0;
+    }
+}

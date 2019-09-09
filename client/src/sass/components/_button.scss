@@ -1,0 +1,84 @@
+%button-primary {
+    color: $color-white;
+    background-color: $color-primary-dark;
+    margin: 1rem;
+    border-radius: 3rem;
+
+    &,
+    &:link,
+    &:visited {
+        padding: 1rem 2rem;
+        display: inline-block;
+        border: solid 2px $color-primary-light;
+        transition: all .2s;
+        font-size: $default-font-size;
+        cursor: pointer;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 1rem 2rem rgba($color-black,.2);
+    }
+
+    &:active,
+    &:focus {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+    }
+}
+
+.btn {
+    @extend %button-primary;
+}
+
+.icon-mid{
+    width: 3rem;
+    height: 3rem;
+}
+
+.icon-la{
+    width: 4rem;
+    height:4rem;
+}
+
+.icon-sm{
+    width:2.4rem;
+    height:2.4rem;
+}
+
+.icon-delete {
+    fill: orangered;
+    cursor: pointer;
+}
+
+.icon-edit {
+    fill: $color-primary;
+    cursor: pointer;
+}
+
+button.btn:disabled {
+    background-color: $color-primary-light;
+    &:hover {
+        transform: none;
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+}
+
+.inputButton {
+    input {
+        display: none;
+    }
+
+    label {
+        @extend %button-primary;
+    }
+}
+
+//ButtonIcon
+.ibtn{
+    fill: $color-primary-dark;
+    &:hover{
+        fill: $color-primary-light;
+    }
+}

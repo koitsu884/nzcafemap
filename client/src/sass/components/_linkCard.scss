@@ -1,0 +1,28 @@
+.linkCard{
+    @include clearfix;
+
+    background-color: #fff;
+    border: solid 1px $color-secondary;
+    padding: 1rem;
+
+    &__image{
+        width: 13rem;
+        height: 13rem;
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+        margin: 1rem;
+        float:left
+    }
+
+    &__title{
+        font-weight: 700;
+        color: $color-primary-dark;
+    }
+
+    &__description {
+        font-size: 1.4rem;
+        color: $color-primary;
+    }
+}
