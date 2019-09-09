@@ -104,6 +104,9 @@ a {
   background-color: #260e04;
   margin: 1rem;
   border-radius: 3rem; }
+  @media only screen and (max-width: 37.5em) {
+    .btn, .inputButton label {
+      margin: .5rem; } }
   .btn, .inputButton label, .btn:link, .inputButton label:link, .btn:visited, .inputButton label:visited {
     padding: 1rem 2rem;
     display: inline-block;
@@ -111,6 +114,9 @@ a {
     transition: all .2s;
     font-size: 1.6rem;
     cursor: pointer; }
+    @media only screen and (max-width: 37.5em) {
+      .btn, .inputButton label, .btn:link, .inputButton label:link, .btn:visited, .inputButton label:visited {
+        margin: .5rem 1rem; } }
   .btn:hover, .inputButton label:hover {
     transform: translateY(-2px);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -233,14 +239,22 @@ button.btn:disabled {
         height: 15rem; } }
   .imageUploader__preview {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     padding: 2rem; }
+    @media only screen and (max-width: 37.5em) {
+      .imageUploader__preview {
+        padding: 0; } }
     .imageUploader__preview__item {
       overflow: hidden;
       width: 15rem;
       height: 15rem;
       margin: 1rem;
       position: relative; }
+      @media only screen and (max-width: 37.5em) {
+        .imageUploader__preview__item {
+          width: 12rem;
+          height: 12rem; } }
       .imageUploader__preview__item__image {
         width: 100%;
         height: 100%;
@@ -252,6 +266,12 @@ button.btn:disabled {
         height: 3rem;
         right: 1rem;
         top: 1rem; }
+        @media only screen and (max-width: 37.5em) {
+          .imageUploader__preview__item__delete {
+            width: 2rem;
+            height: 2rem;
+            right: 4px;
+            top: 4px; } }
 
 .squareImageUploader {
   width: 100%;
@@ -937,6 +957,7 @@ button.btn:disabled {
 .photoGarelly {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   padding: .5rem;
   max-height: 100%; }
   .photoGarelly__item {
@@ -970,7 +991,9 @@ button.btn:disabled {
       align-items: center; }
   .photoViewer__image {
     padding: 1rem;
-    width: 100%; }
+    width: 100%;
+    display: flex;
+    align-items: center; }
     .photoViewer__image img {
       max-width: 100%;
       max-height: 100%;
@@ -1096,7 +1119,8 @@ button.btn:disabled {
     .cafeEditForm, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
     .privacy, .contact {
       margin: 0;
-      border-radius: 0; } }
+      border-radius: 0;
+      padding: 1rem; } }
 
 .header {
   background-color: #260e04;
@@ -1235,11 +1259,15 @@ button.btn:disabled {
   padding: 3rem;
   display: flex;
   align-items: center; }
+  @media only screen and (max-width: 37.5em) {
+    .cafeSearch__order {
+      flex-direction: column; } }
   .cafeSearch__order ul {
     list-style: none; }
     .cafeSearch__order ul li {
       display: inline-block;
-      margin: .5rem 2rem; }
+      margin: .5rem 2rem;
+      fill: #fff; }
     .cafeSearch__order ul li:hover {
       cursor: pointer; }
 
