@@ -2,7 +2,7 @@ const winston = require('winston');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const error = require('../middleware/error');
+const error = require('./middleware/error');
 const bodyParser = require('body-parser');
 
 const app = express();
