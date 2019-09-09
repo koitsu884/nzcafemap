@@ -4,7 +4,7 @@ const users = require('../routes/users');
 const cafes = require('../routes/cafes');
 const reviews = require('../routes/reviews');
 const feedbacks = require('../routes/feedback');
-
+const path = require('path');
 
 const error = require('../middleware/error');
 
