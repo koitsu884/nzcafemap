@@ -15,5 +15,13 @@ module.exports = function(app) {
     app.use('/api/cafes', cafes);
     app.use('/api/reviews', reviews);
     app.use('/api/feedbacks', feedbacks);
+    //Front end
+    if(process.env.NODE_ENV === 'production') {
+        app.use(express.static('web/build'));
+        app.get('*', (req, res) => {
+            res.sendFile(path.resolve(__dirname, 'web', 'build', 'index.html'));
+        })
+    }
+    
     app.use(error);
 }
