@@ -4,6 +4,10 @@
     margin: 1rem;
     border-radius: 3rem;
 
+    @include respond(phone){
+        margin: .5rem;
+    }
+
     &,
     &:link,
     &:visited {
@@ -13,6 +17,9 @@
         transition: all .2s;
         font-size: $default-font-size;
         cursor: pointer;
+        @include respond(phone){
+            margin: .5rem 1rem;
+        }
     }
 
     &:hover {

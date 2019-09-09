@@ -27,6 +27,11 @@
         padding: 3rem;
         display: flex;
         align-items: center;
+
+        @include respond(phone){
+            flex-direction: column;
+        }
+
         ul {
             list-style: none;
             li {
@@ -34,7 +39,7 @@
                 margin: .5rem 2rem;
                 // background-color: $color-primary;
                 // color: #fff;
-                // padding: 1rem 2rem;
+                fill: #fff;
             }
             li:hover {
                 cursor: pointer;

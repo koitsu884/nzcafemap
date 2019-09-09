@@ -90,7 +90,7 @@ class CafeSearch extends Component {
                 </div>
                 <div className="cafeSearch__order">
                     <h4>並べ替え</h4>
-                    <ul>
+                    <ul className="cafeSearch__order__buttons">
                         <li id="order-new" className="btn" onClick={this.handleOrderClick}>新着</li>
                         <li id="order-coffee" className="btn" onClick={this.handleOrderClick}>コーヒー</li>
                         <li id="order-food" className="btn" onClick={this.handleOrderClick}>食事</li>
