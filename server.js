@@ -14,11 +14,6 @@ app.use(helmet())
 // }));
 require('./startup/logging')();
 app.use(bodyParser.json());
-app.use((req, res) => {
-    if(!req.secure){
-      res.redirect("https://" + req.headers.host + req.url);
-    }
-});
 
 // app.use(bodyParser.urlencoded({
 //     extended: false,
