@@ -8,11 +8,11 @@
     "start": "node server.js",
     "client": "npm start --prefix client",
     "build:css": "npm run build:css --prefix client",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false cd client && npm install && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd client && npm install && npm run build"
   },
   "author": "Kazunori Hayashi",
   "license": "ISC",
-  "engines":{
+  "engines": {
     "node": "10.x"
   },
   "dependencies": {
@@ -25,6 +25,7 @@
     "datauri": "^2.0.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "helmet": "^3.21.0",
     "joi": "^14.3.1",
     "joi-objectid": "^2.0.0",
     "jsonwebtoken": "^8.5.1",

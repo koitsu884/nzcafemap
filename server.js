@@ -1,5 +1,6 @@
 const winston = require('winston');
 const express = require('express');
+const helmet = require('helmet');
 const cors = require('cors');
 const path = require('path');
 const error = require('./middleware/error');
@@ -7,11 +8,18 @@ const bodyParser = require('body-parser');
 
 const app = express();
 require('express-async-errors');
+app.use(helmet())
 // app.use(cors({
 //     exposedHeaders: ['x-auth-token'],
 // }));
 require('./startup/logging')();
 app.use(bodyParser.json());
+app.use((req, res) => {
+    if(!req.secure){
+      res.redirect("https://" + req.headers.host + req.url);
+    }
+});
+
 // app.use(bodyParser.urlencoded({
 //     extended: false,
 //     type: 'application/x-www-form-urlencoded'
