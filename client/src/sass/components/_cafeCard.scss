@@ -9,6 +9,7 @@
     transition: all .3s;
 
     &__image {
+        background-color: $color-secondary-dark;
         width: 24rem;
         height: 16rem;
         display: block;
@@ -23,7 +24,6 @@
             font-size: 1.6rem;
             align-items: center;
             justify-content: center;
-            background-color: #fff;
         }
     }
 

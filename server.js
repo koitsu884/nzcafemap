@@ -9,9 +9,9 @@ const bodyParser = require('body-parser');
 const app = express();
 require('express-async-errors');
 app.use(helmet())
-// app.use(cors({
-//     exposedHeaders: ['x-auth-token'],
-// }));
+app.use(cors({
+    exposedHeaders: ['x-auth-token'],
+}));
 require('./startup/logging')();
 app.use(bodyParser.json());
 

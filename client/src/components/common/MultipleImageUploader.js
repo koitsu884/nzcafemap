@@ -12,6 +12,10 @@ export default function MultipleImageUploader(props) {
     onDrop: acceptedFiles => {
       let maxNum = props.maxNum ? props.maxNum : 5;
       // let maxSize = props.maxSize ? props.maxSize : 800;
+      acceptedFiles = acceptedFiles.concat(files);
+      acceptedFiles.forEach((file, index) => {
+        file.key = `photo_${index}.${file.name.substr(file.name.lastIndexOf('.') + 1)}`;
+      })
 
       if (acceptedFiles.length > maxNum) {
         Alert.error(`アップロードできる画像は${maxNum}個までです`)
@@ -27,15 +31,15 @@ export default function MultipleImageUploader(props) {
     }
   });
 
-  const thumbs = files.map(file => (
-    <div className="imageUploader__preview__item" key={file.path}>
+  const thumbs = files.map((file, index) => (
+    <div className="imageUploader__preview__item" key={file.key}>
       <img
         src={file.preview}
         alt="preview"
         className="imageUploader__preview__item__image"
       />
       <SvgClose className="imageUploader__preview__item__delete ibtn" onClick={() => {
-        let updatedFiles = files.filter(value => value.name !== file.name)
+        let updatedFiles = files.filter(value => value.key !== file.key)
         setFiles(updatedFiles);
         props.onImagesSelected(updatedFiles);
       }} />

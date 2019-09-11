@@ -3,6 +3,7 @@
     background-color: $color-primary-dark;
     margin: 1rem;
     border-radius: 3rem;
+    border: solid 2px $color-primary-light;
 
     @include respond(phone){
         margin: .5rem;
@@ -13,7 +14,6 @@
     &:visited {
         padding: 1rem 2rem;
         display: inline-block;
-        border: solid 2px $color-primary-light;
         transition: all .2s;
         font-size: $default-font-size;
         cursor: pointer;
@@ -36,6 +36,12 @@
 
 .btn {
     @extend %button-primary;
+}
+
+.btn--secondary {
+    color: $color-primary-dark;
+    background-color: $color-secondary;
+    border: solid 2px $color-secondary-light;
 }
 
 .icon-mid{

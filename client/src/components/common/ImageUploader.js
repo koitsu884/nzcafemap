@@ -171,7 +171,7 @@ class ImageUploader extends PureComponent {
             <ReactCrop
               minWidth={100}
               minHeight={100}
-              maxHeight={400}
+              maxHeight={300}
               src={src}
               crop={crop}
               onImageLoaded={this.onImageLoaded}

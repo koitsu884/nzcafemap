@@ -1,19 +1,26 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import ImageUploader from '../common/ImageUploader';
 import { connect } from 'react-redux';
 import { editMainPhoto} from '../../actions/photoActions';
+import Spinner from '../common/Spinner';
 // import { EDIT_CAFE_PHOTO} from '../../actions/types';
 
 
 class EditCafePhoto extends Component {
+    componentWillReceiveProps = nextProps => {
+        if(this.props.uploading && !nextProps.uploading){
+            //Closing modal
+            this.props.onPhotoSelected();
+        }
+    }
+
     onUploadPhoto = (blob) => {
         let fd = new FormData();
         fd.append('photo', blob, 'main.jpg');
         // this.props.editMainPhoto(`/cafes/${this.props.id}/photo`, EDIT_CAFE_PHOTO, fd);
         this.props.editMainPhoto('cafes', this.props.id, fd);
-
         //Closing modal
-        this.props.onPhotoSelected();
+        // this.props.onPhotoSelected();
     }
 
     onCancel = () => {
@@ -24,12 +31,21 @@ class EditCafePhoto extends Component {
         return (
             <div className="editUserPhoto">
                 <h1 className="u-margin-bottom-medium">メインフォト編集</h1>
-                <ImageUploader aspect={3/2} onUploadPhoto={this.onUploadPhoto} maxSize={640} />
-                <button className="btn" type="button" onClick={this.onCancel}>キャンセル</button>
+                {
+                    this.props.uploading ? <Spinner /> : (
+                        <Fragment>
+                            <ImageUploader aspect={3/2} onUploadPhoto={this.onUploadPhoto} maxSize={640} />
+                            <button className="btn" type="button" onClick={this.onCancel}>キャンセル</button>
+                        </Fragment>
+                    )
+                }
             </div>
         )
     }
 }
 
+const mapStateToProps = state => ({ 
+    uploading: state.photo.uploading,
+});
 
-export default connect(null, {editMainPhoto})(EditCafePhoto)
+export default connect(mapStateToProps, {editMainPhoto})(EditCafePhoto)

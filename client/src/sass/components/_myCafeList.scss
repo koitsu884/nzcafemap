@@ -9,6 +9,13 @@
 
     &__container {
         margin: 2px;
+        position: relative;
+        &__uploadPhotoButton {
+            position:absolute;
+            left: 15%;
+            top: 6rem;
+            z-index: 10;
+        }
     }
 
     &__tools {
