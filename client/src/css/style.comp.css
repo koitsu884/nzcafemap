@@ -103,14 +103,14 @@ a {
   color: #fff;
   background-color: #260e04;
   margin: 1rem;
-  border-radius: 3rem; }
+  border-radius: 3rem;
+  border: solid 2px #7b5e57; }
   @media only screen and (max-width: 37.5em) {
     .btn, .inputButton label {
       margin: .5rem; } }
   .btn, .inputButton label, .btn:link, .inputButton label:link, .btn:visited, .inputButton label:visited {
     padding: 1rem 2rem;
     display: inline-block;
-    border: solid 2px #7b5e57;
     transition: all .2s;
     font-size: 1.6rem;
     cursor: pointer; }
@@ -123,6 +123,11 @@ a {
   .btn:active, .inputButton label:active, .btn:focus, .inputButton label:focus {
     transform: translateY(-1px);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn--secondary {
+  color: #260e04;
+  background-color: #ffcc80;
+  border: solid 2px #fcfce5; }
 
 .icon-mid {
   width: 3rem;
@@ -256,8 +261,8 @@ button.btn:disabled {
           width: 12rem;
           height: 12rem; } }
       .imageUploader__preview__item__image {
-        width: 100%;
-        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
         object-fit: cover;
         display: block; }
       .imageUploader__preview__item__delete {
@@ -286,7 +291,8 @@ button.btn:disabled {
     align-items: center; }
     .squareImageUploader__fileSelector img {
       border: 2px solid #111;
-      padding: 2px; }
+      padding: 2px;
+      max-height: 300px; }
     @media only screen and (max-width: 56.25em) {
       .squareImageUploader__fileSelector {
         width: 100%; } }
@@ -301,7 +307,8 @@ button.btn:disabled {
       width: 32rem;
       object-fit: contain; }
   .squareImageUploader__selector {
-    margin: 1rem; }
+    margin: 1rem;
+    max-height: 70vh; }
 
 .ReactCrop {
   position: relative;
@@ -514,6 +521,7 @@ button.btn:disabled {
   overflow: hidden;
   transition: all .3s; }
   .cafeCardSimple__image {
+    background-color: #ca9b52;
     width: 24rem;
     height: 16rem;
     display: block;
@@ -526,8 +534,7 @@ button.btn:disabled {
       display: flex;
       font-size: 1.6rem;
       align-items: center;
-      justify-content: center;
-      background-color: #fff; }
+      justify-content: center; }
   .cafeCardSimple__title {
     margin: 0;
     font-size: 1.8rem;
@@ -694,7 +701,8 @@ button.btn:disabled {
   justify-content: center;
   background-color: #ffcc80; }
   .userPhotoEditor__photo img {
-    width: 100%; }
+    max-width: 100%;
+    max-height: 70vh; }
 
 .toggleInput {
   display: flex; }
@@ -709,7 +717,13 @@ button.btn:disabled {
       justify-content: center; } }
 
 .myCafeList__container {
-  margin: 2px; }
+  margin: 2px;
+  position: relative; }
+  .myCafeList__container__uploadPhotoButton {
+    position: absolute;
+    left: 15%;
+    top: 6rem;
+    z-index: 10; }
 
 .myCafeList__tools {
   display: flex;
@@ -1292,12 +1306,15 @@ button.btn:disabled {
 
 .cafeDetails__image {
   max-width: 100%;
+  max-height: 60vh;
   font-size: 5rem;
   display: flex;
   align-items: center;
   justify-content: center; }
   .cafeDetails__image img {
-    width: 100%; }
+    max-width: 100%;
+    max-height: 60vh;
+    display: inline-block; }
 
 .cafeDetails__data {
   display: flex; }
