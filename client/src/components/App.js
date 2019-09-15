@@ -9,7 +9,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Signin from './auth/Signin';
 import Signup from './auth/Signup';
-// import GlobalNav from './GlobalNav';
+import GlobalNav from './GlobalNav';
 import MyPage from './user/MyPage';
 import PrivateRoute from './common/PrivateRoute';
 
@@ -28,6 +28,7 @@ import Privacy from './static/Privacy';
 import Terms from './static/Terms';
 import Contact from './contact/Contact';
 import ScrollToTopButton from './common/ScrollToTopButton';
+import Help from './static/Help';
 
 
 if (localStorage.jwtToken) {
@@ -47,7 +48,7 @@ const App = () => {
             <CloudinaryContext cloudName="koitsu884">
                 <Router history={history}>
                     <Header />
-                    {/* <GlobalNav /> */}
+                    <GlobalNav />
                     <Switch>
                         <Route path="/" exact component={CafeSearch} />
                         <Route path="/signin" exact component={Signin} />
@@ -64,6 +65,7 @@ const App = () => {
                         <Route path="/contact" exact component={Contact} />
                         <Route path="/static/privacy" exact component={Privacy} />
                         <Route path="/static/terms" exact component={Terms} />
+                        <Route path="/static/help" exact component={Help} />
                     </Switch>
                     <Footer />
                     <ScrollToTopButton />

@@ -1094,6 +1094,51 @@ button.btn:disabled {
     font-size: 1.4rem;
     color: #4e342e; }
 
+.react-tabs {
+  -webkit-tap-highlight-color: transparent; }
+  .react-tabs__tab-list {
+    display: inline-flex;
+    border-radius: 4px;
+    border: solid 1px #260e04;
+    overflow: hidden;
+    margin: 1rem; }
+    @media only screen and (max-width: 37.5em) {
+      .react-tabs__tab-list {
+        flex-direction: column; } }
+  .react-tabs__tab {
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #4e342e;
+    color: #fff; }
+    .react-tabs__tab--selected {
+      background: #fff;
+      color: black; }
+    .react-tabs__tab--disabled {
+      color: GrayText;
+      cursor: default; }
+    .react-tabs__tab:focus {
+      box-shadow: 0 0 5px #0188fe;
+      border-color: #0188fe;
+      outline: none; }
+      .react-tabs__tab:focus:after {
+        content: "";
+        position: absolute;
+        height: 5px;
+        left: -4px;
+        right: -4px;
+        bottom: -5px;
+        background: #fff; }
+  .react-tabs__tab:not(:last-child) {
+    border-right: solid 1px #7b5e57; }
+  .react-tabs__tab-panel {
+    display: none;
+    padding: 1rem; }
+    .react-tabs__tab-panel--selected {
+      display: block; }
+
 .footer {
   color: #fff;
   background-color: #260e04;
@@ -1118,6 +1163,7 @@ button.btn:disabled {
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); }
 
 .cafeEditForm, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
+.help,
 .privacy, .contact {
   background-color: #fcfce5;
   max-width: 1200px;
@@ -1127,10 +1173,12 @@ button.btn:disabled {
   padding: 3rem; }
   @media only screen and (max-width: 75em) {
     .cafeEditForm, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
+    .help,
     .privacy, .contact {
       margin: 3rem; } }
   @media only screen and (max-width: 37.5em) {
     .cafeEditForm, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
+    .help,
     .privacy, .contact {
       margin: 0;
       border-radius: 0;
@@ -1404,3 +1452,24 @@ button.btn:disabled {
 .reviewForm .btn {
   margin: auto;
   display: block; }
+
+.help .section {
+  padding: 2rem;
+  margin: 2rem 0;
+  background: #fff;
+  border: solid 1px #ffcc80; }
+  .help .section__content {
+    display: flex; }
+    @media only screen and (max-width: 37.5em) {
+      .help .section__content {
+        flex-direction: column; } }
+    .help .section__content__image {
+      margin: 1rem;
+      max-width: 50%; }
+      @media only screen and (max-width: 37.5em) {
+        .help .section__content__image {
+          max-width: 100%; } }
+      .help .section__content__image img {
+        width: 100%;
+        display: block;
+        border: solid 1px #260e04; }

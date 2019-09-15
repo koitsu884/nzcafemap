@@ -55,7 +55,7 @@ export default class CafeRateEditor extends Component {
                 <Rater id="rateVibe" total={5} onRate={this.changeRate} rating={this.state.rateVibe} />
                 <div>
                     <button type="button" className="btn" onClick={this.onSubmit}>OK</button>
-                    <button type="button" className="btn" onClick={this.onCancel}>Cancel</button>
+                    <button type="button" className="btn" onClick={this.onCancel}>キャンセル</button>
                 </div>
             </div>
         )

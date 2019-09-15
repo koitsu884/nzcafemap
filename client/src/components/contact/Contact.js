@@ -35,7 +35,7 @@ class Contact extends Component {
         return (
             <div className="contact">
                 <h1>お問い合わせフォーム</h1>
-                <div><p>各種お問い合わせ、不具合報告等は以下のフォームをご使用ください。</p></div>
+                <div><p>各種お問い合わせ、不具合報告等は以下のフォームをご使用ください。（ご意見・ご要望も受け付け中です。）</p></div>
                 <form className="form" onSubmit={handleSubmit(this.onSubmit)}>
                     <fieldset>
                         <Field
