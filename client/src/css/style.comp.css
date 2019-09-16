@@ -1298,27 +1298,39 @@ button.btn:disabled {
 
 .cafeSearch__header {
   text-align: center;
+  position: relative;
   background-image: url("../img/search_header.jpg");
   background-size: cover;
-  height: 40rem; }
+  height: 32rem; }
   .cafeSearch__header h2 {
-    font-size: 5rem;
+    font-size: 4rem;
     margin: auto;
     color: #260e04; }
   .cafeSearch__header__filter {
-    padding: 5rem;
+    position: absolute;
+    left: 4rem;
+    bottom: 4rem;
+    padding: 4rem;
     max-width: 80rem;
     margin: auto;
     display: flex;
     background-color: #fcfce5;
     opacity: 0.7; }
+    @media only screen and (max-width: 37.5em) {
+      .cafeSearch__header__filter {
+        width: 100%;
+        left: 0;
+        bottom: 1rem; } }
   @media only screen and (max-width: 56.25em) {
     .cafeSearch__header {
       height: 30rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .cafeSearch__header {
+      height: 25rem; } }
 
 .cafeSearch__order {
   background-color: #fcfce5;
-  padding: 3rem;
+  padding: 2rem;
   display: flex;
   align-items: center; }
   @media only screen and (max-width: 37.5em) {
@@ -1328,7 +1340,7 @@ button.btn:disabled {
     list-style: none; }
     .cafeSearch__order ul li {
       display: inline-block;
-      margin: .5rem 2rem;
+      margin: .5rem 1.5rem;
       fill: #fff; }
     .cafeSearch__order ul li:hover {
       cursor: pointer; }

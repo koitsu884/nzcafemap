@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "cloudinary-react": "^1.1.4",
+    "google-map-react": "^1.1.4",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "postcss-cli": "^6.1.3",
