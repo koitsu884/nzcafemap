@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import '../css/style.css';
 import { Router, Route, Switch } from 'react-router-dom';
 import history from '../history';
@@ -29,6 +29,9 @@ import Terms from './static/Terms';
 import Contact from './contact/Contact';
 import ScrollToTopButton from './common/ScrollToTopButton';
 import Help from './static/Help';
+import MapSearch from './cafe/MapSearch';
+
+const apiKey = process.env.REACT_APP_GOOGLEAPI_KEY;
 
 
 if (localStorage.jwtToken) {
@@ -43,6 +46,16 @@ if (localStorage.jwtToken) {
 }
 
 const App = () => {
+    useEffect(() => {
+        if (!window.google) {
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=ja`;
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        }
+    })
+
     return (
         <Provider store={store}>
             <CloudinaryContext cloudName="koitsu884">
@@ -55,6 +68,7 @@ const App = () => {
                         <Route path="/signup" exact component={Signup} />
                         <PrivateRoute path="/mypage" exact component={MyPage} />
                         <Route path="/cafes" exact component={CafeSearch} />
+                        <Route path="/cafes/map" exact component={MapSearch} />
                         <PrivateRoute path="/cafes/add" exact component={CafeCreate} />
                         <Route path="/cafes/photos" exact component={CafePhotoGarelly} />
                         <Route path="/cafes/:id" exact component={CafeDetails} />

@@ -19,7 +19,12 @@
             margin:auto;
             display: flex;
             background-color: $color-secondary-light;
-            opacity: 0.7;
+            opacity: .8;
+            label,
+            select{
+                opacity: 1;
+            }
+
             @include respond(phone){
                 width: 100%;
                 left: 0;

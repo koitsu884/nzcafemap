@@ -59,7 +59,6 @@ export default async function resizeFile(file, maxSize) {
         reader.onload = event => {
             resizeImage(event.target.result, maxSize, file.name)
                 .then(resizedFile => {
-                    console.log(resizedFile);
                     resolve(resizedFile);
                 })
                 .catch(error => {

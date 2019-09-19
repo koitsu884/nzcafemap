@@ -1,0 +1,11 @@
+.mapSearchResultList{
+    display: flex;
+    overflow-x: auto;
+
+    &__item {
+        min-width: 31rem;
+        &.active{
+            background-color: $color-secondary;
+        }
+    }
+}

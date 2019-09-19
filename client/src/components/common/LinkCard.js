@@ -14,7 +14,7 @@ export default function LinkCard({ linkInfo }) {
     return (
         <div className="linkCard">
             <a href={linkInfo.url} target="_blank" rel="noopener noreferrer" >
-                {linkInfo.image ? <img className="linkCard__image" alt="article image" sizes="300px" srcSet={linkInfo.image}></img> : null}
+                {linkInfo.image ? <img className="linkCard__image" alt="article_image" sizes="300px" srcSet={linkInfo.image}></img> : null}
                 <div>
                     <div className="linkCard__title">{linkInfo.title}</div>
                     <div className="linkCard__description">{limitedStr(linkInfo.description)}</div>

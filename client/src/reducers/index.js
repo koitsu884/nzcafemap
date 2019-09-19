@@ -7,6 +7,7 @@ import cafeReducer from './cafeReducer';
 import photoReducer from './photoReducer';
 import homeReducer from './homeReducer';
 import garellyReducer from './garellyReducer';
+import mapSearchReducer from './mapSearchReducer';
 
 export default combineReducers({
     form: formReducer,
@@ -15,6 +16,7 @@ export default combineReducers({
     home: homeReducer,
     photo: photoReducer,
     cafe: cafeReducer,
+    map: mapSearchReducer,
     garelly: garellyReducer,
     error: errorReducer
 });

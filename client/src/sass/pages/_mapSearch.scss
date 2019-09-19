@@ -1,0 +1,67 @@
+.mapSearch{
+    width: 100%;
+    min-height: 80vh;
+    padding: 5rem;
+    background-color: $color-secondary-light;
+
+    @include respond(phone){
+        padding: 3rem 1rem;
+    }
+
+    &__map{
+        height: 40rem;
+        margin: 1rem;
+    }
+
+    &__config {
+        &__rateDisplay{
+            display: flex;
+            label{
+                margin-right: 2rem;
+            }
+        }
+    }
+
+    &__marker {
+        width: 3.5rem;
+        height: 3.5rem;
+        left: -1.75rem;
+        top: -1.75rem;
+        background-color: #fff;
+        border-radius: 50%;
+        font-size: 1.8rem;
+        color: $color-primary;
+        font-weight: 700;
+        border: solid 2px $color-secondary-dark;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+
+        transition: all .2s;
+        z-index: 5;
+        position: absolute;
+
+        &.active{
+            position: relative;
+            border: solid 3px $color-secondary;
+            box-shadow: 1px 1px 3px rgba(0,0,0, .8);
+            z-index: 50;
+        }
+
+        &__hint {
+            position: absolute;
+            background-color: #fff;
+            border: solid 1px $color-primary;
+            border-radius: 5px;
+            padding: 1rem;
+            top: -4rem;
+            left: 4rem;
+            z-index: 100;
+            display: none;
+            &.active{
+                display: block;
+            }
+        }
+    }
+}

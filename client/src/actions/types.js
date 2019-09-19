@@ -36,6 +36,10 @@ export const SEARCH_CAFES = 'SEARCH_CAFES';
 export const SET_CAFES = 'SET_CAFES';
 export const SET_CAFE_DETAILS = 'SET_CAFE_DETAILS';
 
+export const MAP_SET_FILTER = 'MAP_SET_FILTER';
+export const MAP_SET_CAFES = 'MAP_SET_CAFES';
+export const MAP_SET_LOADING = 'MAP_SET_LOADING';
+
 export const SET_NEW_REVIEWS = 'SET_NEW_REVIEWS';
 
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';

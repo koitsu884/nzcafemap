@@ -291,6 +291,14 @@ router.delete('/:id/rate', auth, formDataHandler, async (req, res) => {
 const serachCafes = async (req, res, filters) => {
     const pageSize = +req.query.pageSize;
     const currentPage = + req.query.page;
+
+    if(filters.nw){
+        filters.lat = {$gt: filters.se.lat, $lt: filters.nw.lat}
+        filters.long = {$gt: filters.nw.lng, $lt: filters.se.lng}
+        delete filters.nw;
+        delete filters.se;
+    }
+
     const postQuery = Cafe.find(filters);
     const itemCount = await Cafe.countDocuments(filters);
 

@@ -22,6 +22,9 @@ class CafeSearch extends Component {
     }
 
     componentDidMount() {
+        if(this.props.filters.area){
+            this.setState({area: this.props.filters.area})
+        }
         this.props.setFilter(this.props.filters);
     }
 

@@ -27,7 +27,8 @@ const AreaDropDown = ({
     className,
     value,
     onChange,
-    allowEmpty
+    allowEmpty,
+    additionalOption //{value, 'before' or 'after'}
 }) => {
     return (
         <select className={className} name={name} onChange={onChange} value={value}>
