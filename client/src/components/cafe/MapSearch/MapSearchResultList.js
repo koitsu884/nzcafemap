@@ -3,6 +3,7 @@ import CafeCard from '../CafeCard'
 
 export default function MapSearchResultList({ 
     cafes, 
+    hoverId,
     selectedId,
     onChildMouseEnter,
     onChildMouseLeave 
@@ -14,7 +15,7 @@ export default function MapSearchResultList({
                     return (
                         <div 
                             key={cafe._id}
-                            className={"mapSearchResultList__item" + (cafe._id === selectedId ? " active" : "")}
+                            className={"mapSearchResultList__item" + (cafe._id === selectedId || cafe._id === hoverId ? " active" : "")}
                             onMouseEnter={() => onChildMouseEnter(cafe._id)}
                             onMouseLeave={onChildMouseLeave}
                             >

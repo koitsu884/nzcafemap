@@ -14,10 +14,11 @@ const latlngList = require('../../utils/Latlng');
 const Marker = ({
     rate,
     name,
-    hover = false
+    hover = false,
+    selected = false
 }) => {
-    let markerClass = "mapSearch__marker" + (hover ? ' active' : '');
-    let hintClass = "mapSearch__marker__hint" + (hover ? ' active' : '');
+    let markerClass = "mapSearch__marker" + (hover || selected ? ' active' : '');
+    let hintClass = "mapSearch__marker__hint" + (hover || selected ? ' active' : '');
 
     let rateClass = '';
     if(rate){
@@ -47,7 +48,8 @@ class MapSearch extends Component {
             center: this.defaultCenter,
             filter: null,
             displayRate: 'coffee',
-            hoverKey: null
+            hoverKey: null,
+            selectedKey: null
         }
     }
 
@@ -85,7 +87,7 @@ class MapSearch extends Component {
     }
 
     _onChildClick = (key /*, childProps*/) => {
-        history.push('/cafes/' + key);
+        this.setState({ selectedKey: key})
     }
 
     _onChildMouseEnter = (key/*, childProps*/) => {
@@ -120,6 +122,7 @@ class MapSearch extends Component {
                     name={cafe.name}
                     hoverDistance={0}
                     hover={this.state.hoverKey === cafe._id}
+                    selected={this.state.selectedKey === cafe._id}
                 />
             )
         })
@@ -194,7 +197,8 @@ class MapSearch extends Component {
                 <div>
                     <MapSearchResultList
                         cafes={this.props.cafes}
-                        selectedId={this.state.hoverKey}
+                        hoverId={this.state.hoverKey}
+                        selectedId={this.state.selectedKey}
                         onChildMouseEnter={this._onChildMouseEnter}
                         onChildMouseLeave={this._onChildMouseLeave}
                     />
