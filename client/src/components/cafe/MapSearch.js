@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { setFilter } from '../../actions/mapSearchActions';
 import GoogleMapReact from 'google-map-react';
+import { Helmet } from "react-helmet";
 
 import AreaDropDown from '../common/AreaDropDown';
 import MapSearchResultList from './MapSearch/MapSearchResultList';
@@ -127,6 +128,10 @@ class MapSearch extends Component {
     render() {
         return (
             <div className="mapSearch">
+                <Helmet>
+                    <title>カフェ検索</title>
+                    <meta name="description" content="ニュージーランドのカフェを検索できます。特にオークランド、ウェリントン、クライストチャートと言った都市部の情報が豊富！" />
+                </Helmet>
                 <h1>カフェ検索</h1>
                 <div>
                     <button type="button" className="btn" onClick={this.handleClickCurrentPosition}>現在地周辺を調べる</button>

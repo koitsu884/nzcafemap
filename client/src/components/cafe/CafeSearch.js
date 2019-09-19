@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import { connect } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -7,7 +7,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { setFilter } from '../../actions/cafeActions';
 import CafeCard from './CafeCard';
 import AreaDropDown from '../common/AreaDropDown';
-import Ogp from '../common/Ogp';
+// import Ogp from '../common/Ogp';
 import siteImage from '../../img/ogpImage.jpg';
 import Spinner from '../common/Spinner';
 
@@ -22,8 +22,8 @@ class CafeSearch extends Component {
     }
 
     componentDidMount() {
-        if(this.props.filters.area){
-            this.setState({area: this.props.filters.area})
+        if (this.props.filters.area) {
+            this.setState({ area: this.props.filters.area })
         }
         this.props.setFilter(this.props.filters);
     }
@@ -76,13 +76,17 @@ class CafeSearch extends Component {
     render() {
         return (
             <div className="cafeSearch">
-                <Ogp 
+                <Helmet>
+                    <title>カフェ検索</title>
+                    <meta name="description" content="ニュージーランド各地のカフェの位置情報、営業時間、レビュー等を検索・投稿できます。特にオークランド、ウェリントン、クライストチャートと言った都市部の情報が豊富！" />
+                </Helmet>
+                {/* <Ogp 
                     isRoot = {true}
                     title={"ニュージーランドカフェマップ | ＮＺのカフェ検索サイト"}
                     url={"https://www.nzcafemap.com"}
                     description={"ニュージーランド各地のカフェの位置情報、営業時間、レビュー等を検索・投稿できます"}
                     imageUrl={siteImage}
-                />
+                /> */}
                 <div className="cafeSearch__header">
                     <h2>カフェ検索</h2>
                     <div className="cafeSearch__header__filter">
