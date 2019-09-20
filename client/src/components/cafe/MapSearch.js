@@ -4,9 +4,13 @@ import { setFilter } from '../../actions/mapSearchActions';
 import GoogleMapReact from 'google-map-react';
 import { Helmet } from "react-helmet";
 
+import SvgFood  from '../common/SvgIcons/SvgFood';
+import SvgSweets  from '../common/SvgIcons/SvgSweets';
+import SvgVibe from '../common/SvgIcons/SvgVibe';
+import SvgCoffee  from '../common/SvgIcons//SvgCoffee';
+
 import AreaDropDown from '../common/AreaDropDown';
 import MapSearchResultList from './MapSearch/MapSearchResultList';
-import history from '../../history';
 
 const apiKey = process.env.REACT_APP_GOOGLEAPI_KEY;
 const latlngList = require('../../utils/Latlng');
@@ -158,7 +162,7 @@ class MapSearch extends Component {
                                 checked={this.state.displayRate === "coffee"}
                                 onChange={this.handleDisplayRateChange}
                             />
-                            <span>コーヒー</span>
+                            <span><div><SvgCoffee className="mapSearch__config__rateDisplay__icon" /><p>コーヒー</p></div></span>
                         </label>
                         <label className="radioButton">
                             <input
@@ -168,7 +172,7 @@ class MapSearch extends Component {
                                 checked={this.state.displayRate === "food"}
                                 onChange={this.handleDisplayRateChange}
                             />
-                            <span>食事</span>
+                            <span><div><SvgFood className="mapSearch__config__rateDisplay__icon" /><p>食事</p></div></span>
                         </label>
                         <label className="radioButton">
                             <input
@@ -178,7 +182,7 @@ class MapSearch extends Component {
                                 checked={this.state.displayRate === "sweets"}
                                 onChange={this.handleDisplayRateChange}
                             />
-                            <span>スイーツ</span>
+                            <span><div><SvgSweets className="mapSearch__config__rateDisplay__icon" /><p>スイーツ</p></div></span>
                         </label>
 
                         <label className="radioButton">
@@ -189,7 +193,7 @@ class MapSearch extends Component {
                                 checked={this.state.displayRate === "vibe"}
                                 onChange={this.handleDisplayRateChange}
                             />
-                            <span>雰囲気・サービス</span>
+                            <span><div><SvgVibe className="mapSearch__config__rateDisplay__icon" /><p>雰囲気・サービス</p></div></span>
                         </label>
                     </div>
                 </div>

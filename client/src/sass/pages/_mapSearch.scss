@@ -19,6 +19,25 @@
             label{
                 margin-right: 2rem;
             }
+
+            &__icon {
+                widtH: 2.2rem;
+                height: 2.2rem;
+                fill: $color-primary;
+            }
+
+            div {
+                display: inline-flex;
+                align-items: center;
+            }
+
+            p{
+                display: inline;
+                margin-left: 2px;
+                @include respond(phone){
+                    display: none;
+                }
+            }
         }
     }
 

@@ -1563,6 +1563,19 @@ button.btn:disabled {
     display: flex; }
     .mapSearch__config__rateDisplay label {
       margin-right: 2rem; }
+    .mapSearch__config__rateDisplay__icon {
+      widtH: 2.2rem;
+      height: 2.2rem;
+      fill: #4e342e; }
+    .mapSearch__config__rateDisplay div {
+      display: inline-flex;
+      align-items: center; }
+    .mapSearch__config__rateDisplay p {
+      display: inline;
+      margin-left: 2px; }
+      @media only screen and (max-width: 37.5em) {
+        .mapSearch__config__rateDisplay p {
+          display: none; } }
   .mapSearch__marker {
     width: 3.5rem;
     height: 3.5rem;
