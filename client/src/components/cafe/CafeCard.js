@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import SvgLocation  from '../common/SvgIcons/SvgLocation';
 import SvgFood  from '../common/SvgIcons/SvgFood';
+import SvgSweets  from '../common/SvgIcons/SvgSweets';
 import SvgVibe from '../common/SvgIcons/SvgVibe';
 import SvgCoffee  from '../common/SvgIcons//SvgCoffee';
 
@@ -25,6 +26,7 @@ export default function CafeCard(props) {
                     <div className="cafeCard__details">
                         <div className="cafeCard__rate"><SvgCoffee className="cafeCard__rate__icon" /><StarRate rate={cafe.rateCoffeeAve} /></div>
                         <div className="cafeCard__rate"><SvgFood className="cafeCard__rate__icon" /><StarRate rate={cafe.rateFoodAve} /></div>
+                        <div className="cafeCard__rate"><SvgSweets className="cafeCard__rate__icon" /><StarRate rate={cafe.rateSweetsAve} /></div>
                         <div className="cafeCard__rate"><SvgVibe className="cafeCard__rate__icon" /><StarRate rate={cafe.rateVibeAve} /></div>
                     </div>
                 </div>

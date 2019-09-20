@@ -98,6 +98,8 @@ const getOrderConfig = (order) => {
             return { rateCoffeeAve: -1 };
         case 'food':
             return { rateFoodAve: -1 };
+        case 'sweets':
+            return { rateSweetsAve: -1 };
         case 'vibe':
             return { rateVibeAve: -1 };
         default:
@@ -267,6 +269,7 @@ router.put('/:id/rate', auth, async (req, res) => {
 
     rate.rateCoffee = data.rateCoffee;
     rate.rateFood = data.rateFood;
+    rate.rateSweets = data.rateSweets;
     rate.rateVibe = data.rateVibe;
 
     await rate.save();
@@ -292,9 +295,9 @@ const serachCafes = async (req, res, filters) => {
     const pageSize = +req.query.pageSize;
     const currentPage = + req.query.page;
 
-    if(filters.nw){
-        filters.lat = {$gt: filters.se.lat, $lt: filters.nw.lat}
-        filters.long = {$gt: filters.nw.lng, $lt: filters.se.lng}
+    if (filters.nw) {
+        filters.lat = { $gt: filters.se.lat, $lt: filters.nw.lat }
+        filters.long = { $gt: filters.nw.lng, $lt: filters.se.lng }
         delete filters.nw;
         delete filters.se;
     }
@@ -349,6 +352,23 @@ calcAverageRates = async (cafe) => {
         { $group: { _id: cafe._id, rateVibeAve: { $avg: '$rateVibe' } } }
     ]).then(result => {
         cafe.rateVibeAve = result[0].rateVibeAve
+    })
+        .catch(error => {
+            console.log(error);
+        });
+
+    await Rate.aggregate([
+        {
+            $match: {
+                $and: [
+                    { cafe: cafe._id },
+                    { rateSweets: { $gte: 1 } }
+                ]
+            }
+        },
+        { $group: { _id: cafe._id, rateSweetsAve: { $avg: '$rateSweets' } } }
+    ]).then(result => {
+        cafe.rateSweetsAve = result[0].rateSweetsAve
     })
         .catch(error => {
             console.log(error);

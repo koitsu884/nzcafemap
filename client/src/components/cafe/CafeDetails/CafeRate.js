@@ -5,6 +5,7 @@ import CafeRateEditor from '../CafeRateEditor';
 
 import SvgCoffee from '../../common/SvgIcons/SvgCoffee';
 import SvgFood from '../../common/SvgIcons/SvgFood';
+import SvgSweets from '../../common/SvgIcons/SvgSweets';
 import SvgVibe from '../../common/SvgIcons/SvgVibe';
 
 const baseURL = process.env.REACT_APP_API_URL;
@@ -74,6 +75,7 @@ export default class CafeRate extends Component {
                     <div>
                         <span className="cafeRate__row"><SvgCoffee />: {this.state.myRate.rateCoffee}</span>
                         <span className="cafeRate__row"><SvgFood />: {this.state.myRate.rateFood}</span>
+                        <span className="cafeRate__row"><SvgSweets />: {this.state.myRate.rateSweets}</span>
                         <span className="cafeRate__row"><SvgVibe />: {this.state.myRate.rateVibe}</span>
                     </div>
                 ) : <div>まだ評価していません</div>}

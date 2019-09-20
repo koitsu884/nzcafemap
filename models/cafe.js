@@ -54,6 +54,9 @@ const cafeSchema = new mongoose.Schema({
     rateFoodAve:{
         type: Number,
     },
+    rateSweetsAve:{
+        type: Number,
+    },
     rateVibeAve:{
         type: Number
     }

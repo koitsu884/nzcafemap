@@ -102,6 +102,7 @@ class CafeSearch extends Component {
                         <li id="order-new" className="btn" onClick={this.handleOrderClick}>新着</li>
                         <li id="order-coffee" className="btn" onClick={this.handleOrderClick}>コーヒー</li>
                         <li id="order-food" className="btn" onClick={this.handleOrderClick}>食事</li>
+                        <li id="order-sweets" className="btn" onClick={this.handleOrderClick}>スイーツ</li>
                         <li id="order-vibe" className="btn" onClick={this.handleOrderClick}>雰囲気</li>
                     </ul>
                 </div>

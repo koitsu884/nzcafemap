@@ -4,6 +4,7 @@ import StarRate from '../../common/StarRate';
 
 import SvgCoffee from '../../common/SvgIcons/SvgCoffee';
 import SvgFood from '../../common/SvgIcons/SvgFood';
+import SvgSweets from '../../common/SvgIcons/SvgSweets';
 import SvgVibe from '../../common/SvgIcons/SvgVibe';
 
 export default function CafeRateAverage({ cafeDetails }) {
@@ -22,6 +23,10 @@ export default function CafeRateAverage({ cafeDetails }) {
                 <div>
                     <div className="cafeDetails__data__rate__title"><SvgFood />食事</div>
                     <StarRate rate={cafeDetails.rateFoodAve} />
+                </div>
+                <div>
+                    <div className="cafeDetails__data__rate__title"><SvgSweets />スイーツ</div>
+                    <StarRate rate={cafeDetails.rateSweetsAve} />
                 </div>
                 <div>
                     <div className="cafeDetails__data__rate__title"><SvgVibe />雰囲気・サービス</div>

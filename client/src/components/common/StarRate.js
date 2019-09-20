@@ -4,6 +4,7 @@ import SvgStarHalf from '../common/SvgIcons/SvgStarHalf';
 import SvgStarEmpty from '../common/SvgIcons/SvgStarEmpty';
 
 const createRateElement = ({rate}) => {
+    if(!rate) return <span>未評価</span>;
     let temp = +rate * 10;
     let fullNum = Math.floor(temp / 10);
     let halfNum = temp % 10 >= 5 ? 1 : 0;
@@ -26,7 +27,7 @@ const createRateElement = ({rate}) => {
 export default function StarRate(rate) {
     return (
         <span className="starRate">
-            {createRateElement(rate)}
+            { createRateElement(rate)}
         </span>
     )
 }

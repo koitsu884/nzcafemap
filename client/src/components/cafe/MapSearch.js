@@ -21,11 +21,11 @@ const Marker = ({
     let hintClass = "mapSearch__marker__hint" + (hover || selected ? ' active' : '');
 
     let rateClass = '';
-    if(rate){
-        if(+rate >= 4){
+    if (rate) {
+        if (+rate >= 4) {
             rateClass = 'font-red';
         }
-        else if(+rate < 3){
+        else if (+rate < 3) {
             rateClass = 'font-blue';
         }
     }
@@ -59,7 +59,7 @@ class MapSearch extends Component {
 
     handleClickCurrentPosition = () => {
         navigator.geolocation.getCurrentPosition((position) => {
-            this.setState({ center: {lat: position.coords.latitude, lng: position.coords.longitude} });
+            this.setState({ center: { lat: position.coords.latitude, lng: position.coords.longitude } });
         })
     }
 
@@ -87,7 +87,7 @@ class MapSearch extends Component {
     }
 
     _onChildClick = (key /*, childProps*/) => {
-        this.setState({ selectedKey: key})
+        this.setState({ selectedKey: key })
     }
 
     _onChildMouseEnter = (key/*, childProps*/) => {
@@ -106,6 +106,9 @@ class MapSearch extends Component {
             switch (this.state.displayRate) {
                 case 'food':
                     rate = cafe.rateFoodAve;
+                    break;
+                case 'sweets':
+                    rate = cafe.rateSweetsAve;
                     break;
                 case 'vibe':
                     rate = cafe.rateVibeAve;
@@ -166,6 +169,16 @@ class MapSearch extends Component {
                                 onChange={this.handleDisplayRateChange}
                             />
                             <span>食事</span>
+                        </label>
+                        <label className="radioButton">
+                            <input
+                                type="radio"
+                                name="displayRate"
+                                value="sweets"
+                                checked={this.state.displayRate === "sweets"}
+                                onChange={this.handleDisplayRateChange}
+                            />
+                            <span>スイーツ</span>
                         </label>
 
                         <label className="radioButton">

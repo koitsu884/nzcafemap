@@ -23,6 +23,11 @@ const rateSchema = new mongoose.Schema({
         min:0,
         max:5
     },
+    rateSweets: {
+        type: Number,
+        min:0,
+        max:5
+    },
     rateVibe: {
         type: Number,
         min:0,
@@ -36,6 +41,7 @@ function validateRate(rate) {
         cafe: Joi.objectId().required(),
         rateCoffee: Joi.number().integer().min(0).max(5),
         rateFood: Joi.number().integer().min(0).max(5),
+        rateSweets: Joi.number().integer().min(0).max(5),
         rateVibe: Joi.number().integer().min(0).max(5)
     }
 

@@ -42,7 +42,6 @@ class CafeDetails extends Component {
                         {
                             this.props.userId ?
                                 <Fragment>
-
                                     <h4>あなたの評価</h4>
                                     <CafeRate cafeId={cafeDetails._id} userId={userId} />
                                 </Fragment>

@@ -597,10 +597,12 @@ button.btn:disabled {
       height: 1.6rem;
       fill: #7b5e57;
       margin-right: .5rem; }
-    .cafeCard__rate .starRate svg {
-      fill: #f7cb08;
-      width: 1.5rem;
-      height: 1.5rem; }
+    .cafeCard__rate .starRate {
+      color: #7b5e57; }
+      .cafeCard__rate .starRate svg {
+        fill: #f7cb08;
+        width: 1.5rem;
+        height: 1.5rem; }
 
 .test-enter {
   opacity: 0;
