@@ -42,8 +42,13 @@ export default class CafeRateEditor extends Component {
         this.props.onSubmit(newRate);
     }
 
-    onCancel = () =>{
-        this.props.onCancel();
+    onClear = () =>{
+        this.setState({
+            rateCoffee: 0,
+            rateSweets: 0,
+            rateFood: 0,
+            rateVibe: 0
+        })
     }
 
     render() {
@@ -60,7 +65,7 @@ export default class CafeRateEditor extends Component {
                 <Rater id="rateVibe" total={5} onRate={this.changeRate} rating={this.state.rateVibe} />
                 <div>
                     <button type="button" className="btn" onClick={this.onSubmit}>OK</button>
-                    <button type="button" className="btn" onClick={this.onCancel}>キャンセル</button>
+                    <button type="button" className="btn" onClick={this.onClear}>クリア</button>
                 </div>
             </div>
         )

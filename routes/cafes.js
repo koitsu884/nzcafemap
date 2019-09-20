@@ -334,7 +334,7 @@ calcAverageRates = async (cafe) => {
         },
         { $group: { _id: cafe._id, rateCoffeeAve: { $avg: '$rateCoffee' } } }
     ]).then(result => {
-        cafe.rateCoffeeAve = result[0].rateCoffeeAve
+        cafe.rateCoffeeAve = result[0] ? result[0].rateCoffeeAve : 0
     })
         .catch(error => {
             console.log(error);
@@ -351,7 +351,7 @@ calcAverageRates = async (cafe) => {
         },
         { $group: { _id: cafe._id, rateVibeAve: { $avg: '$rateVibe' } } }
     ]).then(result => {
-        cafe.rateVibeAve = result[0].rateVibeAve
+        cafe.rateVibeAve = result[0] ? result[0].rateVibeAve : 0;
     })
         .catch(error => {
             console.log(error);
@@ -368,7 +368,7 @@ calcAverageRates = async (cafe) => {
         },
         { $group: { _id: cafe._id, rateSweetsAve: { $avg: '$rateSweets' } } }
     ]).then(result => {
-        cafe.rateSweetsAve = result[0].rateSweetsAve
+        cafe.rateSweetsAve = result[0] ? result[0].rateSweetsAve : 0;
     })
         .catch(error => {
             console.log(error);
@@ -390,7 +390,7 @@ calcAverageRates = async (cafe) => {
             }
         }
     ]).then(result => {
-        cafe.rateFoodAve = result[0].rateFoodAve
+        cafe.rateFoodAve = result[0] ? result[0].rateFoodAve : 0;
     })
         .catch(error => {
             console.log(error);
