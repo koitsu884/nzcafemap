@@ -11,6 +11,9 @@
     &__map{
         height: 40rem;
         margin: 1rem;
+        @include respond(phone){
+            height: 30rem;
+        }
     }
 
     &__config {

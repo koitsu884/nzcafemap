@@ -1559,6 +1559,9 @@ button.btn:disabled {
   .mapSearch__map {
     height: 40rem;
     margin: 1rem; }
+    @media only screen and (max-width: 37.5em) {
+      .mapSearch__map {
+        height: 30rem; } }
   .mapSearch__config__rateDisplay {
     display: flex; }
     .mapSearch__config__rateDisplay label {
