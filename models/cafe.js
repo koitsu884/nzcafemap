@@ -5,13 +5,15 @@ const mongoose = require('mongoose');
 const cafeSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'user',
+        index: true,
     },
     name: {
         type:String,
         required:true,
         minlength: 2,
         maxlength: 255,
+        index: true
     },
     photo: {
         type: mongoose.Schema.Types.ObjectId,
@@ -23,6 +25,7 @@ const cafeSchema = new mongoose.Schema({
     area: {
         type: String,
         required: true,
+        index: true
     },
     placeID:{
         type:String,
@@ -49,7 +52,7 @@ const cafeSchema = new mongoose.Schema({
         type: Number
     },
     rateCoffeeAve:{
-        type: Number
+        type: Number,
     },
     rateFoodAve:{
         type: Number,
@@ -58,7 +61,7 @@ const cafeSchema = new mongoose.Schema({
         type: Number,
     },
     rateVibeAve:{
-        type: Number
+        type: Number,
     }
 });
 
@@ -76,6 +79,11 @@ function validateCafe(cafe) {
 
     return Joi.validate(cafe, schema);
 }
+
+cafeSchema.index({rateCoffeeAve: -1});
+cafeSchema.index({rateCoffeeFood: -1});
+cafeSchema.index({rateCoffeeSweets: -1});
+cafeSchema.index({rateCoffeeVibe: -1});
 
 const Cafe = mongoose.model('cafe', cafeSchema, 'cafes');
 

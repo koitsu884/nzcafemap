@@ -17,7 +17,7 @@ const photoSchema = new mongoose.Schema({
         type:String
     },
     ownerRecordId: {
-        type:String
+        type:String,
     },
     relatingRecordType: {
         type: String
@@ -26,6 +26,9 @@ const photoSchema = new mongoose.Schema({
         type: String
     }
 });
+
+photoSchema.index({ownerRecordType : 1, ownerRecordId : 1});
+photoSchema.index({relatingRecordType : 1, relatingRecordId : 1});
 
 const Photo = mongoose.model('photo', photoSchema, 'photos');
 

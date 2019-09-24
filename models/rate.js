@@ -6,12 +6,14 @@ const rateSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'user'
+        ref: 'user',
+        index: true
     },
     cafe: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'cafe'
+        ref: 'cafe',
+        index: true
     },
     rateCoffee: {
         type: Number,

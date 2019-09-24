@@ -6,12 +6,14 @@ const reviewSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
+        index: true,
         ref: 'user'
     },
     cafe: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'cafe'
+        ref: 'cafe',
+        index: true
     },
     title: {
         type: String,
