@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const winston = require('winston');
 
+const { cacheRecord, getRecordFromCache, clearHash} = require('../helper/cache');
 const { Cafe, validate } = require('../models/cafe');
 const { Rate, validateRate } = require('../models/rate');
 const { Review } = require('../models/review');
@@ -11,6 +12,7 @@ const { memoryUploadSingle, bufferToDataUri } = require('../helper/formDataHandl
 const { singleUpload, deleteFile } = require('../helper/cloudinaryUploader');
 
 const formDataHandler = memoryUploadSingle('photo');
+const searchRecordCacheKey = 'search';
 
 router.get('/latest', async (req, res) => {
     cafes = await Cafe.find().sort({ _id: -1 }).limit(6);
@@ -127,6 +129,7 @@ router.post('/', auth, async (req, res) => {
     await cafe.save();
 
     res.status(201).send(cafe);
+    clearHash(searchRecordCacheKey);
 })
 
 router.post('/:id/photo', auth, formDataHandler, async (req, res) => {
@@ -157,6 +160,7 @@ router.post('/:id/photo', auth, formDataHandler, async (req, res) => {
         cafe.mainPhotoURL = photoURL;
         cafe.save();
         res.send(photoURL);
+        clearHash(searchRecordCacheKey);
     })
         .catch(err => {
             res.status(400).send("アップロードに失敗しました");
@@ -197,6 +201,7 @@ router.delete('/:id', auth, async (req, res) => {
         })
 
     res.send(cafe);
+    clearHash(searchRecordCacheKey);
 })
 
 router.delete('/:id/photo', auth, async (req, res) => {
@@ -217,6 +222,7 @@ router.delete('/:id/photo', auth, async (req, res) => {
             res.status(400).send("ファイルの削除に失敗しました");
             winston.error(err);
         });
+        clearHash(searchRecordCacheKey);
 })
 
 //--------------- Cafe rating ----------------
@@ -249,6 +255,7 @@ router.post('/:id/rate', auth, async (req, res) => {
     calcAverageRates(cafe);
 
     res.status(201).send(newRate);
+    clearHash(searchRecordCacheKey);
 })
 
 router.put('/:id/rate', auth, async (req, res) => {
@@ -276,6 +283,7 @@ router.put('/:id/rate', auth, async (req, res) => {
     calcAverageRates(cafe);
 
     res.send(rate);
+    clearHash(searchRecordCacheKey);
 })
 
 router.delete('/:id/rate', auth, formDataHandler, async (req, res) => {
@@ -286,6 +294,7 @@ router.delete('/:id/rate', auth, formDataHandler, async (req, res) => {
     rate.remove();
 
     res.send(rate);
+    clearHash(searchRecordCacheKey);
 })
 
 
@@ -303,23 +312,39 @@ const serachCafes = async (req, res, filters) => {
     }
 
     const postQuery = Cafe.find(filters);
-    const itemCount = await Cafe.countDocuments(filters);
-
+    
     if (pageSize && currentPage) {
         postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
     }
-
+    
     let orderConfig = getOrderConfig(req.query.order);
+    
+    let cacheKey = Object.assign({}, filters, {
+        currentPage: currentPage,
+        pageSize: pageSize,
+        order: orderConfig
+    });
 
+    let recordFromCache = await getRecordFromCache(searchRecordCacheKey, cacheKey);
+    if(recordFromCache){
+        res.send(JSON.parse(recordFromCache));
+        return;
+    }
+    
+    const itemCount = await Cafe.countDocuments(filters);
     const cafes = await postQuery.populate('photo', ['public_id', 'version'])
         .sort(orderConfig);
 
-    res.send({
+    let returnData = {
         currentPage: currentPage,
         pageSize: pageSize,
         totalCount: itemCount,
         cafes: cafes
-    });
+    };
+
+    res.send(returnData);
+
+    cacheRecord(searchRecordCacheKey, cacheKey, returnData);
 }
 
 calcAverageRates = async (cafe) => {

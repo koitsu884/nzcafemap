@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const config = require('config');
 const {User} = require('../models/user');
 const bcrypt = require('bcrypt');
+require('../helper/cache');
 
 mongoose.set('useCreateIndex', true);
 
