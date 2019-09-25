@@ -44,6 +44,19 @@
         }
     }
 
+    &__location {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: yellow;
+        border: 2px solid $color-primary;
+        padding: 3px;
+        position: relative;
+
+        transition: background-color .2s;
+        animation: Flash 1s infinite;
+    }
+
     &__marker {
         width: 3.5rem;
         height: 3.5rem;
@@ -85,5 +98,11 @@
                 display: block;
             }
         }
+    }
+}
+
+@keyframes Flash{
+    50%{
+      background-color: orangered;
     }
 }

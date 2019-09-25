@@ -1579,6 +1579,16 @@ button.btn:disabled {
       @media only screen and (max-width: 37.5em) {
         .mapSearch__config__rateDisplay p {
           display: none; } }
+  .mapSearch__location {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: yellow;
+    border: 2px solid #4e342e;
+    padding: 3px;
+    position: relative;
+    transition: background-color .2s;
+    animation: Flash 1s infinite; }
   .mapSearch__marker {
     width: 3.5rem;
     height: 3.5rem;
@@ -1614,3 +1624,7 @@ button.btn:disabled {
       display: none; }
       .mapSearch__marker__hint.active {
         display: block; }
+
+@keyframes Flash {
+  50% {
+    background-color: orangered; } }

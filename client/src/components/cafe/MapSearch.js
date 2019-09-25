@@ -42,6 +42,12 @@ const Marker = ({
     )
 }
 
+const LocationMarker = () => {
+    return (
+        <div className="mapSearch__location"></div>
+    )
+}
+
 class MapSearch extends Component {
     constructor(props) {
         super(props);
@@ -53,7 +59,8 @@ class MapSearch extends Component {
             filter: null,
             displayRate: 'coffee',
             hoverKey: null,
-            selectedKey: null
+            selectedKey: null,
+            location: null
         }
     }
 
@@ -63,7 +70,11 @@ class MapSearch extends Component {
 
     handleClickCurrentPosition = () => {
         navigator.geolocation.getCurrentPosition((position) => {
-            this.setState({ center: { lat: position.coords.latitude, lng: position.coords.longitude } });
+            let latlng = { lat: position.coords.latitude, lng: position.coords.longitude } ;
+            this.setState({ 
+                center: latlng,
+                location: latlng
+            });
         })
     }
 
@@ -208,6 +219,7 @@ class MapSearch extends Component {
                         onChildMouseEnter={this._onChildMouseEnter}
                         onChildMouseLeave={this._onChildMouseLeave}
                     >
+                        {this.state.location ? <LocationMarker lat={this.state.location.lat} lng={this.state.location.lng} /> : null}
                         {this.renderMarkers(this.props.cafes)}
                     </GoogleMapReact>
                 </div>
