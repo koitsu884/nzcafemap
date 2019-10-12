@@ -65,6 +65,11 @@ class MyCafeList extends Component {
         })
     }
 
+    handlePageClick = data => {
+        let selected = data.selected;
+        this.props.getMyCafes('', selected + 1);
+    }
+
     renderList = cafes => {
         return cafes.map(cafe => {
             return (
