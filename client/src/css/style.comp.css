@@ -1290,7 +1290,6 @@ button.btn:disabled {
       background-color: #fcfce5; }
 
 .home {
-  max-width: 1200px;
   min-height: 80vh;
   margin: auto; }
   .home h2 {
