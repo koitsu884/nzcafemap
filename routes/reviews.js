@@ -42,7 +42,7 @@ router.get('/mine', auth, async (req, res) => {
 router.get('/latest', async (req, res) => {
     const latestReviews = await Review.find()
                                       .populate('user', ['displayName', 'mainPhotoURL'])
-                                      .populate('cafe', ['_id', 'name', 'area', 'mainPhotoURL', 'rateCoffeeAve', 'rateFoodAve', 'rateVibeAve'])
+                                      .populate('cafe', ['_id', 'name', 'area', 'mainPhotoURL', 'rateCoffeeAve', 'rateFoodAve', 'rateSweetsAve', 'rateVibeAve'])
                                       .sort({ _id: -1 })
                                       .limit(6);
     res.send(latestReviews);

@@ -8,8 +8,8 @@ import ReviewCafeCard from './review/ReviewCafeCard';
 
 class Home extends Component {
     componentDidMount(){
-        if(!this.props.newCafe)
-            this.props.getNewCafes();
+        // if(!this.props.newCafe)
+        //     this.props.getNewCafes();
         if(!this.props.newReviews)
             this.props.getNewReviews();
     }
@@ -39,6 +39,16 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
+                {/* <div className="home__header">
+                    <h1>ニュージーランドカフェマップ</h１>
+                    <div className="cafeSearch__header__filter">
+                        <div>
+                            <label>エリア</label>
+                            <AreaDropDown className="form__input" name="area" onChange={this.onChange} value={this.state.area} allowEmpty={true} />
+                        </div>
+                    </div>
+                </div> */}
+
                 <h2>新着レビュー</h2>
                 <div className="home__newcafes">
                     {this.renderNewReviews()}

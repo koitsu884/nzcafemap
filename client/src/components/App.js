@@ -4,7 +4,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import history from '../history';
 import { Provider } from 'react-redux';
 import { CloudinaryContext } from 'cloudinary-react';
-// import Home from './Home';
+import Home from './Home';
 import Header from './Header';
 import Footer from './Footer';
 import Signin from './auth/Signin';
@@ -63,7 +63,8 @@ const App = () => {
                     <Header />
                     <GlobalNav />
                     <Switch>
-                        <Route path="/" exact component={CafeSearch} />
+                        <Route path="/" exact component={Home} />
+                        <Route path="/search" exact component={CafeSearch} />
                         <Route path="/signin" exact component={Signin} />
                         <Route path="/signup" exact component={Signup} />
                         <PrivateRoute path="/mypage" exact component={MyPage} />

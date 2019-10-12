@@ -23,6 +23,7 @@ export const getNewCafes = () => dispatch => {
 export const getNewReviews = () => dispatch => {
     axios.get('/reviews/latest', {baseURL: baseURL})
     .then(result => {
+        console.log(result);
         dispatch({
            type: SET_NEW_REVIEWS,
            payload: result.data

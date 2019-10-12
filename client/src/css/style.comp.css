@@ -665,28 +665,35 @@ button.btn:disabled {
     padding-left: 2rem; }
   .reviewCafeCard__info__rate {
     display: flex;
-    align-content: center;
-    padding-left: 3rem; }
-    .reviewCafeCard__info__rate__icon {
-      width: 2.4rem;
-      height: 2.4rem;
-      fill: #7b5e57;
-      margin-right: 1.6rem; }
-    .reviewCafeCard__info__rate .starRate svg {
-      fill: #f7cb08;
-      width: 2.4rem;
-      height: 2.4rem; }
+    flex-wrap: wrap; }
+    .reviewCafeCard__info__rate__item {
+      display: flex;
+      align-items: center;
+      padding-left: 3rem; }
+      .reviewCafeCard__info__rate__item__icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        fill: #7b5e57;
+        margin-right: 1.2rem; }
+      .reviewCafeCard__info__rate__item .starRate svg {
+        fill: #f7cb08;
+        width: 1.6rem;
+        height: 1.6rem; }
   .reviewCafeCard__user {
-    display: flex;
-    align-items: center;
-    padding: 1rem; }
-    .reviewCafeCard__user img {
-      width: 3rem;
-      height: 3rem;
-      border-radius: 1.5rem;
-      margin: 0 1rem; }
-    .reviewCafeCard__user p {
-      font-size: 1.6rem; }
+    background-color: #fff; }
+    .reviewCafeCard__user__header {
+      display: flex;
+      align-items: center;
+      padding: 1rem; }
+      .reviewCafeCard__user__header img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 1.5rem;
+        margin: 0 1rem; }
+      .reviewCafeCard__user__header h5 {
+        font-size: 1.8rem; }
+    .reviewCafeCard__user__comment {
+      padding: .5rem 1rem; }
 
 .cafeRow {
   width: 100%;
@@ -1288,7 +1295,9 @@ button.btn:disabled {
   margin: auto;
   padding: 2rem; }
   .home h2 {
-    color: #fff; }
+    color: #fff;
+    font-size: 3.5rem;
+    text-align: center; }
   .home__newcafes {
     padding: 2rem;
     display: grid;
