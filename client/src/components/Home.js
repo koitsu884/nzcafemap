@@ -39,15 +39,13 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
-                {/* <div className="home__header">
-                    <h1>ニュージーランドカフェマップ</h１>
-                    <div className="cafeSearch__header__filter">
-                        <div>
-                            <label>エリア</label>
-                            <AreaDropDown className="form__input" name="area" onChange={this.onChange} value={this.state.area} allowEmpty={true} />
-                        </div>
+                <div className="home__header">
+                     <h1 className="home__header__title">ニュージーランドでカフェ巡り！</h1>
+                    <div className="home__header__description">
+                        <p>ニュージーカフェマップは、ニュージーランドののカフェ情報・レビューを検索する事ができるサイトです。</p>
+                        <p>お気に入りのカフェを見つけて、NZのカフェ文化をもっと楽しもう！</p>
                     </div>
-                </div> */}
+                </div>
 
                 <h2>新着レビュー</h2>
                 <div className="home__newcafes">

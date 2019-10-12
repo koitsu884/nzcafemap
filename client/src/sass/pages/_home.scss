@@ -3,12 +3,42 @@
         color: #fff;
         font-size: 3.5rem;
         text-align: center;
+        background-color: $color-primary-light;
     }
 
     max-width: $content-max-width;
     min-height: $content-min-height;
     margin: auto;
-    padding: 2rem;
+
+    &__header{
+        text-align: center;
+        position: relative;
+        &__title {
+            font-size: 3.7rem;
+            color: $color-primary;
+            position: absolute;
+            left: 4rem;
+            top: 5.3rem;
+            color: $color-primary-dark;
+        }
+        &__description{
+            position: absolute;
+            padding: 0 2rem;
+            top: 15rem;
+            left: 6rem;
+            max-width: 70rem;
+            text-align: left;
+            margin: auto;
+            background-color: rgba(255, 255, 255, .3);
+        }
+        background-image: url('../img/search_header.jpg');
+        background-size: cover;
+        height: 32rem;
+
+        @include respond(phone){
+            display: none;
+        }
+    }
 
     &__newcafes {
         // background-color: $color-secondary-light;
