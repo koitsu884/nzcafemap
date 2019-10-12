@@ -44,7 +44,7 @@ router.get('/latest', async (req, res) => {
                                       .populate('user', ['displayName', 'mainPhotoURL'])
                                       .populate('cafe', ['_id', 'name', 'area', 'mainPhotoURL', 'rateCoffeeAve', 'rateFoodAve', 'rateSweetsAve', 'rateVibeAve'])
                                       .sort({ _id: -1 })
-                                      .limit(6);
+                                      .limit(12);
     res.send(latestReviews);
 })
 
