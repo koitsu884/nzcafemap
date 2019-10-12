@@ -45,7 +45,7 @@ export default function ReviewCafeCard({ reviewWithCafe }) {
                         {reviewWithCafe.user.mainPhotoURL ? <Image public_id={reviewWithCafe.user.mainPhotoURL} thumb={true} alt={reviewWithCafe.user.displayName} title={reviewWithCafe.user.displayName} /> : null}
                         <h5 className="reviewCafeCard__user__title">{reviewWithCafe.title}</h5>
                     </div>
-                    <div className="reviewCafeCard__user__comment">{reviewWithCafe.comment.length > 50 ? reviewWithCafe.comment.substr(0, 5) + '...' : reviewWithCafe.comment}</div>
+                    <div className="reviewCafeCard__user__comment">{reviewWithCafe.comment.length > 50 ? reviewWithCafe.comment.substr(0, 50) + '...' : reviewWithCafe.comment}</div>
                 </div>
             </div>
         </Link>
