@@ -53,8 +53,4 @@
             overflow-x: auto;
         }
     }
-
-    @include respond(big-desktop){
-        max-width: 1600px;
-    }
 }

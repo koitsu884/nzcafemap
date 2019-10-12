@@ -1333,9 +1333,6 @@ button.btn:disabled {
       .home__newcafes {
         display: flex;
         overflow-x: auto; } }
-  @media only screen and (min-width: 112.5em) {
-    .home {
-      max-width: 1600px; } }
 
 .signIn__form {
   width: 80%;
