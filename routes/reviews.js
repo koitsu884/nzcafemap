@@ -72,7 +72,8 @@ router.post('/', auth, async (req, res) => {
     review = new Review(data);
     await review.save();
 //    console.log(cafe);
-    postReviewTweet(cafe.name, review.title, req.user.displayName, getCafeDetailURL(req.body.cafe), getURIFromPublicId(cafe.mainPhotoURL));
+    let area = cafe.area.split('-')[1];
+    postReviewTweet(cafe.name, area, review.title, req.user.displayName, getCafeDetailURL(req.body.cafe), getURIFromPublicId(cafe.mainPhotoURL));
 
     res.status(201).send(review);
 })
@@ -85,8 +86,8 @@ getCafeDetailURL = function(cafeId){
     return config.get('clientUrl') + `cafes/${cafeId}`;
 }
 
-postReviewTweet = async (cafeName, reviewTitle, reviewUserName, detailURL, imageURL) => {
-    status = `【新規レビュー】\n${cafeName} のレビューが追加されました！\n\n${reviewTitle} (${reviewUserName})\n\n${detailURL}\n#ニュージーランド\n#カフェ巡り`;
+postReviewTweet = async (cafeName, area, reviewTitle, reviewUserName, detailURL, imageURL) => {
+    status = `【新規レビュー】\n${cafeName} のレビューが追加されました！\n\n「${reviewTitle} (${reviewUserName})」\n\n${detailURL}\n\n#ニュージーランド\n#${area}\n#カフェ巡り`;
     mediaId = null;
     if(imageURL){
         const options = {
