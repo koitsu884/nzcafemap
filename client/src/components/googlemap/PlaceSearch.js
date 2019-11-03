@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { loadGMapScripts } from './GoogleMap';
 
 export class PlaceSearch extends Component {
     constructor(props) {
@@ -58,19 +59,20 @@ export class PlaceSearch extends Component {
         this.props.onPlaceChanged(place);
     }
 
-    componentDidMount() {
-        if (!window.google) {
-            var s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.src = `https://maps.googleapis.com/maps/api/js?key=${this.apiKey}&libraries=places&language=ja`;
-            var x = document.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s, x);
-            s.addEventListener('load', e => {
-                this.onScriptLoad();
-            })
-        } else {
-            this.onScriptLoad();
-        }
+    componentDidMount = () => {
+        loadGMapScripts(this.onScriptLoad);
+        // if (!window.google) {
+        //     var s = document.createElement('script');
+        //     s.type = 'text/javascript';
+        //     s.src = `https://maps.googleapis.com/maps/api/js?key=${this.apiKey}&libraries=places&language=ja`;
+        //     var x = document.getElementsByTagName('script')[0];
+        //     x.parentNode.insertBefore(s, x);
+        //     s.addEventListener('load', e => {
+        //         this.onScriptLoad();
+        //     })
+        // } else {
+        //     this.onScriptLoad();
+        // }
     }
 
     render() {

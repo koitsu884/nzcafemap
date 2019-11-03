@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const winston = require('winston');
+const config = require('config');
 const request = require('request');
 const cheerio = require('cheerio');
 
@@ -10,6 +11,7 @@ const { Review, validate } = require('../models/review');
 const { Photo } = require('../models/photo');
 const {memoryUploadSingle, bufferToDataUri } = require('../helper/formDataHandler');
 const {singleUpload, deleteFile, deleteFolder} = require('../helper/cloudinaryUploader');
+const { postTweet, postImage } = require('../helper/twitter');
 
 const formDataHandler = memoryUploadSingle('photo');
 
@@ -69,9 +71,41 @@ router.post('/', auth, async (req, res) => {
 
     review = new Review(data);
     await review.save();
+//    console.log(cafe);
+    postReviewTweet(cafe.name, review.title, req.user.displayName, getCafeDetailURL(req.body.cafe), getURIFromPublicId(cafe.mainPhotoURL));
 
     res.status(201).send(review);
 })
+
+getURIFromPublicId = function(mainPhotoURL) {
+    return mainPhotoURL ? `https://res.cloudinary.com/${config.get('cloudinaryName')}/image/upload/${mainPhotoURL}` : null;
+}
+
+getCafeDetailURL = function(cafeId){
+    return config.get('clientUrl') + `cafes/${cafeId}`;
+}
+
+postReviewTweet = async (cafeName, reviewTitle, reviewUserName, detailURL, imageURL) => {
+    status = `【新規レビュー】\n${cafeName} のレビューが追加されました！\n\n${reviewTitle} (${reviewUserName})\n\n${detailURL}\n#ニュージーランド\n#カフェ巡り`;
+    mediaId = null;
+    if(imageURL){
+        const options = {
+            url: imageURL,
+            encoding: null
+        }
+
+        request.get(options, async function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                // data = "data:" + response.headers["content-type"] + ";base64," + new Buffer(body).toString('base64');
+                mediaId = await postImage(new Buffer.from(body).toString('base64'));
+                postTweet(status, mediaId);
+            }
+        });
+    }
+    else{
+        postTweet(status);
+    }
+}
 
 router.delete('/:id', auth, async (req, res) => {
     const review = await Review.findById(req.params.id);

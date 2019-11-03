@@ -1,4 +1,9 @@
-import React, { Component } from 'react'
+/* global window.google */
+
+import React, { Component } from 'react';
+import { loadGMapScripts } from './GoogleMap';
+
+// const google = window.google;
 
 class DisplayMap extends Component {
     constructor(props) {
@@ -9,7 +14,11 @@ class DisplayMap extends Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
+        loadGMapScripts(this.loadMap);
+    }
+
+    loadMap = () => {
         const { lat, long, placeId } = this.props;
         var latLng = { lat: lat, lng: long };
 
@@ -23,7 +32,6 @@ class DisplayMap extends Component {
             position: latLng,
             title: placeId
         });
-
     }
 
     render() {
@@ -32,6 +40,5 @@ class DisplayMap extends Component {
         )
     }
 }
-
 
 export default DisplayMap;

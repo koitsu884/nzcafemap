@@ -31,7 +31,7 @@ import ScrollToTopButton from './common/ScrollToTopButton';
 import Help from './static/Help';
 import MapSearch from './cafe/MapSearch';
 
-const apiKey = process.env.REACT_APP_GOOGLEAPI_KEY;
+// const apiKey = process.env.REACT_APP_GOOGLEAPI_KEY;
 
 
 if (localStorage.jwtToken) {
@@ -45,15 +45,31 @@ if (localStorage.jwtToken) {
     // }
 }
 
+// if (!window.google) {
+//     console.log('Loading google map');
+//     var s = document.createElement('script');
+//     s.type = 'text/javascript';
+//     s.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=ja`;
+//     var x = document.getElementsByTagName('script')[0];
+//     x.parentNode.insertBefore(s, x);
+//     console.log('Complete');
+// }
+
 const App = () => {
     useEffect(() => {
-        if (!window.google) {
-            var s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=ja`;
-            var x = document.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s, x);
-        }
+        // if(!window.google){
+        //     console.log('Action load google script');
+        //     store.dispatch(loadGoogleScript());
+        // }
+        // if (!window.google) {
+        //     console.log('Loading google map');
+        //     var s = document.createElement('script');
+        //     s.type = 'text/javascript';
+        //     s.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=ja`;
+        //     var x = document.getElementsByTagName('script')[0];
+        //     x.parentNode.insertBefore(s, x);
+        //     console.log('Complete');
+        // }
     })
 
     return (
