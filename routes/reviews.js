@@ -73,7 +73,7 @@ router.post('/', auth, async (req, res) => {
     await review.save();
 //    console.log(cafe);
     let area = cafe.area.split('-')[1];
-    postReviewTweet(cafe.name, area, review.title, req.user.displayName, getCafeDetailURL(req.body.cafe), getURIFromPublicId(cafe.mainPhotoURL));
+    postReviewTweet(cafe.name, area.trim(), review.title, req.user.displayName, getCafeDetailURL(req.body.cafe), getURIFromPublicId(cafe.mainPhotoURL));
 
     res.status(201).send(review);
 })
