@@ -212,7 +212,7 @@ class ReviewEditForm extends Component {
                     />
                     {errors.comment ? <div className="form__error">{errors.comment}</div> : null}
                     <label>画像アップロード（５つまで）</label>
-                    <MultipleImageUploader maxNum={5} maxSize={640} onImagesSelected={this.onImagesSelected} />
+                    <MultipleImageUploader maxNum={5} maxSize={800} onImagesSelected={this.onImagesSelected} />
                     <button 
                         type="button" 
                         className="btn" 

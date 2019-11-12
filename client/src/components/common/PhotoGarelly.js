@@ -117,7 +117,7 @@ class PhotoGarelly extends Component {
     render() {
         return (
             <Fragment>
-                <div className="photoGarelly">
+                <div className={`photoGarelly${this.props.overflowType ? ' ' + this.props.overflowType : ''}`}>
                     {this.renderPhotos()}
                 </div>
                 <Modal

@@ -37,7 +37,10 @@ router.get('/:id', async (req, res) => {
 });
 
 router.get('/:id/photos/latest', async (req, res) => {
-    const photos = await Photo.find({ relatingRecordType: 'Cafe', relatingRecordId: req.params.id }).limit(4).sort({ _id: -1 });
+    const photos = await Photo.find({ relatingRecordType: 'Cafe', relatingRecordId: req.params.id })
+            .populate('user', ['displayName', 'mainPhotoURL'])
+            .limit(4)
+            .sort({ _id: -1 });
     res.send(photos);
 })
 

@@ -35,7 +35,7 @@ class CafePhotoGarelly extends Component {
         return (
             <Fragment>
                 <div className="cafePhotoGarelly">
-                    <PhotoGarelly photos={this.props.photos} />
+                    <PhotoGarelly photos={this.props.photos} overflowType="wrap" />
                     {this.props.loading ? <Spinner /> : null}
                 </div>
                 {this.renderNextButton()}

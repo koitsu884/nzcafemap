@@ -1,7 +1,14 @@
 .photoGarelly {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    
+    &.wrap{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    &.scrollX{
+        overflow-x: auto;
+    }
+
     padding: .5rem;
     max-height: 100%;
 

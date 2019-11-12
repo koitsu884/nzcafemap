@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Spinner from '../../common/Spinner';
 import Image from '../../common/CloudinaryImage';
+import PhotoGarelly from '../../common/PhotoGarelly';
 
 const baseURL = process.env.REACT_APP_API_URL;
 
@@ -47,9 +48,10 @@ export default class LatestReviewPhotos extends Component {
         if (!this.state.photos || this.state.photos.length === 0) return null;
         return (
             <Fragment>
-                <div className="latestReviewPhoto">
+                {/* <div className="latestReviewPhoto">
                     {this.renderImages()}
-                </div>
+                </div> */}
+                <PhotoGarelly photos={this.state.photos} overflowType='scrollX' />
                 <Link to="/cafes/photos">全ての写真を見る</Link>
             </Fragment>
         )

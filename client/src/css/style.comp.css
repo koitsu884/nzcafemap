@@ -985,10 +985,13 @@ button.btn:disabled {
 
 .photoGarelly {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   padding: .5rem;
   max-height: 100%; }
+  .photoGarelly.wrap {
+    flex-wrap: wrap;
+    justify-content: center; }
+  .photoGarelly.scrollX {
+    overflow-x: auto; }
   .photoGarelly__item {
     width: 15rem;
     height: 15rem;
