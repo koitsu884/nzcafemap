@@ -9,7 +9,7 @@ function renderReviewPhotos(review) {
         return { _id: ++count, public_id: photoURL, user: review.user}
     })
 
-    return <PhotoGarelly photos={photos} overflow="scrollX" />
+    return <PhotoGarelly photos={photos} overflowType="scrollX" />
     // let imageElements = photoURLs.map(photoURL => {
     //     return <Image className="reviewRow__photos__image" thumb={true} public_id={photoURL} alt={photoURL} key={photoURL} />
     // })
