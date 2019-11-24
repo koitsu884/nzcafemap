@@ -32,6 +32,8 @@ class ReviewEditForm extends Component {
             modalIsOpen: false,
             errors: {}
         }
+
+        this.newReviewId = null;
     }
 
     componentDidMount() {
@@ -49,6 +51,7 @@ class ReviewEditForm extends Component {
             this.setState({ modalIsOpen: false }, () => {
                 Alert.success("レビューを追加しました", () => {
                     history.push('/cafes/' + this.props.cafeId);
+                    this.tweetReview(this.newReviewId);
                 })
             })
         }
@@ -89,6 +92,7 @@ class ReviewEditForm extends Component {
 
         axios.post('/reviews', newReview, { baseURL: baseURL })
             .then(response => {
+                this.newReviewId = response.data._id;
                 //Send photos
                 if (this.state.selectedFiles.length > 0) {
                     this.setState({
@@ -100,6 +104,7 @@ class ReviewEditForm extends Component {
                     this.setState({ modalIsOpen: false }, () => {
                         Alert.success("レビューを追加しました", () => {
                             history.push('/cafes/' + this.props.cafeId);
+                            this.tweetReview(response.data._id);
                         })
                     })
                 }
@@ -162,6 +167,17 @@ class ReviewEditForm extends Component {
             })
         })
 
+    }
+
+    tweetReview = (reviewId) => {
+        if(!reviewId) return;
+        axios.post(`/reviews/${reviewId}/tweet`, null, { baseURL: baseURL })
+            .then(result => {
+                // console.log(result);
+            })
+            .catch(error => {
+                // console.log("ERROR: " + error);
+            })
     }
 
     renderArticlePreview = () => {
@@ -239,7 +255,7 @@ class ReviewEditForm extends Component {
 
 const mapStateToProps = state => ({
     uploadingPhotos: state.photo.uploadings,
-    photoCount: state.photo.count
+    photoCount: state.photo.count,
 })
 
 export default connect(mapStateToProps, { multiplePhotoUpload })(ReviewEditForm);

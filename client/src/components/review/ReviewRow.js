@@ -10,14 +10,6 @@ function renderReviewPhotos(review) {
     })
 
     return <PhotoGarelly photos={photos} overflowType="scrollX" />
-    // let imageElements = photoURLs.map(photoURL => {
-    //     return <Image className="reviewRow__photos__image" thumb={true} public_id={photoURL} alt={photoURL} key={photoURL} />
-    // })
-    // return (
-    //     <div className="reviewRow__photos">
-    //         {imageElements}
-    //     </div>
-    // )
 }
 
 export default function ReviewRow(props) {
