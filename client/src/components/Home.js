@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Helmet } from "react-helmet";
 import { connect } from 'react-redux';
 import { getNewCafes, getNewReviews} from '../actions/homeActions';
 
@@ -39,6 +40,10 @@ class Home extends Component {
     render() {
         return (
             <div className="home">
+                <Helmet>
+                    <title>ニュージーランドカフェマップ</title>
+                    <meta name="description" content="ニュージーランド各地のカフェの位置情報、営業時間、レビュー等を検索・投稿できます。特にオークランド、ウェリントン、クライストチャートと言った都市部の情報が豊富！" />
+                </Helmet>
                 <div className="home__header">
                      <h1 className="home__header__title">ニュージーランドでカフェ巡り！</h1>
                     <div className="home__header__description">
