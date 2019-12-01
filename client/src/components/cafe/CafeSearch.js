@@ -10,6 +10,7 @@ import AreaDropDown from '../common/AreaDropDown';
 // import Ogp from '../common/Ogp';
 import siteImage from '../../img/ogpImage.jpg';
 import Spinner from '../common/Spinner';
+import Pagination from '../common/Pagination';
 
 class CafeSearch extends Component {
     constructor(props) {
@@ -55,12 +56,11 @@ class CafeSearch extends Component {
         });
     }
 
-    handlePageClick = data => {
-        let selected = data.selected;
+    handlePageClick = selectedPage => {
         let filter = {
             area: this.state.area ? this.state.area : undefined
         };
-        this.props.setFilter(filter, this.state.order, selected + 1);
+        this.props.setFilter(filter, this.state.order, selectedPage);
     }
 
     handleOrderClick = e => {
@@ -112,23 +112,11 @@ class CafeSearch extends Component {
                         {this.renderCafes()}
                     </TransitionGroup>
                 </div>
-                {
-                    this.props.pageCount > 1 ?
-                        <ReactPaginate
-                            previousLabel={'前のページ'}
-                            nextLabel={'次のページ'}
-                            breakLabel={'...'}
-                            breakClassName={'break-me'}
-                            pageCount={this.props.pageCount}
-                            marginPagesDisplayed={2}
-                            pageRangeDisplayed={5}
-                            onPageChange={this.handlePageClick}
-                            containerClassName={'pagination'}
-                            subContainerClassName={'pages pagination'}
-                            activeClassName={'active'}
-                        />
-                        : null
-                }
+                <Pagination
+                    itemCount={this.props.itemCount}
+                    pageSize={this.props.pageSize}
+                    onPageChange={this.handlePageClick}
+                />
             </div>
         )
     }
@@ -136,8 +124,9 @@ class CafeSearch extends Component {
 
 const mapStateToProps = state => ({
     filters: state.cafe.filters,
-    pageCount: state.cafe.pageCount,
     cafes: state.cafe.cafes,
+    itemCount: state.cafe.itemCount,
+    pageSize: state.cafe.pageSize,
     loading: state.cafe.loading
 })
 

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 
 import Spinner from '../../common/Spinner';
+import Pagination from '../../common/Pagination';
 import Alert from '../../../helper/Alert';
 import { getMyReviews } from '../../../actions/myPageActions';
 
@@ -57,10 +58,9 @@ class MyReviewList extends Component {
         })
     }
 
-    handlePageClick = data => {
-        let selected = data.selected;
+    handlePageClick = selectedPage => {
         let order = '';
-        this.props.getMyReviews(order, selected + 1);
+        this.props.getMyReviews(order, selectedPage);
     }
 
     render() {
@@ -69,23 +69,11 @@ class MyReviewList extends Component {
                 <div className="myReviewList">
                     {this.renderReviews()}
                 </div>
-                {
-                    this.props.pagination.pageCount > 1 ?
-                        <ReactPaginate
-                            previousLabel={'前のページ'}
-                            nextLabel={'次のページ'}
-                            breakLabel={'...'}
-                            breakClassName={'break-me'}
-                            pageCount={this.props.pagination.pageCount}
-                            marginPagesDisplayed={2}
-                            pageRangeDisplayed={5}
-                            onPageChange={this.handlePageClick}
-                            containerClassName={'pagination'}
-                            subContainerClassName={'pages pagination'}
-                            activeClassName={'active'}
-                        />
-                        : null
-                }
+                <Pagination
+                    itemCount={this.props.pagination.itemCount}
+                    pageSize={this.props.pagination.pageSize}
+                    onPageChange={this.handlePageClick}
+                />
             </Fragment>
         )
     }

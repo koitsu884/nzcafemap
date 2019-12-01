@@ -5,7 +5,6 @@ const INITIAL_STATE = {
     page: 1,
     pageSize: 10,
     itemCount: 0,
-    pageCount: 1,
     cafes: [],
     cafeDetails: null,
     latestReviews: [],
@@ -31,7 +30,6 @@ export default (state = INITIAL_STATE, action) => {
                 page:action.payload.currentPage,
                 pageSize:action.payload.pageSize,
                 itemCount: action.payload.itemCount,
-                pageCount: action.payload.pageCount,
                 loading: false
             };
         case SET_CAFE_DETAILS:

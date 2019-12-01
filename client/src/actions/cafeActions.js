@@ -80,7 +80,6 @@ export const setFilter = (filters, order='', page=1, pageSize=24) => dispatch =>
             currentPage: response.data.currentPage,
             pageSize: response.data.pageSize,
             itemCount: response.data.totalCount,
-            pageCount: Math.ceil(response.data.totalCount / response.data.pageSize),
         }
         dispatch({
            type: SET_CAFES,

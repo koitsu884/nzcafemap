@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import Swal from 'sweetalert2';
-import ReactPaginate from 'react-paginate';
 import { getMyCafes, deleteCafe } from '../../../actions/myPageActions';
 
 import EditCafePhoto from '../../cafe/EditCafePhoto';
@@ -11,6 +10,7 @@ import EditIcon from '../../common/SvgIcons/SvgEdit';
 import DeleteIcon from '../../common/SvgIcons/SvgDelete';
 import CafeCardSimple from '../../cafe/CafeCardSimple';
 import Spinner from '../../common/Spinner';
+import Pagination from '../../common/Pagination';
 
 Modal.setAppElement("#root")
 
@@ -65,9 +65,8 @@ class MyCafeList extends Component {
         })
     }
 
-    handlePageClick = data => {
-        let selected = data.selected;
-        this.props.getMyCafes('', selected + 1);
+    handlePageClick = selectedPage => {
+        this.props.getMyCafes('', selectedPage);
     }
 
     renderList = cafes => {
@@ -106,23 +105,11 @@ class MyCafeList extends Component {
                 >
                     <EditCafePhoto id={this.state.selectedCafeId} onPhotoSelected={this.onPhotoSelected} onCancel={this.onCancelUpload} />
                 </Modal>
-                {
-                    this.props.pagination.pageCount > 1 ?
-                        <ReactPaginate
-                            previousLabel={'前のページ'}
-                            nextLabel={'次のページ'}
-                            breakLabel={'...'}
-                            breakClassName={'break-me'}
-                            pageCount={this.props.pagination.pageCount}
-                            marginPagesDisplayed={2}
-                            pageRangeDisplayed={5}
-                            onPageChange={this.handlePageClick}
-                            containerClassName={'pagination'}
-                            subContainerClassName={'pages pagination'}
-                            activeClassName={'active'}
-                        />
-                        : null
-                }
+                <Pagination
+                    itemCount={this.props.pagination.itemCount}
+                    pageSize={this.props.pagination.pageSize}
+                    onPageChange={this.handlePageClick}
+                />
             </Fragment>
         )
     }
