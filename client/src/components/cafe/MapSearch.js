@@ -24,19 +24,19 @@ const Marker = ({
     let markerClass = "mapSearch__marker" + (hover || selected ? ' active' : '');
     let hintClass = "mapSearch__marker__hint" + (hover || selected ? ' active' : '');
 
-    let rateClass = '';
+    // let rateClass = '';
     if (rate) {
         if (+rate >= 4) {
-            rateClass = 'font-red';
+            markerClass += ' high';
         }
         else if (+rate < 3) {
-            rateClass = 'font-blue';
+            markerClass += ' low';
         }
     }
 
     return (
         <div className={markerClass}>
-            <p className={rateClass}>{rate ? rate : '-'}</p>
+            <p>{rate ? rate : '-'}</p>
             <span className={hintClass}>{name}</span>
         </div>
     )

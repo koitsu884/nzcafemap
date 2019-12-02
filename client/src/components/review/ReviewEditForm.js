@@ -65,22 +65,22 @@ class ReviewEditForm extends Component {
         let errors = {};
         let isValid = true;
 
-        if(!this.state.title){
+        if (!this.state.title) {
             errors.title = 'タイトルは必須項目です';
             isValid = false;
         }
 
-        if(!this.state.comment){
+        if (!this.state.comment) {
             errors.comment = 'レビューは必須項目です'
             isValid = false;
         }
 
-        if(!isValid){
-            this.setState({errors: errors});
+        if (!isValid) {
+            this.setState({ errors: errors });
             return;
         }
-         
-        this.setState({errors: {}});
+
+        this.setState({ errors: {} });
 
         let newReview = {
             cafe: this.props.cafeId,
@@ -129,27 +129,11 @@ class ReviewEditForm extends Component {
         this.setState({ selectedFiles: resizedFiles })
     }
 
-    getLinkPreview = () => {
-        if (!this.state.articleURL) {
-            this.setState({
-                articlePreviewLoading: false,
-                articleInfo: null
+    setLinkPreview = async articleUrl => {
+        try {
+            let response = await axios.post('reviews/linkPreview', { url: articleUrl }, {
+                baseURL: baseURL
             })
-            return;
-        }
-
-        let encodedURL = encodeURI(this.state.articleURL);
-        let error = url(encodeURI(encodedURL));
-        if (error) {
-            this.setState({ articleInfo: error });
-            return;
-        }
-
-        this.setState({ articlePreviewLoading: true });
-        axios.post('reviews/linkPreview', { url: encodedURL }, {
-            baseURL: baseURL
-        })
-        .then(response => {
             let articleInfo = Object.assign({}, response.data);
             if (articleInfo.description && articleInfo.description.length > 160)
                 articleInfo.description = articleInfo.description.substr(0, 160);
@@ -158,19 +142,38 @@ class ReviewEditForm extends Component {
                 articlePreviewLoading: false,
                 articleInfo: articleInfo,
             })
-        })
-        .catch(error => {
-            Alert.error(error.response ? error.response.data : error);
+            return { articleInfo: articleInfo }
+        }
+        catch (error) {
+            return { error: error }
+        }
+    }
+
+
+    getLinkPreview = async () => {
+        if (!this.state.articleURL) {
+            this.setState({
+                articlePreviewLoading: false,
+                articleInfo: null
+            })
+            return;
+        }
+
+        this.setState({ articlePreviewLoading: true });
+        let articleUrl = decodeURI(this.state.articleURL);
+
+        let result = await this.setLinkPreview(encodeURI(articleUrl));
+        if (result.error) {
+            Alert.error("記事プレビューを取得できませんでした");
             this.setState({
                 articleInfo: null,
                 articlePreviewLoading: false
             })
-        })
-
+        }
     }
 
     tweetReview = (reviewId) => {
-        if(!reviewId) return;
+        if (!reviewId) return;
         axios.post(`/reviews/${reviewId}/tweet`, null, { baseURL: baseURL })
             .then(result => {
                 // console.log(result);
@@ -229,10 +232,10 @@ class ReviewEditForm extends Component {
                     {errors.comment ? <div className="form__error">{errors.comment}</div> : null}
                     <label>画像アップロード（５つまで）</label>
                     <MultipleImageUploader maxNum={5} maxSize={800} onImagesSelected={this.onImagesSelected} />
-                    <button 
-                        type="button" 
-                        className="btn" 
-                        onClick={this.onSubmit} 
+                    <button
+                        type="button"
+                        className="btn"
+                        onClick={this.onSubmit}
                         disabled={this.state.loading || this.state.articlePreviewLoading || (this.state.articleURL && !this.state.articleInfo)}
                     >レビューを追加</button>
                 </form>

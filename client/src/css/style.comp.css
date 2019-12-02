@@ -105,6 +105,24 @@ a {
 .font-blue {
   color: blue; }
 
+.bg-primary {
+  background-color: #4e342e; }
+
+.bg-primary-light {
+  background-color: #7b5e57; }
+
+.bg-primary-dark {
+  background-color: #260e04; }
+
+.bg-secondary {
+  background-color: #ffcc80; }
+
+.bg-secondary-light {
+  background-color: #fcfce5; }
+
+.bg-secondary-dark {
+  background-color: #ca9b52; }
+
 .btn, .inputButton label {
   color: #fff;
   background-color: #260e04;
@@ -911,15 +929,15 @@ button.btn:disabled {
 .pagination {
   display: flex;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.4rem;
   list-style: none; }
   .pagination__next, .pagination__previous, .pagination__page {
-    height: 5rem;
-    min-width: 5rem;
+    height: 3rem;
+    min-width: 3rem;
     border: 1px solid #4e342e;
     border-radius: 5px; }
   .pagination__previousLink, .pagination__nextLink {
-    padding: 0 1.5rem; }
+    padding: 0 .5rem; }
   .pagination__pageLink, .pagination__previousLink, .pagination__nextLink {
     display: flex;
     align-items: center;
@@ -934,7 +952,7 @@ button.btn:disabled {
       background-color: #ffcc80; }
   .pagination__next, .pagination__previous {
     background-color: #7b5e57;
-    margin: .5rem 2rem; }
+    margin: .5rem 1rem; }
   .pagination .active {
     font-weight: bold;
     background-color: #260e04;
@@ -1646,16 +1664,15 @@ button.btn:disabled {
     transition: background-color .2s;
     animation: Flash 1s infinite; }
   .mapSearch__marker {
-    width: 3.5rem;
-    height: 3.5rem;
-    left: -1.75rem;
-    top: -1.75rem;
+    width: 3rem;
+    height: 3rem;
+    left: -1.5rem;
+    top: -1.5rem;
     background-color: #fff;
     border-radius: 50%;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #4e342e;
-    font-weight: 700;
-    border: solid 2px #ca9b52;
+    border: solid 1px #777;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1663,6 +1680,21 @@ button.btn:disabled {
     transition: all .2s;
     z-index: 5;
     position: absolute; }
+    .mapSearch__marker.high {
+      width: 3.4rem;
+      height: 3.4rem;
+      left: -1.7rem;
+      top: -1.7rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: red; }
+    .mapSearch__marker.low {
+      width: 2.8rem;
+      height: 2.8rem;
+      left: -1.4rem;
+      top: -1.4rem;
+      font-size: 1.4rem;
+      color: blue; }
     .mapSearch__marker.active {
       position: relative;
       border: solid 3px #ffcc80;

@@ -58,16 +58,15 @@
     }
 
     &__marker {
-        width: 3.5rem;
-        height: 3.5rem;
-        left: -1.75rem;
-        top: -1.75rem;
+        width: 3rem;
+        height: 3rem;
+        left: -1.5rem;
+        top: -1.5rem;
         background-color: #fff;
         border-radius: 50%;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         color: $color-primary;
-        font-weight: 700;
-        border: solid 2px $color-secondary-dark;
+        border: solid 1px $color-gray-dark;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -76,6 +75,25 @@
         transition: all .2s;
         z-index: 5;
         position: absolute;
+
+        &.high{
+            width: 3.4rem;
+            height: 3.4rem;
+            left: -1.7rem;
+            top: -1.7rem;
+            font-size:1.8rem;
+            font-weight: 700;
+            color: red;
+        }
+
+        &.low{
+            width: 2.8rem;
+            height: 2.8rem;
+            left: -1.4rem;
+            top: -1.4rem;
+            font-size: 1.4rem;
+            color:blue;
+        }
 
         &.active{
             position: relative;

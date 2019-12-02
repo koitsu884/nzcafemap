@@ -40,3 +40,27 @@
 .font-blue {
     color:blue
 }
+
+.bg-primary{
+    background-color: $color-primary;
+}
+
+.bg-primary-light{
+    background-color: $color-primary-light;
+}
+
+.bg-primary-dark{
+    background-color: $color-primary-dark;
+}
+
+.bg-secondary{
+    background-color: $color-secondary;
+}
+
+.bg-secondary-light{
+    background-color: $color-secondary-light;
+}
+
+.bg-secondary-dark{
+    background-color: $color-secondary-dark;
+}

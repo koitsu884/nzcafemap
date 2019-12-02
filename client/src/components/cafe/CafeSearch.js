@@ -116,6 +116,7 @@ class CafeSearch extends Component {
                     itemCount={this.props.itemCount}
                     pageSize={this.props.pageSize}
                     onPageChange={this.handlePageClick}
+                    className='bg-secondary-light'
                 />
             </div>
         )

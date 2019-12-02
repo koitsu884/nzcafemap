@@ -1,21 +1,21 @@
 .pagination{
     display: flex;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.4rem;
     list-style: none;
 
     &__next,
     &__previous,
     &__page {
-        height: 5rem;
-        min-width: 5rem;
+        height: 3rem;
+        min-width: 3rem;
         border: 1px solid $color-primary;
         border-radius: 5px;
     }
 
     &__previousLink,
     &__nextLink {
-        padding: 0 1.5rem;
+        padding: 0 .5rem;
     }
 
     &__pageLink,
@@ -42,7 +42,7 @@
     &__next,
     &__previous {
         background-color: $color-primary-light;
-        margin: .5rem 2rem;
+        margin: .5rem 1rem;
     }
 
     .active {
