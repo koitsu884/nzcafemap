@@ -142,7 +142,7 @@ const postReviewTweetWithReviewPhotos = async (review) => {
     let detailURL = getCafeDetailURL(review.cafe._id);
     let area = review.cafe.area.split('-')[1].trim();
 
-    status = `【新規レビュー】\n${review.cafe.name} のレビューが追加されました！\n\n「${review.title} (${review.user.displayName})」\n\n${detailURL}\n\n#ニュージーランド\n#${area}\n#カフェ巡り`;
+    status = `【新規レビュー】\n${review.cafe.name} のレビューが追加されました！\n\n「${review.title} (${review.user.displayName}@Koitsu_Haniwa)」\n\n${detailURL}\n\n#ニュージーランド\n#${area}\n#カフェ巡り`;
     mediaIds = [];
 
     if (review.photoURLs && review.photoURLs.length > 0) {
@@ -155,7 +155,7 @@ const postReviewTweetWithReviewPhotos = async (review) => {
             }
         }
     }
-    else { //Upload cafe's main image
+    else if(review.cafe.mainPhotoURL) { //Upload cafe's main image
         let mediaId = await postCloudinaryImage(review.cafe.mainPhotoURL);
         if (mediaId) {
             mediaIds.push(mediaId);
