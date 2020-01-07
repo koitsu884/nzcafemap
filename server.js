@@ -4,7 +4,9 @@ const helmet = require('helmet');
 const cors = require('cors');
 const path = require('path');
 const error = require('./middleware/error');
+const passport = require('passport');
 const bodyParser = require('body-parser');
+// const cookieParser = require('cookie-parser')
 
 const app = express();
 require('express-async-errors');
@@ -12,14 +14,19 @@ app.use(helmet())
 app.use(cors({
     exposedHeaders: ['x-auth-token'],
 }));
+// app.use(cors({
+//     credentials: true,
+// }));
 require('./startup/logging')();
 app.use(bodyParser.json());
+// app.use(cookieParser());
 
 // app.use(bodyParser.urlencoded({
 //     extended: false,
 //     type: 'application/x-www-form-urlencoded'
 //   }));
-
+app.use(passport.initialize());
+require('./startup/passport')(passport);
 require('./startup/routes')(app);
 //Front end
 if(process.env.NODE_ENV === 'production') {

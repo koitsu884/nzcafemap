@@ -1,6 +1,7 @@
 const express = require('express');
+const passport = require('passport');
 const router = express.Router();
-const auth = require('../middleware/auth');
+// const auth = require('../middleware/auth');
 const winston = require('winston');
 
 const { cacheRecord, getRecordFromCache, clearHash} = require('../helper/cache');
@@ -19,7 +20,7 @@ router.get('/latest', async (req, res) => {
     res.send(cafes);
 })
 
-router.get('/mine', auth, async (req, res) => {
+router.get('/mine', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let filters = { user: req.user._id };
     await serachCafes(req, res, filters);
 })
@@ -75,7 +76,7 @@ router.get('/:id/reviews', async (req, res) => {
     });
 })
 
-router.put('/:id', auth, async (req, res) => {
+router.put('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -118,7 +119,7 @@ router.post('/search', async (req, res) => {
     await serachCafes(req, res, filters);
 })
 
-router.post('/', auth, async (req, res) => {
+router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let data = Object.assign({}, req.body);
     data.user = req.user._id;
 
@@ -135,7 +136,7 @@ router.post('/', auth, async (req, res) => {
     clearHash(searchRecordCacheKey);
 })
 
-router.post('/:id/photo', auth, formDataHandler, async (req, res) => {
+router.post('/:id/photo', passport.authenticate('jwt', { session: false }), formDataHandler, async (req, res) => {
     const cafe = await Cafe.findById(req.params.id);
     if (!cafe) return res.status(404).send(`カフェ情報が見つかりませんでした.(Cafe ID: ${req.params.id})`);
     if (!cafe.user.equals(req.user._id)) return res.status(401).send('更新権限がありません');
@@ -171,7 +172,7 @@ router.post('/:id/photo', auth, formDataHandler, async (req, res) => {
         })
 })
 
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let data = Object.assign({}, req.body);
     data.user = req.user._id;
 
@@ -207,7 +208,7 @@ router.delete('/:id', auth, async (req, res) => {
     clearHash(searchRecordCacheKey);
 })
 
-router.delete('/:id/photo', auth, async (req, res) => {
+router.delete('/:id/photo', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const cafe = await Cafe.findById(req.params.id).populate('photo', ['public_id']);;
 
     if (!cafe) return res.status(404).send(`カフェ情報が見つかりませんでした.(Cafe ID: ${req.params.id})`);
@@ -238,7 +239,7 @@ router.get('/:id/rate/user/:userId', async (req, res) => {
     return res.send(rate);
 })
 
-router.post('/:id/rate', auth, async (req, res) => {
+router.post('/:id/rate', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let data = Object.assign({}, req.body);
     data.user = req.user._id;
     const { error } = validateRate(data);
@@ -261,7 +262,7 @@ router.post('/:id/rate', auth, async (req, res) => {
     clearHash(searchRecordCacheKey);
 })
 
-router.put('/:id/rate', auth, async (req, res) => {
+router.put('/:id/rate', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let data = Object.assign({}, req.body);
     data.user = req.user._id;
 
@@ -289,7 +290,7 @@ router.put('/:id/rate', auth, async (req, res) => {
     clearHash(searchRecordCacheKey);
 })
 
-router.delete('/:id/rate', auth, formDataHandler, async (req, res) => {
+router.delete('/:id/rate', passport.authenticate('jwt', { session: false }), formDataHandler, async (req, res) => {
     const rate = await Rate.findOne({ user: req.user._id, cafe: req.params.id });
     if (!rate) {
         return res.status(400).send(`レコードが見つかりません CafeID:${req.params.id} UserID:${req.user._id} `);

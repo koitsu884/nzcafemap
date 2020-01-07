@@ -22,8 +22,8 @@ export const phoneNumber = value =>
   value && !/^(0|[1-9][0-9]{9})$/i.test(value)
     ? '電話番号が正しくありません'
     : undefined
-export const confirmPassword = value => password => 
-  value !== password 
+export const confirmPassword = (value, allValues) => 
+  value !== allValues.password 
     ? 'パスワードが一致しません' 
     : undefined;
 export const url = value => 

@@ -1,11 +1,11 @@
 const express = require('express');
+const passport = require('passport');
 const router = express.Router();
-const auth = require('../middleware/auth');
 
 const { Feedback, validate } = require('../models/feedback');
 const { User } = require('../models/user');
 
-router.get('/', auth, async (req, res) => {
+router.get('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const user = await User.findById(req.user._id);
     if(!user.isAdmin)
         return res.status(401).send('閲覧権限がありません');
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
     res.send(feedBack);
 })
 
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const user = await User.findById(req.user._id);
     if(!user.isAdmin)
         return res.status(401).send('閲覧権限がありません');

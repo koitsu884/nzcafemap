@@ -1,6 +1,7 @@
 
-const auth = require('../middleware/auth');
+// const auth = require('../middleware/auth');
 const express = require('express');
+const passport = require('passport');
 const winston = require('winston');
 const router = express.Router();
 const bcrypt = require('bcrypt');
@@ -20,13 +21,13 @@ returnUser = user => {
 }
 
 
-// router.get('/:id', auth, async ( req, res) => {
+// router.get('/:id', passport.authenticate('jwt', { session: false }), async ( req, res) => {
 //     const user = await User.findById(req.params.id).select('-password');
 //     if(user._id.toString() !== req.user._id) return res.status(401).send("Used does not match");
 //     res.send(user);
 // });
 
-router.get('/me', auth, async ( req, res) => {
+router.get('/me', passport.authenticate('jwt', { session: false }), async ( req, res) => {
     const user = await User.findById(req.user._id).select('-password');
     res.send(returnUser(user));
 });
@@ -47,7 +48,7 @@ router.post('/', async (req, res) => {
     res.header('x-auth-token', token).send(returnUser(user));
 })
 
-router.post('/photo', auth, formDataHandler, async(req, res) => {
+router.post('/photo', passport.authenticate('jwt', { session: false }), formDataHandler, async(req, res) => {
     let user = await User.findById(req.user._id);
 
     const file = bufferToDataUri(req).content;
@@ -80,7 +81,7 @@ router.post('/photo', auth, formDataHandler, async(req, res) => {
     })
 })
 
-router.delete('/', auth, async(req, res) => {
+router.delete('/', passport.authenticate('jwt', { session: false }), async(req, res) => {
     let user = await User.findById(req.user._id).populate('photo', ['public_id']);
     if(user.photo){
         deleteFile(user.photo.public_id)
@@ -105,7 +106,7 @@ router.delete('/', auth, async(req, res) => {
     res.send(returnUser(user));
 })
 
-router.delete('/photo', auth, async(req, res) => {
+router.delete('/photo', passport.authenticate('jwt', { session: false }), async(req, res) => {
     let user = await User.findById(req.user._id).populate('photo', ['public_id']);
 
     deleteFile(user.photo.public_id)
@@ -122,7 +123,7 @@ router.delete('/photo', auth, async(req, res) => {
     });
 })
 
-router.put('/', auth, async ( req, res) => {
+router.put('/', passport.authenticate('jwt', { session: false }), async ( req, res) => {
     let user = await User.findById(req.user._id);
     if(!user) return res.status(404).send("ユーザーが見つかりません");
  

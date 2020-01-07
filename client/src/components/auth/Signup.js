@@ -5,6 +5,7 @@ import { reduxForm, Field } from 'redux-form';
 import { required, minLength, maxLength, minLength2, email, confirmPassword} from '../../helper/validation';
 
 import {signUp} from '../../actions/authActions';
+import { clearError } from '../../actions/errorActions';
 import FormInput from '../common/FormInput';
 
 //To avoid infinite loop error
@@ -13,6 +14,25 @@ const maxLength30 = maxLength(30);
 const maxLength50 = maxLength(50);
 
 class Signup extends Component {
+    constructor() {
+        super();
+        this.state = {
+            authError: null
+        };
+    }
+
+    componentDidMount() {
+        this.props.clearError();
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log("here??");
+        if (nextProps.authError) {
+            this.setState({ authError: nextProps.authError });
+            this.props.clearError();
+        }
+    }
+
     onSubmit = formProps => {
         let fd = Object.assign({}, formProps);
         fd.confirmPassword = undefined;
@@ -21,6 +41,13 @@ class Signup extends Component {
 
     render() {
         const { handleSubmit, submitting, invalid } = this.props;
+        const { authError } = this.state;
+
+        const errorContent = authError ? (
+            <div className="form__error">
+                {authError}
+            </div>
+        ) : null;
 
         return (
             <div className="signUp">
@@ -53,7 +80,7 @@ class Signup extends Component {
                             type="password"
                             component={FormInput}
                             autoComplete="none"
-                            validate={[required, (value, values)=>(confirmPassword(value)(values.password))]}
+                            validate={[required, confirmPassword]}
                         />
                     </fieldset>
                     <fieldset>
@@ -66,6 +93,7 @@ class Signup extends Component {
                             validate={[minLength2, maxLength50]}
                         />
                     </fieldset>
+                    {errorContent}
                     <button type="submit" disabled={submitting || invalid} className="btn" >新規登録</button>
                 </form>
             </div>
@@ -73,7 +101,11 @@ class Signup extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    authError: state.error
+})
+
 export default compose(
-    connect(null, { signUp }),
+    connect(mapStateToProps, { signUp, clearError }),
     reduxForm({ form: 'signUp' })
 )(Signup);

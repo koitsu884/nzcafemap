@@ -26,6 +26,7 @@ class Signin extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.authError) {
             this.setState({ authError: nextProps.authError });
+            this.props.clearError();
         }
     }
 

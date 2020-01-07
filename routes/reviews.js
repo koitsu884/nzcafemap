@@ -1,6 +1,7 @@
 const express = require('express');
+const passport = require('passport');
 const router = express.Router();
-const auth = require('../middleware/auth');
+// const auth = require('../middleware/auth');
 const winston = require('winston');
 const config = require('config');
 const request = require('request');
@@ -21,7 +22,7 @@ router.get('/', async (req, res) => {
     res.send(reviews);
 })
 
-router.get('/mine', auth, async (req, res) => {
+router.get('/mine', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const pageSize = +req.query.pageSize;
     const currentPage = + req.query.page;
     const postQuery = Review.find({ user: req.user._id });
@@ -59,7 +60,7 @@ router.get('/:id', async (req, res) => {
     res.send(review);
 });
 
-router.post('/', auth, async (req, res) => {
+router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let data = Object.assign({}, req.body);
     data.user = req.user._id;
 
@@ -78,7 +79,7 @@ router.post('/', auth, async (req, res) => {
     res.status(201).send(review);
 })
 
-router.post('/:id/tweet', auth, async (req, res) => {
+router.post('/:id/tweet', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let review = await Review.findById(req.params.id)
         .populate('user', ['displayName'])
         .populate('cafe', ['_id', 'name', 'mainPhotoURL', 'area']);
@@ -165,7 +166,7 @@ const postReviewTweetWithReviewPhotos = async (review) => {
     postTweet(status, mediaIds.join(','));
 }
 
-router.delete('/:id', auth, async (req, res) => {
+router.delete('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const review = await Review.findById(req.params.id);
 
     if (!review) return res.status(404).send(`カフェ情報が見つかりませんでした.(Review ID: ${req.params.id})`);
@@ -181,7 +182,7 @@ router.delete('/:id', auth, async (req, res) => {
     res.send(review);
 })
 
-router.post('/:id/photo', auth, formDataHandler, async (req, res) => {
+router.post('/:id/photo', passport.authenticate('jwt', { session: false }), formDataHandler, async (req, res) => {
     const review = await Review.findById(req.params.id);
     if (!review) return res.status(404).send(`レビューが見つかりませんでした.(Review ID: ${req.params.id})`);
     if (!review.user.equals(req.user._id)) return res.status(401).send('更新権限がありません');
@@ -219,7 +220,7 @@ router.post('/:id/photo', auth, formDataHandler, async (req, res) => {
 
 
 //----------------- Utils ------------
-router.post('/linkPreview', auth, async (req, res) => {
+router.post('/linkPreview', passport.authenticate('jwt', { session: false }), async (req, res) => {
     var link = {};
     link.url = req.body.url;
 
