@@ -36,10 +36,21 @@
     }
 
     &__selector{
+        display: flex;
+        color: white;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-primary-light;
         margin: 1rem;
+        min-height: 30rem;
         max-height: 70vh;
+        min-width: 60%;
         // width: 100%;
         // min-height: 30rem;
+        @include respond(phone){
+          min-width: 90%;
+          min-height: 20rem;
+        }
     }
 }
 

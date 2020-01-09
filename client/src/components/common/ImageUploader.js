@@ -160,14 +160,10 @@ class ImageUploader extends PureComponent {
     return (
       <div className="squareImageUploader">
         <div className="squareImageUploader__fileSelector">
-          <div className="inputButton">
-            <label htmlFor="squareImageUpload">ファイルを選択してください</label>
-            <input id="squareImageUpload" type="file" accept="image/*" title={"画像ファイルを選択"} onChange={this.onSelectFile} />
-          </div>
           {error && (
             <p className="error">{error}</p>
           )}
-          {src && (
+          {src ? (
             <ReactCrop
               minWidth={100}
               minHeight={100}
@@ -179,7 +175,11 @@ class ImageUploader extends PureComponent {
               onChange={this.onCropChange}
               className="squareImageUploader__selector"
             />
-          )}
+          ) : <div className="squareImageUploader__selector">ファイルを選択してください</div>}
+          <div className="inputButton">
+            <label htmlFor="squareImageUpload">画像ファイルを選択</label>
+            <input id="squareImageUpload" type="file" accept="image/*" title={"画像ファイルを選択"} onChange={this.onSelectFile} />
+          </div>
         </div>
         {croppedImageUrl && (
           <div className="squareImageUploader__preview">

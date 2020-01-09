@@ -44,6 +44,9 @@ fieldset {
   border-radius: 3px;
   border: 1px solid #7b5e57; }
 
+ol {
+  margin-left: 3rem; }
+
 body {
   font-family: "Kosugi Maru", sans-serif;
   font-weight: 400;
@@ -80,6 +83,9 @@ a {
     .u-margin-bottom-big {
       margin-bottom: 5rem !important; } }
 
+.u-margin-auto {
+  margin: auto; }
+
 .u-margin-top-big {
   margin-top: 8rem !important; }
 
@@ -109,6 +115,12 @@ a {
 
 .u-margin-right-huge {
   margin-right: 10rem !important; }
+
+.u-text-center {
+  text-align: center; }
+
+.u-text-right {
+  text-align: right; }
 
 .no-image {
   background-image: url(../img/SVG/bell.svg);
@@ -152,7 +164,8 @@ a {
   background-color: #260e04;
   margin: 1rem;
   border-radius: 3rem;
-  border: solid 2px #7b5e57; }
+  border: solid 2px #7b5e57;
+  outline: 0; }
   @media only screen and (max-width: 37.5em) {
     .btn, .inputButton label {
       margin: .5rem; } }
@@ -760,6 +773,23 @@ button.btn:disabled {
     .pagination .active a {
       color: #fff; }
 
+.modal-overlay {
+  top: 2rem;
+  left: 2rem;
+  bottom: 2rem;
+  right: 2rem; }
+  @media only screen and (max-width: 37.5em) {
+    .modal-overlay {
+      top: 1rem;
+      left: 1rem;
+      bottom: 1rem;
+      right: 1rem; } }
+
+.modal-content {
+  width: 90%;
+  margin: 5rem auto;
+  outline: 0; }
+
 .reviewCardSimple {
   display: flex;
   margin: 1rem 0;
@@ -1074,8 +1104,19 @@ button.btn:disabled {
       width: 32rem;
       object-fit: contain; }
   .squareImageUploader__selector {
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    background-color: #7b5e57;
     margin: 1rem;
-    max-height: 70vh; }
+    min-height: 30rem;
+    max-height: 70vh;
+    min-width: 60%; }
+    @media only screen and (max-width: 37.5em) {
+      .squareImageUploader__selector {
+        min-width: 90%;
+        min-height: 20rem; } }
 
 .ReactCrop {
   position: relative;
@@ -1661,7 +1702,13 @@ button.btn:disabled {
 .editUserPhoto {
   margin: 0 3rem;
   padding: 2rem;
-  background-color: #fcfce5; }
+  height: 100%;
+  background-color: #fcfce5;
+  border: 1px solid #4e342e; }
+  @media only screen and (max-width: 37.5em) {
+    .editUserPhoto {
+      margin: 0;
+      padding: 1rem; } }
 
 .reviewForm .btn {
   margin: auto;

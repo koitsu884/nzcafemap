@@ -4,6 +4,7 @@
     margin: 1rem;
     border-radius: 3rem;
     border: solid 2px $color-primary-light;
+    outline: 0;
 
     @include respond(phone){
         margin: .5rem;

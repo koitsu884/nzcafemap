@@ -89,7 +89,8 @@ class CafePhotoEditor extends Component {
                     onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
                     contentLabel="Test"
-                    style={{overlay:{zIndex: 1000}}}
+                    overlayClassName="modal-overlay"
+                    className="modal-content"
                 >
                     <EditCafePhoto id={this.props.cafeID} onPhotoSelected={this.onPhotoSelected} onCancel={this.onCancelUpload} />
                 </Modal>

@@ -90,6 +90,10 @@ class UserPhotoEditor extends Component {
                     onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
                     contentLabel="Test"
+                    style={{ 
+                        overlay: { zIndex: 1000 },
+                    }}
+                    className="modal-content"
                 >
                     <EditUserPhoto onPhotoSelected={this.onPhotoSelected} onCancel={this.onCancelUpload} />
                 </Modal>

@@ -1,5 +1,12 @@
 .editUserPhoto {
     margin: 0 3rem;
     padding: 2rem;
+    height: 100%;
     background-color: $color-secondary-light;
+    border: 1px solid $color-primary;
+
+    @include respond(phone){
+        margin: 0;
+        padding: 1rem;
+    }
 }

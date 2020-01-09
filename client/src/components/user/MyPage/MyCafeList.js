@@ -101,7 +101,10 @@ class MyCafeList extends Component {
                     onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
                     contentLabel="Setting main photo"
-                    style={{ overlay: { zIndex: 1000 } }}
+                    style={{ 
+                        overlay: { zIndex: 1000 },
+                    }}
+                    className="modal-content"
                 >
                     <EditCafePhoto id={this.state.selectedCafeId} onPhotoSelected={this.onPhotoSelected} onCancel={this.onCancelUpload} />
                 </Modal>

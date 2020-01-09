@@ -35,7 +35,9 @@ class EditCafePhoto extends Component {
                     this.props.uploading ? <Spinner /> : (
                         <Fragment>
                             <ImageUploader aspect={3/2} onUploadPhoto={this.onUploadPhoto} maxSize={1024} />
-                            <button className="btn" type="button" onClick={this.onCancel}>キャンセル</button>
+                            <div className="u-text-right">
+                                <button className="btn btn--secondary u-margin-auto" type="button" onClick={this.onCancel}>キャンセル</button>
+                            </div>
                         </Fragment>
                     )
                 }

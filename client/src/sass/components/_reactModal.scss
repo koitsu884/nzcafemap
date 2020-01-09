@@ -1,0 +1,19 @@
+.modal-overlay {
+    top: 2rem;
+    left: 2rem;
+    bottom: 2rem;
+    right: 2rem;
+
+    @include respond(phone){
+        top: 1rem;
+        left: 1rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+.modal-content {
+    width: 90%;
+    margin: 5rem auto;
+    outline: 0;
+}
