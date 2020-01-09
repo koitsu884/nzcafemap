@@ -86,6 +86,30 @@ a {
 .u-margin-top-huge {
   margin-top: 10rem !important; }
 
+.u-margin-left-small {
+  margin-left: 1.4rem !important; }
+
+.u-margin-left-medium {
+  margin-left: 4rem !important; }
+
+.u-margin-left-big {
+  margin-left: 8rem !important; }
+
+.u-margin-left-huge {
+  margin-left: 10rem !important; }
+
+.u-margin-right-small {
+  margin-right: 1.4rem !important; }
+
+.u-margin-right-medium {
+  margin-right: 4rem !important; }
+
+.u-margin-right-big {
+  margin-right: 8rem !important; }
+
+.u-margin-right-huge {
+  margin-right: 10rem !important; }
+
 .no-image {
   background-image: url(../img/SVG/bell.svg);
   object-fit: cover; }
@@ -188,26 +212,253 @@ button.btn:disabled {
   .ibtn:hover {
     fill: #7b5e57; }
 
-.spinner {
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-  .spinner__inner {
-    border: 5px solid #fcfce5;
-    border-top: 5px solid #ca9b52;
-    border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
-    animation: spin 1s linear infinite; }
+.button-twitter {
+  background-color: #00acee;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem;
+  display: inline-block;
+  color: white; }
+  .button-twitter a {
+    display: flex;
+    align-items: center; }
+  .button-twitter__icon {
+    fill: white;
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-right: 1rem; }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
+.box {
+  background-color: #fcfce5;
+  margin: 3rem;
+  border-radius: 5px;
+  padding: 3rem; }
+
+.cafeCardSimple {
+  margin: 1rem;
+  max-width: 24rem;
+  border-radius: 5px;
+  background-color: #fcfce5;
+  color: #260e04;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all .3s; }
+  .cafeCardSimple__image {
+    background-color: #ca9b52;
+    width: 24rem;
+    height: 16rem;
+    display: block;
+    text-align: center;
+    overflow: hidden; }
+    .cafeCardSimple__image img {
+      width: 100%; }
+    .cafeCardSimple__image div {
+      height: 100%;
+      display: flex;
+      font-size: 1.6rem;
+      align-items: center;
+      justify-content: center; }
+  .cafeCardSimple__title {
+    margin: 0;
+    font-size: 1.8rem;
+    text-align: center;
+    width: 100%;
+    z-index: 10;
+    display: block;
+    background: #260e04;
+    color: #fff; }
+
+.cafeCard {
+  margin: 1.2rem;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all .8s; }
+  .cafeCard:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); }
+  .cafeCard h3 {
+    padding: 1rem 2rem;
+    color: #fff;
+    background-color: #7b5e57;
+    width: 100%; }
+  .cafeCard__header {
+    display: flex;
+    align-items: center; }
+  .cafeCard__info {
+    fill: orangered;
+    color: #260e04;
+    padding: 0 1rem; }
+  .cafeCard__image {
+    width: 16rem;
+    height: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    border: 2px solid #7b5e57;
+    border-radius: 4px;
+    overflow: hidden; }
+    .cafeCard__image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover; }
+  .cafeCard__rate {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem; }
+    .cafeCard__rate__icon {
+      width: 1.6rem;
+      height: 1.6rem;
+      fill: #7b5e57;
+      margin-right: .5rem; }
+    .cafeCard__rate .starRate {
+      color: #7b5e57; }
+      .cafeCard__rate .starRate svg {
+        fill: #f7cb08;
+        width: 1.5rem;
+        height: 1.5rem; }
+
+.test-enter {
+  opacity: 0;
+  transform: scale(0.5); }
+
+.test-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity .3s, transform .3s; }
+
+.test-exit {
+  opacity: 1; }
+
+.test-exit-active {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity .3s, transform .3s; }
+
+.reviewCafeCard {
+  margin: 1rem;
+  max-width: 32rem;
+  border-radius: 5px;
+  background-color: #fcfce5;
+  color: #260e04;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all .3s; }
+  .reviewCafeCard__image {
+    width: 32rem;
+    height: 21rem;
+    display: block;
+    text-align: center;
+    overflow: hidden; }
+    .reviewCafeCard__image img {
+      width: 100%; }
+    .reviewCafeCard__image div {
+      height: 100%;
+      display: flex;
+      font-size: 2.4rem;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff; }
+  .reviewCafeCard__name {
+    height: 7rem;
+    background-color: #260e04;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .reviewCafeCard__name h3 {
+      margin: 0;
+      font-size: 2.2rem;
+      text-align: center;
+      color: #fff; }
+  .reviewCafeCard__info__area {
+    display: flex;
+    align-items: center;
+    color: #4e342e;
+    font-weight: 700;
+    fill: orangered;
+    padding-left: 2rem; }
+  .reviewCafeCard__info__rate {
+    display: flex;
+    flex-wrap: wrap; }
+    .reviewCafeCard__info__rate__item {
+      display: flex;
+      align-items: center;
+      padding-left: 3rem; }
+      .reviewCafeCard__info__rate__item__icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        fill: #7b5e57;
+        margin-right: 1.2rem; }
+      .reviewCafeCard__info__rate__item .starRate svg {
+        fill: #f7cb08;
+        width: 1.6rem;
+        height: 1.6rem; }
+  .reviewCafeCard__user {
+    background-color: #fff; }
+    .reviewCafeCard__user__header {
+      display: flex;
+      align-items: center;
+      padding: 1rem; }
+      .reviewCafeCard__user__header img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 1.5rem;
+        margin: 0 1rem; }
+      .reviewCafeCard__user__header h5 {
+        font-size: 1.8rem; }
+    .reviewCafeCard__user__comment {
+      padding: .5rem 1rem; }
+
+.cafeRate__row {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 1rem;
+  font-weight: 700;
+  font-size: 2rem; }
+  .cafeRate__row svg {
+    fill: #4e342e;
+    width: 2.4rem;
+    height: 2.4rem; }
+
+.cafeRate__rate {
+  color: #4e342e;
+  cursor: pointer;
+  border-bottom: solid 1px #260e04; }
+
+.cafeRow {
+  width: 100%;
+  display: flex;
+  align-items: center; }
+  .cafeRow__name {
+    width: 20rem; }
+  .cafeRow__image {
+    display: block;
+    width: 6rem;
+    height: 6rem;
+    margin-right: 1rem; }
+
+.cafeEditForm__inputFields {
+  display: flex;
+  justify-content: space-between; }
+  @media only screen and (max-width: 37.5em) {
+    .cafeEditForm__inputFields {
+      flex-direction: column; } }
+
+.form textarea {
+  width: 100%;
+  height: 20rem; }
+
+.form input {
+  width: 100%; }
+
+.displayMap {
+  max-height: 50vh;
+  max-width: 100%;
+  min-height: 20rem;
+  min-width: 20rem; }
 
 .form {
   padding: 2rem 4rem; }
@@ -301,6 +552,498 @@ button.btn:disabled {
             height: 2rem;
             right: 4px;
             top: 4px; } }
+
+.linkCard {
+  background-color: #fff;
+  border: solid 1px #ffcc80;
+  padding: 1rem; }
+  .linkCard::after {
+    content: "";
+    display: block;
+    clear: both; }
+  .linkCard__image {
+    width: 13rem;
+    height: 13rem;
+    margin: 1rem;
+    float: left; }
+    .linkCard__image img {
+      width: 100%;
+      object-fit: cover; }
+  .linkCard__title {
+    font-weight: 700;
+    color: #260e04; }
+  .linkCard__description {
+    font-size: 1.4rem;
+    color: #4e342e; }
+
+.latestReviewPhoto {
+  max-width: 100%;
+  display: flex;
+  overflow-x: auto; }
+  .latestReviewPhoto__image {
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    margin: 1rem; }
+
+.myCafeList__result {
+  display: flex;
+  flex-wrap: wrap; }
+  @media only screen and (max-width: 37.5em) {
+    .myCafeList__result {
+      justify-content: center; } }
+
+.myCafeList__container {
+  margin: 2px;
+  position: relative; }
+  .myCafeList__container__uploadPhotoButton {
+    position: absolute;
+    left: 15%;
+    top: 6rem;
+    z-index: 10; }
+
+.myCafeList__tools {
+  display: flex;
+  justify-content: center; }
+  .myCafeList__tools--edit {
+    fill: #4e342e;
+    margin-right: 1rem;
+    cursor: pointer; }
+  .myCafeList__tools--delete {
+    fill: orangered;
+    cursor: pointer; }
+
+.mapSearchResultList {
+  display: flex;
+  overflow-x: auto; }
+  .mapSearchResultList__item {
+    min-width: 31rem; }
+    .mapSearchResultList__item.active {
+      background-color: #ffcc80; }
+
+.placeSearch {
+  background-color: #fcfce5;
+  width: 100%;
+  min-height: 35rem; }
+  .placeSearch__result--map {
+    height: 30rem;
+    margin: 2rem 0;
+    background-color: aqua; }
+  .placeSearch__result--name {
+    color: blue; }
+  .placeSearch__result--placeID {
+    color: red; }
+  .placeSearch__result--openingHours {
+    color: orange; }
+
+.mapSearch.inactive {
+  display: none; }
+
+.photoGarelly {
+  display: flex;
+  padding: .5rem;
+  max-height: 100%; }
+  .photoGarelly.wrap {
+    flex-wrap: wrap;
+    justify-content: center; }
+  .photoGarelly.scrollX {
+    overflow-x: auto; }
+  .photoGarelly__item {
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    margin: 1rem; }
+  .photoGarelly__modal {
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    margin-top: 5rem; }
+
+.photoViewer {
+  display: flex;
+  align-items: stretch;
+  max-height: 100%;
+  width: 100%;
+  position: relative; }
+  .photoViewer__arrowContainer {
+    width: 4rem; }
+    .photoViewer__arrowContainer__button {
+      height: 100%;
+      width: 100%;
+      fill: #fcfce5;
+      display: flex;
+      align-items: center; }
+  .photoViewer__image {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center; }
+    .photoViewer__image img {
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+      display: block;
+      object-fit: contain; }
+  .photoViewer__user {
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    border: solid 1px #4e342e;
+    font-size: 2.4rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem; }
+    .photoViewer__user__image {
+      width: 4rem;
+      height: 4rem;
+      margin: 1rem;
+      border-radius: 2rem;
+      border: solid 1px #4e342e;
+      overflow: hidden;
+      font-size: 1rem;
+      text-align: center; }
+      .photoViewer__user__image img {
+        width: 100%;
+        object-fit: cover; }
+
+.passwordEditor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .passwordEditor .form {
+    min-width: 80%;
+    background-color: #fff;
+    border: solid 1px #4e342e; }
+    @media only screen and (max-width: 37.5em) {
+      .passwordEditor .form {
+        width: 95%; } }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  list-style: none; }
+  .pagination__next, .pagination__previous, .pagination__page {
+    height: 3rem;
+    min-width: 3rem;
+    border: 1px solid #4e342e;
+    border-radius: 5px; }
+  .pagination__previousLink, .pagination__nextLink {
+    padding: 0 .5rem; }
+  .pagination__pageLink, .pagination__previousLink, .pagination__nextLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer; }
+  .pagination__page {
+    margin: .5rem;
+    background-color: #4e342e; }
+    .pagination__page:hover:not(.active) {
+      background-color: #ffcc80; }
+  .pagination__next, .pagination__previous {
+    background-color: #7b5e57;
+    margin: .5rem 1rem; }
+  .pagination .active {
+    font-weight: bold;
+    background-color: #260e04;
+    cursor: default; }
+    .pagination .active a {
+      color: #fff; }
+
+.reviewCardSimple {
+  display: flex;
+  margin: 1rem 0;
+  background-color: #fcfce5;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%; }
+  .reviewCardSimple__cafe {
+    max-width: 14rem;
+    color: #fff;
+    background-color: #260e04; }
+    .reviewCardSimple__cafe__title {
+      padding: 1rem;
+      border-top: solid 1px #7b5e57; }
+    .reviewCardSimple__cafe__image {
+      width: 14rem;
+      height: 8rem;
+      margin: auto;
+      display: flex;
+      font-size: 1.6rem;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden; }
+      .reviewCardSimple__cafe__image img {
+        display: block;
+        width: 100%; }
+  .reviewCardSimple__review {
+    flex-grow: 1; }
+    .reviewCardSimple__review__title {
+      max-width: 100%;
+      background-color: #ca9b52;
+      padding-left: 1rem;
+      white-space: pre-line; }
+  .reviewCardSimple__reviewImages {
+    width: 100%;
+    min-width: 1px; }
+    .reviewCardSimple__reviewImages__container {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap; }
+      .reviewCardSimple__reviewImages__container img {
+        display: block;
+        max-width: 10rem;
+        margin: 1rem;
+        object-fit: cover; }
+
+.reviewRow {
+  margin: 2rem;
+  padding-bottom: 2px; }
+  .reviewRow__header {
+    display: flex;
+    align-items: center;
+    background-color: #ffcc80; }
+    .reviewRow__header h3 {
+      margin: 0 2rem;
+      flex-grow: 1;
+      font-size: 2.4rem; }
+  .reviewRow__photos {
+    display: flex;
+    overflow-x: auto;
+    margin: auto; }
+    .reviewRow__photos__image {
+      margin: 1rem;
+      width: 15rem;
+      height: 15rem;
+      object-fit: cover; }
+  .reviewRow__content {
+    white-space: pre-line; }
+  .reviewRow__user {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    padding: 1rem; }
+    .reviewRow__user__image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: solid 1px #4e342e;
+      font-size: 1rem;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 2.5rem;
+      margin-right: 1rem;
+      overflow: hidden; }
+      .reviewRow__user__image img {
+        width: 100%;
+        object-fit: cover; }
+
+.react-rater {
+  display: block;
+  line-height: normal; }
+  .react-rater > * {
+    display: inline-block; }
+
+.react-rater-star {
+  cursor: pointer;
+  font-size: 4rem;
+  color: #fcfce5;
+  position: relative; }
+  .react-rater-star.will-be-active {
+    color: #ca9b52; }
+  .react-rater-star.is-active {
+    color: #ffcc80; }
+  .react-rater-star.is-active-half:before {
+    color: #ffcc80;
+    content: '\2605';
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden; }
+  .react-rater-star.is-disabled {
+    cursor: default; }
+
+.cafeRateEditor {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .cafeRateEditor h3 {
+    margin-top: 2rem; }
+
+.react-tabs {
+  -webkit-tap-highlight-color: transparent; }
+  .react-tabs__tab-list {
+    display: inline-flex;
+    border-radius: 4px;
+    border: solid 1px #260e04;
+    overflow: hidden;
+    margin: 1rem; }
+    @media only screen and (max-width: 37.5em) {
+      .react-tabs__tab-list {
+        flex-direction: column; } }
+  .react-tabs__tab {
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #4e342e;
+    color: #fff; }
+    .react-tabs__tab--selected {
+      background: #fff;
+      color: black; }
+    .react-tabs__tab--disabled {
+      color: GrayText;
+      cursor: default; }
+    .react-tabs__tab:focus {
+      box-shadow: 0 0 5px #0188fe;
+      border-color: #0188fe;
+      outline: none; }
+      .react-tabs__tab:focus:after {
+        content: "";
+        position: absolute;
+        height: 5px;
+        left: -4px;
+        right: -4px;
+        bottom: -5px;
+        background: #fff; }
+  .react-tabs__tab:not(:last-child) {
+    border-right: solid 1px #7b5e57; }
+  .react-tabs__tab-panel {
+    display: none;
+    padding: 1rem; }
+    .react-tabs__tab-panel--selected {
+      display: block; }
+
+.radioButton {
+  margin: 1.4rem 0;
+  display: block;
+  cursor: pointer; }
+  .radioButton input {
+    display: none; }
+    .radioButton input + span {
+      line-height: 22px;
+      height: 22px;
+      padding-left: 22px;
+      display: block;
+      position: relative; }
+      .radioButton input + span:not(:empty) {
+        padding-left: 30px; }
+      .radioButton input + span:before, .radioButton input + span:after {
+        content: '';
+        width: 22px;
+        height: 22px;
+        display: block;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        position: absolute; }
+      .radioButton input + span:before {
+        background: #ffcc80;
+        transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2); }
+      .radioButton input + span:after {
+        background: #fff;
+        transform: scale(0.78);
+        transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4); }
+    .radioButton input:checked + span:before {
+      transform: scale(1.04);
+      background: orangered; }
+    .radioButton input:checked + span:after {
+      transform: scale(0.4);
+      transition: transform .3s ease; }
+  .radioButton:hover input + span:before {
+    transform: scale(0.92); }
+  .radioButton:hover input + span:after {
+    transform: scale(0.74); }
+  .radioButton:hover input:checked + span:after {
+    transform: scale(0.4); }
+
+/* Toggle switch */
+.switch {
+  position: relative; }
+  .switch label {
+    width: 6rem;
+    height: 3rem;
+    background-color: #ca9b52;
+    position: relative;
+    display: inline-block;
+    border-radius: 3.1rem;
+    transition: all .4s; }
+    .switch label:after {
+      content: '';
+      position: absolute;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 100%;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      background-color: #fff;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+      transition: all .4s; }
+  .switch input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer; }
+  .switch input:checked + label {
+    background-color: #4e342e; }
+    .switch input:checked + label:after {
+      left: 4rem; }
+
+.scrollTopButton {
+  position: fixed;
+  width: 5rem;
+  height: 5rem;
+  right: 3rem;
+  bottom: 3rem;
+  background-color: rgba(252, 252, 229, 0.6);
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  visibility: visible;
+  transition: all 5s; }
+  .scrollTopButton.hidden {
+    opacity: 0;
+    visibility: hidden; }
+  .scrollTopButton svg {
+    width: 100%;
+    height: 100%; }
+
+.spinner {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .spinner__inner {
+    border: 5px solid #fcfce5;
+    border-top: 5px solid #ca9b52;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    animation: spin 1s linear infinite; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
 
 .squareImageUploader {
   width: 100%;
@@ -526,6 +1269,29 @@ button.btn:disabled {
     width: 16px;
     margin-left: -8px; } }
 
+.toggleInput {
+  display: flex; }
+  .toggleInput input {
+    margin-right: 1rem; }
+
+.twitterProfile {
+  padding: 1rem;
+  background-color: white;
+  color: #4e342e;
+  border: 1px solid #ffcc80;
+  display: flex;
+  align-items: center; }
+  .twitterProfile__image {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    margin: 1rem; }
+    .twitterProfile__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%; }
+
 .updateProfile {
   max-width: 1200px;
   margin: auto; }
@@ -535,719 +1301,19 @@ button.btn:disabled {
     display: flex;
     align-items: center; }
 
-.cafeCardSimple {
-  margin: 1rem;
-  max-width: 24rem;
-  border-radius: 5px;
-  background-color: #fcfce5;
-  color: #260e04;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  transition: all .3s; }
-  .cafeCardSimple__image {
-    background-color: #ca9b52;
-    width: 24rem;
-    height: 16rem;
-    display: block;
-    text-align: center;
-    overflow: hidden; }
-    .cafeCardSimple__image img {
-      width: 100%; }
-    .cafeCardSimple__image div {
-      height: 100%;
-      display: flex;
-      font-size: 1.6rem;
-      align-items: center;
-      justify-content: center; }
-  .cafeCardSimple__title {
-    margin: 0;
-    font-size: 1.8rem;
-    text-align: center;
-    width: 100%;
-    z-index: 10;
-    display: block;
-    background: #260e04;
-    color: #fff; }
-
-.cafeCard {
-  margin: 1.2rem;
-  border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  transition: all .8s; }
-  .cafeCard:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2); }
-  .cafeCard h3 {
-    padding: 1rem 2rem;
-    color: #fff;
-    background-color: #7b5e57;
-    width: 100%; }
-  .cafeCard__header {
-    display: flex;
-    align-items: center; }
-  .cafeCard__info {
-    fill: orangered;
-    color: #260e04;
-    padding: 0 1rem; }
-  .cafeCard__image {
-    width: 16rem;
-    height: 12rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-    border: 2px solid #7b5e57;
-    border-radius: 4px;
-    overflow: hidden; }
-    .cafeCard__image img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover; }
-  .cafeCard__rate {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem; }
-    .cafeCard__rate__icon {
-      width: 1.6rem;
-      height: 1.6rem;
-      fill: #7b5e57;
-      margin-right: .5rem; }
-    .cafeCard__rate .starRate {
-      color: #7b5e57; }
-      .cafeCard__rate .starRate svg {
-        fill: #f7cb08;
-        width: 1.5rem;
-        height: 1.5rem; }
-
-.test-enter {
-  opacity: 0;
-  transform: scale(0.5); }
-
-.test-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity .3s, transform .3s; }
-
-.test-exit {
-  opacity: 1; }
-
-.test-exit-active {
-  opacity: 0;
-  transform: scale(0.5);
-  transition: opacity .3s, transform .3s; }
-
-.reviewCafeCard {
-  margin: 1rem;
-  max-width: 32rem;
-  border-radius: 5px;
-  background-color: #fcfce5;
-  color: #260e04;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  transition: all .3s; }
-  .reviewCafeCard__image {
-    width: 32rem;
-    height: 21rem;
-    display: block;
-    text-align: center;
-    overflow: hidden; }
-    .reviewCafeCard__image img {
-      width: 100%; }
-    .reviewCafeCard__image div {
-      height: 100%;
-      display: flex;
-      font-size: 2.4rem;
-      align-items: center;
-      justify-content: center;
-      background-color: #fff; }
-  .reviewCafeCard__name {
-    height: 7rem;
-    background-color: #260e04;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-    .reviewCafeCard__name h3 {
-      margin: 0;
-      font-size: 2.2rem;
-      text-align: center;
-      color: #fff; }
-  .reviewCafeCard__info__area {
-    display: flex;
-    align-items: center;
-    color: #4e342e;
-    font-weight: 700;
-    fill: orangered;
-    padding-left: 2rem; }
-  .reviewCafeCard__info__rate {
-    display: flex;
-    flex-wrap: wrap; }
-    .reviewCafeCard__info__rate__item {
-      display: flex;
-      align-items: center;
-      padding-left: 3rem; }
-      .reviewCafeCard__info__rate__item__icon {
-        width: 1.6rem;
-        height: 1.6rem;
-        fill: #7b5e57;
-        margin-right: 1.2rem; }
-      .reviewCafeCard__info__rate__item .starRate svg {
-        fill: #f7cb08;
-        width: 1.6rem;
-        height: 1.6rem; }
-  .reviewCafeCard__user {
-    background-color: #fff; }
-    .reviewCafeCard__user__header {
-      display: flex;
-      align-items: center;
-      padding: 1rem; }
-      .reviewCafeCard__user__header img {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 1.5rem;
-        margin: 0 1rem; }
-      .reviewCafeCard__user__header h5 {
-        font-size: 1.8rem; }
-    .reviewCafeCard__user__comment {
-      padding: .5rem 1rem; }
-
-.cafeRow {
-  width: 100%;
-  display: flex;
-  align-items: center; }
-  .cafeRow__name {
-    width: 20rem; }
-  .cafeRow__image {
-    display: block;
-    width: 6rem;
-    height: 6rem;
-    margin-right: 1rem; }
-
-.userPhotoEditor__photo {
-  max-width: 100%;
-  min-height: 18rem;
-  object-fit: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffcc80; }
-  .userPhotoEditor__photo img {
+.userPhotoEditor {
+  margin: 0 2rem; }
+  .userPhotoEditor__photo {
     max-width: 100%;
-    max-height: 70vh; }
-
-.toggleInput {
-  display: flex; }
-  .toggleInput input {
-    margin-right: 1rem; }
-
-.myCafeList__result {
-  display: flex;
-  flex-wrap: wrap; }
-  @media only screen and (max-width: 37.5em) {
-    .myCafeList__result {
-      justify-content: center; } }
-
-.myCafeList__container {
-  margin: 2px;
-  position: relative; }
-  .myCafeList__container__uploadPhotoButton {
-    position: absolute;
-    left: 15%;
-    top: 6rem;
-    z-index: 10; }
-
-.myCafeList__tools {
-  display: flex;
-  justify-content: center; }
-  .myCafeList__tools--edit {
-    fill: #4e342e;
-    margin-right: 1rem;
-    cursor: pointer; }
-  .myCafeList__tools--delete {
-    fill: orangered;
-    cursor: pointer; }
-
-.cafeEditForm__inputFields {
-  display: flex;
-  justify-content: space-between; }
-  @media only screen and (max-width: 37.5em) {
-    .cafeEditForm__inputFields {
-      flex-direction: column; } }
-
-.form textarea {
-  width: 100%;
-  height: 20rem; }
-
-.form input {
-  width: 100%; }
-
-.placeSearch {
-  background-color: #fcfce5;
-  width: 100%;
-  min-height: 35rem; }
-  .placeSearch__result--map {
-    height: 30rem;
-    margin: 2rem 0;
-    background-color: aqua; }
-  .placeSearch__result--name {
-    color: blue; }
-  .placeSearch__result--placeID {
-    color: red; }
-  .placeSearch__result--openingHours {
-    color: orange; }
-
-.mapSearch.inactive {
-  display: none; }
-
-/* Toggle switch */
-.switch {
-  position: relative; }
-  .switch label {
-    width: 6rem;
-    height: 3rem;
-    background-color: #ca9b52;
-    position: relative;
-    display: inline-block;
-    border-radius: 3.1rem;
-    transition: all .4s; }
-    .switch label:after {
-      content: '';
-      position: absolute;
-      width: 3rem;
-      height: 3rem;
-      border-radius: 100%;
-      left: 0;
-      top: 0;
-      z-index: 2;
-      background-color: #fff;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-      transition: all .4s; }
-  .switch input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    opacity: 0;
-    cursor: pointer; }
-  .switch input:checked + label {
-    background-color: #4e342e; }
-    .switch input:checked + label:after {
-      left: 4rem; }
-
-.reviewCardSimple {
-  display: flex;
-  margin: 1rem 0;
-  background-color: #fcfce5;
-  border-radius: 5px;
-  overflow: hidden;
-  width: 100%; }
-  .reviewCardSimple__cafe {
-    max-width: 14rem;
-    color: #fff;
-    background-color: #260e04; }
-    .reviewCardSimple__cafe__title {
-      padding: 1rem;
-      border-top: solid 1px #7b5e57; }
-    .reviewCardSimple__cafe__image {
-      width: 14rem;
-      height: 8rem;
-      margin: auto;
-      display: flex;
-      font-size: 1.6rem;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden; }
-      .reviewCardSimple__cafe__image img {
-        display: block;
-        width: 100%; }
-  .reviewCardSimple__review {
-    flex-grow: 1; }
-    .reviewCardSimple__review__title {
-      max-width: 100%;
-      background-color: #ca9b52;
-      padding-left: 1rem;
-      white-space: pre-line; }
-  .reviewCardSimple__reviewImages {
-    width: 100%;
-    min-width: 1px; }
-    .reviewCardSimple__reviewImages__container {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap; }
-      .reviewCardSimple__reviewImages__container img {
-        display: block;
-        max-width: 10rem;
-        margin: 1rem;
-        object-fit: cover; }
-
-.reviewRow {
-  margin: 2rem;
-  padding-bottom: 2px; }
-  .reviewRow__header {
+    min-height: 18rem;
+    object-fit: cover;
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: #ffcc80; }
-    .reviewRow__header h3 {
-      margin: 0 2rem;
-      flex-grow: 1;
-      font-size: 2.4rem; }
-  .reviewRow__photos {
-    display: flex;
-    overflow-x: auto;
-    margin: auto; }
-    .reviewRow__photos__image {
-      margin: 1rem;
-      width: 15rem;
-      height: 15rem;
-      object-fit: cover; }
-  .reviewRow__content {
-    white-space: pre-line; }
-  .reviewRow__user {
-    display: inline-flex;
-    align-items: center;
-    font-weight: 700;
-    padding: 1rem; }
-    .reviewRow__user__image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: solid 1px #4e342e;
-      font-size: 1rem;
-      width: 4rem;
-      height: 4rem;
-      border-radius: 2.5rem;
-      margin-right: 1rem;
-      overflow: hidden; }
-      .reviewRow__user__image img {
-        width: 100%;
-        object-fit: cover; }
-
-.pagination {
-  display: flex;
-  align-items: center;
-  font-size: 1.4rem;
-  list-style: none; }
-  .pagination__next, .pagination__previous, .pagination__page {
-    height: 3rem;
-    min-width: 3rem;
-    border: 1px solid #4e342e;
-    border-radius: 5px; }
-  .pagination__previousLink, .pagination__nextLink {
-    padding: 0 .5rem; }
-  .pagination__pageLink, .pagination__previousLink, .pagination__nextLink {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    cursor: pointer; }
-  .pagination__page {
-    margin: .5rem;
-    background-color: #4e342e; }
-    .pagination__page:hover:not(.active) {
-      background-color: #ffcc80; }
-  .pagination__next, .pagination__previous {
-    background-color: #7b5e57;
-    margin: .5rem 1rem; }
-  .pagination .active {
-    font-weight: bold;
-    background-color: #260e04;
-    cursor: default; }
-    .pagination .active a {
-      color: #fff; }
-
-.react-rater {
-  display: block;
-  line-height: normal; }
-  .react-rater > * {
-    display: inline-block; }
-
-.react-rater-star {
-  cursor: pointer;
-  font-size: 4rem;
-  color: #fcfce5;
-  position: relative; }
-  .react-rater-star.will-be-active {
-    color: #ca9b52; }
-  .react-rater-star.is-active {
-    color: #ffcc80; }
-  .react-rater-star.is-active-half:before {
-    color: #ffcc80;
-    content: '\2605';
-    position: absolute;
-    left: 0;
-    width: 50%;
-    overflow: hidden; }
-  .react-rater-star.is-disabled {
-    cursor: default; }
-
-.cafeRateEditor {
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-  .cafeRateEditor h3 {
-    margin-top: 2rem; }
-
-.cafeRate__row {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 1rem;
-  font-weight: 700;
-  font-size: 2rem; }
-  .cafeRate__row svg {
-    fill: #4e342e;
-    width: 2.4rem;
-    height: 2.4rem; }
-
-.cafeRate__rate {
-  color: #4e342e;
-  cursor: pointer;
-  border-bottom: solid 1px #260e04; }
-
-.latestReviewPhoto {
-  max-width: 100%;
-  display: flex;
-  overflow-x: auto; }
-  .latestReviewPhoto__image {
-    width: 15rem;
-    height: 15rem;
-    object-fit: cover;
-    margin: 1rem; }
-
-.displayMap {
-  max-height: 50vh;
-  max-width: 100%;
-  min-height: 20rem;
-  min-width: 20rem; }
-
-.photoGarelly {
-  display: flex;
-  padding: .5rem;
-  max-height: 100%; }
-  .photoGarelly.wrap {
-    flex-wrap: wrap;
-    justify-content: center; }
-  .photoGarelly.scrollX {
-    overflow-x: auto; }
-  .photoGarelly__item {
-    width: 15rem;
-    height: 15rem;
-    object-fit: cover;
-    margin: 1rem; }
-  .photoGarelly__modal {
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.9);
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    width: 80%;
-    height: 80%;
-    margin-top: 5rem; }
-
-.photoViewer {
-  display: flex;
-  align-items: stretch;
-  max-height: 100%;
-  width: 100%;
-  position: relative; }
-  .photoViewer__arrowContainer {
-    width: 4rem; }
-    .photoViewer__arrowContainer__button {
-      height: 100%;
-      width: 100%;
-      fill: #fcfce5;
-      display: flex;
-      align-items: center; }
-  .photoViewer__image {
-    padding: 1rem;
-    width: 100%;
-    display: flex;
-    align-items: center; }
-    .photoViewer__image img {
+    .userPhotoEditor__photo img {
       max-width: 100%;
-      max-height: 100%;
-      margin: auto;
-      display: block;
-      object-fit: contain; }
-  .photoViewer__user {
-    position: absolute;
-    right: 2rem;
-    bottom: 2rem;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 2px;
-    border: solid 1px #4e342e;
-    font-size: 2.4rem;
-    display: flex;
-    align-items: center;
-    padding: 0 1rem; }
-    .photoViewer__user__image {
-      width: 4rem;
-      height: 4rem;
-      margin: 1rem;
-      border-radius: 2rem;
-      border: solid 1px #4e342e;
-      overflow: hidden;
-      font-size: 1rem;
-      text-align: center; }
-      .photoViewer__user__image img {
-        width: 100%;
-        object-fit: cover; }
-
-.passwordEditor {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center; }
-  .passwordEditor .form {
-    min-width: 80%;
-    background-color: #fff;
-    border: solid 1px #4e342e; }
-    @media only screen and (max-width: 37.5em) {
-      .passwordEditor .form {
-        width: 95%; } }
-
-.scrollTopButton {
-  position: fixed;
-  width: 5rem;
-  height: 5rem;
-  right: 3rem;
-  bottom: 3rem;
-  background-color: rgba(252, 252, 229, 0.6);
-  border-radius: 50%;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  opacity: 1;
-  visibility: visible;
-  transition: all 5s; }
-  .scrollTopButton.hidden {
-    opacity: 0;
-    visibility: hidden; }
-  .scrollTopButton svg {
-    width: 100%;
-    height: 100%; }
-
-.linkCard {
-  background-color: #fff;
-  border: solid 1px #ffcc80;
-  padding: 1rem; }
-  .linkCard::after {
-    content: "";
-    display: block;
-    clear: both; }
-  .linkCard__image {
-    width: 13rem;
-    height: 13rem;
-    margin: 1rem;
-    float: left; }
-    .linkCard__image img {
-      width: 100%;
-      object-fit: cover; }
-  .linkCard__title {
-    font-weight: 700;
-    color: #260e04; }
-  .linkCard__description {
-    font-size: 1.4rem;
-    color: #4e342e; }
-
-.react-tabs {
-  -webkit-tap-highlight-color: transparent; }
-  .react-tabs__tab-list {
-    display: inline-flex;
-    border-radius: 4px;
-    border: solid 1px #260e04;
-    overflow: hidden;
-    margin: 1rem; }
-    @media only screen and (max-width: 37.5em) {
-      .react-tabs__tab-list {
-        flex-direction: column; } }
-  .react-tabs__tab {
-    display: inline-block;
-    position: relative;
-    list-style: none;
-    padding: 6px 12px;
-    cursor: pointer;
-    background-color: #4e342e;
-    color: #fff; }
-    .react-tabs__tab--selected {
-      background: #fff;
-      color: black; }
-    .react-tabs__tab--disabled {
-      color: GrayText;
-      cursor: default; }
-    .react-tabs__tab:focus {
-      box-shadow: 0 0 5px #0188fe;
-      border-color: #0188fe;
-      outline: none; }
-      .react-tabs__tab:focus:after {
-        content: "";
-        position: absolute;
-        height: 5px;
-        left: -4px;
-        right: -4px;
-        bottom: -5px;
-        background: #fff; }
-  .react-tabs__tab:not(:last-child) {
-    border-right: solid 1px #7b5e57; }
-  .react-tabs__tab-panel {
-    display: none;
-    padding: 1rem; }
-    .react-tabs__tab-panel--selected {
-      display: block; }
-
-.mapSearchResultList {
-  display: flex;
-  overflow-x: auto; }
-  .mapSearchResultList__item {
-    min-width: 31rem; }
-    .mapSearchResultList__item.active {
-      background-color: #ffcc80; }
-
-.radioButton {
-  margin: 1.4rem 0;
-  display: block;
-  cursor: pointer; }
-  .radioButton input {
-    display: none; }
-    .radioButton input + span {
-      line-height: 22px;
-      height: 22px;
-      padding-left: 22px;
-      display: block;
-      position: relative; }
-      .radioButton input + span:not(:empty) {
-        padding-left: 30px; }
-      .radioButton input + span:before, .radioButton input + span:after {
-        content: '';
-        width: 22px;
-        height: 22px;
-        display: block;
-        border-radius: 50%;
-        left: 0;
-        top: 0;
-        position: absolute; }
-      .radioButton input + span:before {
-        background: #ffcc80;
-        transition: background 0.2s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 2); }
-      .radioButton input + span:after {
-        background: #fff;
-        transform: scale(0.78);
-        transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.4); }
-    .radioButton input:checked + span:before {
-      transform: scale(1.04);
-      background: orangered; }
-    .radioButton input:checked + span:after {
-      transform: scale(0.4);
-      transition: transform .3s ease; }
-  .radioButton:hover input + span:before {
-    transform: scale(0.92); }
-  .radioButton:hover input + span:after {
-    transform: scale(0.74); }
-  .radioButton:hover input:checked + span:after {
-    transform: scale(0.4); }
+      max-height: 70vh; }
 
 .footer {
   color: #fff;

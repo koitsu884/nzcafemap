@@ -30,6 +30,7 @@ import Contact from './contact/Contact';
 import ScrollToTopButton from './common/ScrollToTopButton';
 import Help from './static/Help';
 import MapSearch from './cafe/MapSearch';
+import OAuthRedirect from './auth/OAuthRedirect';
 
 // const apiKey = process.env.REACT_APP_GOOGLEAPI_KEY;
 
@@ -83,6 +84,7 @@ const App = () => {
                         <Route path="/search" exact component={CafeSearch} />
                         <Route path="/signin" exact component={Signin} />
                         <Route path="/signup" exact component={Signup} />
+                        <Route path="/oauth/:token" exact component={OAuthRedirect} />
                         <PrivateRoute path="/mypage" exact component={MyPage} />
                         <Route path="/cafes" exact component={CafeSearch} />
                         <Route path="/cafes/map" exact component={MapSearch} />

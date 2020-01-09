@@ -6,6 +6,7 @@ import { signIn } from '../../actions/authActions';
 import { clearError } from '../../actions/errorActions';
 import { required, minLength, maxLength, email } from '../../helper/validation';
 import FormInput from '../common/FormInput';
+import TwitterLogin from './TwitterLogin';
 
 //To avoid infinite loop error
 const minLength5 = minLength(5);
@@ -69,6 +70,9 @@ class Signin extends Component {
                     </fieldset>
                     {errorContent}
                     <button className="btn" type="submit" disabled={submitting || invalid} >ログイン</button>
+                    <hr />
+                    <h4>もしくは</h4>
+                    <TwitterLogin />
                 </form>
             </div>
         )

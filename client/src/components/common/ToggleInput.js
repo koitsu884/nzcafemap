@@ -90,8 +90,6 @@ export default class ToggleInput extends Component {
             name,
             placeholder,
             label,
-            error,
-            info,
             type,
         } = this.props;
 
@@ -114,8 +112,6 @@ export default class ToggleInput extends Component {
             name,
             placeholder,
             label,
-            error,
-            info,
             type,
         } = this.props;
 

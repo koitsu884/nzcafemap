@@ -1,8 +1,10 @@
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
+const config = require('config');
 const _ = require('lodash');
 const {User} = require('../models/user');
 const express = require('express');
+const passport = require('passport');
 const router = express.Router();
 
 function validate(req) {
@@ -13,6 +15,11 @@ function validate(req) {
   
     return Joi.validate(req, schema);
   }
+
+router.get('/me', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    const user = await User.findById(req.user._id);
+    res.send(user);
+})
 
 router.post('/', async (req, res) => {
   const { error } = validate(req.body); 
@@ -26,7 +33,18 @@ router.post('/', async (req, res) => {
 
   const token = user.generateAuthToken();
   // let returnUser = user.toObject();
-  res.header('x-auth-token', token).send(_.pick(user, ['_id', 'isAdmin', 'isDisabled', 'email', 'displayName', 'mainPhotoURL']));
+  res.header('x-auth-token', token).send(user);
 });
+
+router.get('/twitter', 
+  passport.authenticate('twitter'))
+
+router.get('/twitter/callback',
+  passport.authenticate('twitter', { failureRedirect: config.get('clientUrl') }),
+  async (req, res) => {
+    const token = req.user.generateAuthToken();  
+    res.redirect(config.get('clientUrl') + 'oauth/' + token);
+  }
+)
 
 module.exports = router; 

@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import ReactPaginate from 'react-paginate';
 
 import Spinner from '../../common/Spinner';
 import Pagination from '../../common/Pagination';

@@ -7,6 +7,7 @@ import { required, minLength, maxLength, minLength2, email, confirmPassword} fro
 import {signUp} from '../../actions/authActions';
 import { clearError } from '../../actions/errorActions';
 import FormInput from '../common/FormInput';
+import TwitterLogin from './TwitterLogin';
 
 //To avoid infinite loop error
 const minLength5 = minLength(5);
@@ -95,6 +96,9 @@ class Signup extends Component {
                     </fieldset>
                     {errorContent}
                     <button type="submit" disabled={submitting || invalid} className="btn" >新規登録</button>
+                    <hr />
+                <h4>もしくは</h4>
+                <TwitterLogin />
                 </form>
             </div>
         )

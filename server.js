@@ -1,35 +1,48 @@
 const winston = require('winston');
 const express = require('express');
+const session = require('express-session');
 const helmet = require('helmet');
 const cors = require('cors');
 const path = require('path');
 const error = require('./middleware/error');
 const passport = require('passport');
 const bodyParser = require('body-parser');
-// const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser')
 
 const app = express();
 require('express-async-errors');
 app.use(helmet())
 app.use(cors({
     exposedHeaders: ['x-auth-token'],
+    credentials: true
 }));
+
 // app.use(cors({
 //     credentials: true,
 // }));
 require('./startup/logging')();
 app.use(bodyParser.json());
-// app.use(cookieParser());
+app.use(cookieParser());
+app.use(session({ 
+    secret: 'super strong secret',
+    name: 'id',
+    resave: true,
+    saveUninitialized: false,
+    cookie : { secure: false }
+}));
 
 // app.use(bodyParser.urlencoded({
 //     extended: false,
 //     type: 'application/x-www-form-urlencoded'
 //   }));
-app.use(passport.initialize());
 require('./startup/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session()); 
+
 require('./startup/routes')(app);
 //Front end
 if(process.env.NODE_ENV === 'production') {
+// if(true) {
     app.use(express.static(path.join(__dirname, 'client/build')));
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));

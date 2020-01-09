@@ -9,7 +9,6 @@ import { multiplePhotoUpload } from '../../actions/photoActions';
 import Alert from '../../helper/Alert';
 import MultipleImageUploader from '../common/MultipleImageUploader';
 import resizeFile from '../../helper/ResizeImage';
-import { url } from '../../helper/validation';
 import Spinner from '../common/Spinner';
 import LinkCard from '../common/LinkCard';
 

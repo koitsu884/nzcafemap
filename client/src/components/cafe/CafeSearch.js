@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
 import { connect } from 'react-redux';
-import ReactPaginate from 'react-paginate';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { setFilter } from '../../actions/cafeActions';
 import CafeCard from './CafeCard';
 import AreaDropDown from '../common/AreaDropDown';
-// import Ogp from '../common/Ogp';
-import siteImage from '../../img/ogpImage.jpg';
 import Spinner from '../common/Spinner';
 import Pagination from '../common/Pagination';
 

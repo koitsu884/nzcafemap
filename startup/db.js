@@ -31,7 +31,7 @@ async function createAdminUser() {
 module.exports = function() {
     const dbConnection = config.get('db');
     console.log(dbConnection);
-    mongoose.connect(dbConnection, { useNewUrlParser: true })
+    mongoose.connect(dbConnection, { useNewUrlParser: true, useFindAndModify:false, useCreateIndex: true })
         .then(() => {
             const message = `Connected to ${dbConnection}...`;
             winston.info(message);

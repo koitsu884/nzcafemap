@@ -16,7 +16,6 @@ export default function Pagination({ itemCount, pageSize, onPageChange, classNam
                 previousLabel={'<'}
                 nextLabel={'>'}
                 breakLabel={'...'}
-                breakClassName={'break-me'}
                 pageCount={pageCount}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={5}

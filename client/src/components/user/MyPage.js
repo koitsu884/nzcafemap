@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 import Alert from '../../helper/Alert';
 import history from '../../history';
 
-import {signOut} from '../../actions/authActions';
+import { signOut } from '../../actions/authActions';
 import UserPhotoEditor from './MyPage/UserPhotoEditor';
 import MyCafeList from './MyPage/MyCafeList';
 import MyReviewList from './MyPage/MyReviewList';
 import EditUserProfile from './MyPage/EditUserProfile';
+import TwitterProfile from './MyPage/TwitterProfile';
 
 const baseURL = process.env.REACT_APP_API_URL;
 
@@ -17,32 +18,42 @@ class MyPage extends Component {
 
     handleDeleteAccount = () => {
         Alert.confirm('アカウントを本当に削除しますか？')
-        .then((result) => {
-            if (result.value) {
-                axios.delete('users/', {baseURL:baseURL}).then(response => {
-                    Alert.success("アカウントを削除しました")
-                    this.props.signOut();
-                    history.push('/');
-                })
-                .catch(errors => {
-                    console.log(errors);
-                })
-            }
-        })
+            .then((result) => {
+                if (result.value) {
+                    axios.delete('users/', { baseURL: baseURL }).then(response => {
+                        Alert.success("アカウントを削除しました")
+                        this.props.signOut();
+                        history.push('/');
+                    })
+                        .catch(errors => {
+                            console.log(errors);
+                        })
+                }
+            })
     }
 
     render() {
         return (
             <div className="myPage">
                 <h2>マイページ</h2>
-                <div className="myPage__account">
-                    <UserPhotoEditor />
+                <div className="myPage__account u-margin-bottom-medium">
+                    <UserPhotoEditor/>
+                    {
+                        this.props.user.twitterId ?
+                            (
+                                <div>
+                                    <h3>ツイッタープロファイル</h3>
+                                    <TwitterProfile />
+                                </div>
+                            )
+                            : null
+                    }
                 </div>
-                <div className="myPage__section">
+                <div className="myPage__section u-margin-bottom-medium">
                     <h2>アカウント管理</h2>
                     <EditUserProfile />
                 </div>
-                <div className="myPage__section">
+                <div className="myPage__section u-margin-bottom-medium">
                     <h2>カフェ情報管理</h2>
                     <div className="myPage__section__container">
                         <h3>マイカフェ</h3>
@@ -65,4 +76,4 @@ const mapStateToProps = state => ({
     user: state.user.user
 })
 
-export default connect(mapStateToProps, {signOut})(MyPage);
+export default connect(mapStateToProps, { signOut })(MyPage);

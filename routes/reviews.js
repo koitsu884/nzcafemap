@@ -81,7 +81,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), async (req, r
 
 router.post('/:id/tweet', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let review = await Review.findById(req.params.id)
-        .populate('user', ['displayName'])
+        .populate('user', ['displayName', 'twitterProfile'])
         .populate('cafe', ['_id', 'name', 'mainPhotoURL', 'area']);
 
     if (!review) return res.status(400).send("レビューが見つかりません");
@@ -142,8 +142,9 @@ const postCloudinaryImage = async publicId => {
 const postReviewTweetWithReviewPhotos = async (review) => {
     let detailURL = getCafeDetailURL(review.cafe._id);
     let area = review.cafe.area.split('-')[1].trim();
+    let userName = review.user.twitterProfile ? '@' + review.user.twitterProfile.userName : review.user.displayName;
 
-    status = `【新規レビュー】\n${review.cafe.name} のレビューが追加されました！\n\n「${review.title} (${review.user.displayName})」\n\n${detailURL}\n\n#ニュージーランド\n#${area}\n#カフェ巡り`;
+    status = `【新規レビュー】\n${review.cafe.name} のレビューが追加されました！\n\n「${review.title} (${userName})」\n\n${detailURL}\n\n#ニュージーランド\n#${area}\n#カフェ巡り`;
     mediaIds = [];
 
     if (review.photoURLs && review.photoURLs.length > 0) {

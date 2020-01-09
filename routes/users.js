@@ -16,9 +16,9 @@ const {singleUpload, deleteFile, deleteFolder} = require('../helper/cloudinaryUp
 
 const formDataHandler = memoryUploadSingle('photo');
 
-returnUser = user => {
-    return _.pick(user, ['_id', 'isAdmin', 'isDisabled', 'email', 'displayName', 'mainPhotoURL']);
-}
+// returnUser = user => {
+//     return _.pick(user, ['_id', 'isAdmin', 'isDisabled', 'email', 'displayName', 'mainPhotoURL']);
+// }
 
 
 // router.get('/:id', passport.authenticate('jwt', { session: false }), async ( req, res) => {
@@ -28,8 +28,8 @@ returnUser = user => {
 // });
 
 router.get('/me', passport.authenticate('jwt', { session: false }), async ( req, res) => {
-    const user = await User.findById(req.user._id).select('-password');
-    res.send(returnUser(user));
+    const user = await User.findById(req.user._id);
+    res.send(user);
 });
 
 router.post('/', async (req, res) => {
@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
     await user.save();
 
     const token = user.generateAuthToken();
-    res.header('x-auth-token', token).send(returnUser(user));
+    res.header('x-auth-token', token).send(user);
 })
 
 router.post('/photo', passport.authenticate('jwt', { session: false }), formDataHandler, async(req, res) => {
@@ -103,7 +103,7 @@ router.delete('/', passport.authenticate('jwt', { session: false }), async(req, 
     }
     user.remove();
 
-    res.send(returnUser(user));
+    res.send(user);
 })
 
 router.delete('/photo', passport.authenticate('jwt', { session: false }), async(req, res) => {
@@ -150,7 +150,7 @@ router.put('/', passport.authenticate('jwt', { session: false }), async ( req, r
     user.displayName = data.displayName;
 
     user = await user.save();
-    res.send(returnUser(user));
+    res.send(user);
 })
 
 module.exports = router;
