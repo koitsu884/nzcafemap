@@ -42,12 +42,12 @@ class Home extends Component {
             <div className="home">
                 <Helmet>
                     <title>ニュージーランドカフェマップ</title>
-                    <meta name="description" content="ニュージーランド各地のカフェの位置情報、営業時間、レビュー等を検索・投稿できます。特にオークランド、ウェリントン、クライストチャートと言った都市部の情報が豊富！" />
+                    <meta name="description" content="ニュージーランド各地のおすすめカフェの位置情報、営業時間、レビュー等を検索・投稿できます。特にオークランド、ウェリントン、クライストチャートと言った都市部の情報が豊富！" />
                 </Helmet>
                 <div className="home__header">
                      <h1 className="home__header__title">ニュージーランドでカフェ巡り！</h1>
                     <div className="home__header__description">
-                        <p>ニュージーカフェマップは、ニュージーランドののカフェ情報・レビューを検索する事ができるサイトです。</p>
+                        <p>ニュージーカフェマップは、ニュージーランドのおすすめカフェ情報・レビューを検索する事ができるサイトです。</p>
                         <p>お気に入りのカフェを見つけて、NZのカフェ文化をもっと楽しもう！</p>
                     </div>
                 </div>
