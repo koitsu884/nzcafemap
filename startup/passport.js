@@ -9,8 +9,8 @@ Twitter Oauth
 const setupTwitterStrategy = passport => {
     // let twitterCallbackURL = config.get('clientUrl') + 'auth/twitter/callback';
     let twitterCallbackURL = process.env.NODE_ENV === 'production'
-                ? 'https://www.nzcafemap.com/api/auth/twitter/callback'
-                : 'http://127.0.0.1:5000/api/auth/twitter/callback';
+        ? 'https://www.nzcafemap.com/api/auth/twitter/callback'
+        : 'http://127.0.0.1:5000/api/auth/twitter/callback';
 
     const tsOpts = {
         consumerKey: config.get('twitterConsumerKey'),
@@ -26,12 +26,12 @@ const setupTwitterStrategy = passport => {
             imageUrl: profile._json.profile_image_url_https
         }
 
-        let user = await User.findOne({twitterId: profile.id});
+        let user = await User.findOne({ twitterId: profile.id });
 
-        if(!user){
+        if (!user) {
             user = new User({
                 twitterId: profile.id,
-                displayName:twitterProfile.displayName,
+                displayName: twitterProfile.displayName,
                 verified: true,
             });
             await user.save();
@@ -39,7 +39,7 @@ const setupTwitterStrategy = passport => {
 
         user.twitterProfile = twitterProfile;
         await user.save();
-        return done(null, user); 
+        return done(null, user);
     }));
 
     passport.serializeUser(function (user, done) {
@@ -58,7 +58,7 @@ const setupTwitterStrategy = passport => {
 const opts = {};
 // opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.jwtFromRequest = req => {
-    if( req && req.header('x-auth-token')){
+    if (req && req.header('x-auth-token')) {
         return req.header('x-auth-token');
     }
 
@@ -72,7 +72,17 @@ const setupJwtStrategy = passport => {
             return done('jwt expired');
         }
 
-        return done(null, jwt_payload);
+        User.findById(jwt_payload._id)
+            .then(user => {
+                if (user) {
+                    return done(null, user);
+                }
+                return done(null, false);
+            })
+            .catch(err => {
+                console.log(err);
+                return done('ユーザーが見つかりません');
+            });
     }));
 }
 

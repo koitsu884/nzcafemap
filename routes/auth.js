@@ -18,8 +18,7 @@ function validate(req) {
   }
 
 router.get('/me', passport.authenticate('jwt', { session: false }), async (req, res) => {
-    const user = await User.findById(req.user._id);
-    res.send(user);
+    res.send(req.user);
 })
 
 router.post('/', async (req, res) => {
@@ -38,7 +37,6 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/verify', async (req, res) => {
-  console.log(req.query.token);
   let token = req.query.token;
   if (!token) return res.status(400).send('No token provided');
 
@@ -87,8 +85,6 @@ router.post('/resetpassword', async (req, res) => {
     let user = await User.findById(tokenObj._userId);
     if (!user)
       return res.status(404).send('ユーザーが見つかりません');
-
-    console.log(req.body);
     
     user.password = req.body.password;
     await user.save();

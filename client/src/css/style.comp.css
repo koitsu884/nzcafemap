@@ -521,7 +521,8 @@ button.btn:disabled {
   .form input[type='email']:disabled,
   .form input[type='password']:disabled,
   .form textarea:disabled {
-    background: transparent;
+    background: #eee;
+    color: #333;
     cursor: auto; }
   .form__error {
     color: red; }

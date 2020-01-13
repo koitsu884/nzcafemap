@@ -64,13 +64,13 @@ class EditUserProfile extends Component {
         return (
             <div className="editUserProfile__item">
                 <label>Eメールアドレス</label>
-                <ToggleInput
+                <input
                     label="Eメールアドレス"
                     name="email"
                     type="email"
+                    className="form__input"
                     value={this.state.email}
-                    onUpdate={this.onUpdate}
-                    validate={[required, email]}
+                    disabled
                 />
             </div>
         )

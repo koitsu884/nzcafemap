@@ -90,7 +90,7 @@ export const getProfile = () => dispatch => {
 }
 
 export const updateProfile = formdata => dispatch => {
-    axios.put(`/users`, formdata, {
+    axios.patch(`/users`, formdata, {
         baseURL: baseURL,
     }).then(response => {
         dispatch(updateUserProfile(response.data))

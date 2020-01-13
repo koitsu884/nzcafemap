@@ -27,7 +27,8 @@
     input[type='password']:disabled,
     textarea:disabled
     {
-        background:transparent;
+        background:$color-gray-light-2;
+        color: $color-gray-dark-3;
         cursor: auto;
     }
 

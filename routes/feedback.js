@@ -27,8 +27,7 @@ router.post('/', async (req, res) => {
 })
 
 router.delete('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
-    const user = await User.findById(req.user._id);
-    if(!user.isAdmin)
+    if(!req.user.isAdmin)
         return res.status(401).send('閲覧権限がありません');
 
     const feedBack = await Feedback.findById(req.params.id);

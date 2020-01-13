@@ -85,6 +85,34 @@ export default class ToggleInput extends Component {
         );
     }
 
+    renderFields = () => {
+        switch(this.props.type){
+            case "password":
+                return this.renderPasswordFields();
+            case "textarea":
+                return this.renderTextAreaFields();
+            default:
+                return this.renderInputFields();
+        }
+    }
+
+    renderTextAreaFields = () => {
+        const {
+            name,
+        } = this.props;
+
+        return (
+            <textarea
+                className="form__input"
+                name={name}
+                value={this.state.value}
+                onChange={this.onChange}
+                disabled={this.state.disabled ? "disabled" : ""}
+            >
+            </textarea>
+        )
+    }
+
     renderInputFields = () => {
         const {
             name,
@@ -151,9 +179,7 @@ export default class ToggleInput extends Component {
         return (
             <DivWithOutsideClickHandler className="toggleInput" handleClickOutside={this.handleClickOutside}>
                 {
-                    this.props.type === "password"
-                        ? this.renderPasswordFields()
-                        : this.renderInputFields()
+                    this.renderFields()
                 }
                 {this.state.error ? (<div className="error">{this.state.error}</div>) : ""}
                 {this.reunderButtons()}

@@ -3,8 +3,8 @@
 const express = require('express');
 const passport = require('passport');
 const winston = require('winston');
-const router = express.Router();
 const bcrypt = require('bcrypt');
+const router = express.Router();
 const _ = require('lodash');
 const {User, validate} = require('../models/user');
 const {Photo} = require('../models/photo');
@@ -16,20 +16,8 @@ const {singleUpload, deleteFile, deleteFolder} = require('../helper/cloudinaryUp
 
 const formDataHandler = memoryUploadSingle('photo');
 
-// returnUser = user => {
-//     return _.pick(user, ['_id', 'isAdmin', 'isDisabled', 'email', 'displayName', 'mainPhotoURL']);
-// }
-
-
-// router.get('/:id', passport.authenticate('jwt', { session: false }), async ( req, res) => {
-//     const user = await User.findById(req.params.id).select('-password');
-//     if(user._id.toString() !== req.user._id) return res.status(401).send("Used does not match");
-//     res.send(user);
-// });
-
 router.get('/me', passport.authenticate('jwt', { session: false }), async ( req, res) => {
-    const user = await User.findById(req.user._id);
-    res.send(user);
+    res.send(req.user);
 });
 
 router.post('/', async (req, res) => {
@@ -58,7 +46,7 @@ router.post('/', async (req, res) => {
 })
 
 router.post('/photo', passport.authenticate('jwt', { session: false }), formDataHandler, async(req, res) => {
-    let user = await User.findById(req.user._id);
+    let user = req.user;
 
     const file = bufferToDataUri(req).content;
     let photo;
@@ -69,12 +57,12 @@ router.post('/photo', passport.authenticate('jwt', { session: false }), formData
         photo = new Photo({
             user:req.user._id,
             ownerRecordType: 'User',
-            ownerRecordId: req.user._id
+            ownerRecordId: user._id
         })
     }
     
-    winston.info(`Uploading user photo for user ${req.user._id} (${req.file.size} byte)`)
-    singleUpload(file, "image", `user/${req.user._id}`, "prof").then(result => {
+    winston.info(`Uploading user photo for user ${user._id} (${req.file.size} byte)`)
+    singleUpload(file, "image", `user/${user._id}`, "prof").then(result => {
         photo.public_id = result.public_id;
         photo.version = result.version;
         photo.save();
@@ -132,11 +120,9 @@ router.delete('/photo', passport.authenticate('jwt', { session: false }), async(
     });
 })
 
-router.put('/', passport.authenticate('jwt', { session: false }), async ( req, res) => {
-    let user = await User.findById(req.user._id);
-    if(!user) return res.status(404).send("ユーザーが見つかりません");
- 
+router.patch('/', passport.authenticate('jwt', { session: false }), async ( req, res) => {
     let data = req.body;
+    let user = req.user;
 
     // if(data.password)
     // {
@@ -149,16 +135,26 @@ router.put('/', passport.authenticate('jwt', { session: false }), async ( req, r
     const { error } = validate(data);
     if( error) return res.status(400).send(error.details[0].message);
 
-
     if( user.email !== data.email){
         if(await User.findOne({email: data.email}))
             return res.status(400).send("そのＥメールアドレスは既に使用されています");
-        user.email = data.email
+        // user.email = data.email
     }
 
-    user.displayName = data.displayName;
+    // user.displayName = data.displayName;
+    if(data.password){
+        const salt = await bcrypt.genSalt(10);
+        data.password = await bcrypt.hash(data.password, salt);
+    }
 
-    user = await user.save();
+    try {
+        user = await User.findByIdAndUpdate(user._id, {"$set": data}, { new: true });
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send('Something wrong');
+    }
+
     res.send(user);
 })
 

@@ -62,7 +62,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let data = Object.assign({}, req.body);
-    data.user = req.user._id;
+    data.user = req.user._id.toString();
 
     let cafe = await Cafe.findById(req.body.cafe);
     if (!cafe) res.status(400).send(`データが見つかりませんでした (Cafe id: ${req.body.cafe}`);

@@ -36,7 +36,7 @@ const CloudinaryImage = ({
 
     return (
         <Fragment>
-            {loading ? <div className={className}><Spinner /></div> : <img className={className} alt={alt} title={title} src={imagePath} />}
+            {loading ? <div className={className}><span style={{width: '5rem', height: '5rem'}}><Spinner /></span></div> : <img className={className} alt={alt} title={title} src={imagePath} />}
             <div className="hidden">
                 <img onLoad={() => setLoading(false)} src={imagePath} alt="hidden" />
             </div>

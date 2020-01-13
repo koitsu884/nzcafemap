@@ -17,6 +17,10 @@ const TwitterProfile = new mongoose.Schema({
         type: String,
         required: true
     },
+    introduction: {
+        type: String,
+        maxlength: 1000
+    },
     url:{
         type: String
     },
@@ -36,7 +40,7 @@ const userSchema = new mongoose.Schema({
     },
     verified: {
         type: Boolean,
-        default: false
+        default: false,
     },
     password: {
         type: String,
@@ -145,7 +149,9 @@ function validateUser(user) {
         _id: Joi.string(),
         email: Joi.string().min(5).max(255).email().optional(),
         password: Joi.string().min(5).max(255).optional(),
+        verified: Joi.boolean().optional(),
         displayName: Joi.string().min(2).max(50).required(),
+        introduction: Joi.string().max(1000).optional().allow(''),
         mainPhotoURL: Joi.string(),
         twitterId: Joi.string().optional(),
         twitterProfile: Joi.object().optional(),

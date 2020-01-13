@@ -121,7 +121,7 @@ router.post('/search', async (req, res) => {
 
 router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let data = Object.assign({}, req.body);
-    data.user = req.user._id;
+    data.user = req.user._id.toString();
 
     const { error } = validate(data);
     if (error) return res.status(400).send(error.details[0].message);
@@ -174,7 +174,7 @@ router.post('/:id/photo', passport.authenticate('jwt', { session: false }), form
 
 router.delete('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let data = Object.assign({}, req.body);
-    data.user = req.user._id;
+    data.user = req.user._id.toString();
 
     const cafe = await Cafe.findById(req.params.id).populate('photo', ['public_id']);;
 
@@ -241,7 +241,7 @@ router.get('/:id/rate/user/:userId', async (req, res) => {
 
 router.post('/:id/rate', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let data = Object.assign({}, req.body);
-    data.user = req.user._id;
+    data.user = req.user._id.toString();
     const { error } = validateRate(data);
     if (error) return res.status(400).send(error.details[0].message);
 
@@ -264,7 +264,7 @@ router.post('/:id/rate', passport.authenticate('jwt', { session: false }), async
 
 router.put('/:id/rate', passport.authenticate('jwt', { session: false }), async (req, res) => {
     let data = Object.assign({}, req.body);
-    data.user = req.user._id;
+    data.user = req.user._id.toString();
 
     const { error } = validateRate(data);
     if (error) return res.status(400).send(error.details[0].message);
