@@ -32,6 +32,7 @@ const setupTwitterStrategy = passport => {
             user = new User({
                 twitterId: profile.id,
                 displayName:twitterProfile.displayName,
+                verified: true,
             });
             await user.save();
         }

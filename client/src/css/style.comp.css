@@ -122,6 +122,33 @@ a {
 .u-text-right {
   text-align: right; }
 
+.u-flex {
+  display: flex; }
+
+.u-flex-justify {
+  justify-content: center; }
+
+.u-space-between {
+  justify-content: space-between; }
+
+.u-space-around {
+  justify-content: space-around; }
+
+.u-flex-align {
+  align-items: center; }
+
+.u-flex-wrap {
+  flex-wrap: wrap; }
+
+.u-flex-grow {
+  flex-grow: 1; }
+
+.u-flex-responsive {
+  display: flex; }
+  @media only screen and (max-width: 56.25em) {
+    .u-flex-responsive {
+      flex-direction: column; } }
+
 .no-image {
   background-image: url(../img/SVG/bell.svg);
   object-fit: cover; }
@@ -1371,15 +1398,12 @@ button.btn:disabled {
     margin-top: 3rem;
     text-align: center; }
 
-.container {
-  font-size: inherit; }
-
 .grid-contents {
   display: grid;
   grid-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); }
 
-.cafeEditForm, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
+.cafeEditForm, .container, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
 .help,
 .privacy, .contact {
   background-color: #fcfce5;
@@ -1389,12 +1413,12 @@ button.btn:disabled {
   border-radius: 5px;
   padding: 3rem; }
   @media only screen and (max-width: 75em) {
-    .cafeEditForm, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
+    .cafeEditForm, .container, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
     .help,
     .privacy, .contact {
       margin: 3rem; } }
   @media only screen and (max-width: 37.5em) {
-    .cafeEditForm, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
+    .cafeEditForm, .container, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
     .help,
     .privacy, .contact {
       margin: 0;
@@ -1492,6 +1516,10 @@ button.btn:disabled {
   background-color: #fcfce5; }
   .signIn__form input {
     width: 100%; }
+  .signIn__form__link {
+    margin-top: 1.5rem;
+    color: #4e342e;
+    text-decoration: underline; }
   @media only screen and (max-width: 56.25em) {
     .signIn__form {
       width: 100%; } }

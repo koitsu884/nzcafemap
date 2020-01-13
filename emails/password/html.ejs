@@ -1,0 +1,27 @@
+<html>
+<%- include('../partials/head.ejs') -%>
+<body>
+    <div class="wrapper">
+        <%- include('../partials/header.ejs') -%>
+        <div class="container">
+            <p><%=name %> 様,</p>
+            <br />
+            <p>以下のボタンを押下し、新しいパスワードを設定してください。</p>
+            <div class="text-center">
+                <a class="button" href="<%=link %>">パスワード再設定</a>
+            </div>
+            <hr />
+            <p class="info">
+                ※当メール送信後、1時間を超過しますと、セキュリティ保持のため有効期限切れとなります。　その場合は再度、最初からお手続きをお願い致します。
+            </p>
+            <p class="info">
+                ※当メールは送信専用メールアドレスから配信されています。　このままご返信いただいてもお答えできませんのでご了承ください。
+            </p>
+            <p class="info">
+                ※当メールに心当たりの無い場合は、誠に恐れ入りますが　破棄して頂けますよう、よろしくお願い致します。
+            </p>
+        </div>
+        <%- include('../partials/footer.ejs') -%>
+    </div>
+</body>
+</html>

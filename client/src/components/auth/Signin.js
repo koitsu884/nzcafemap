@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
@@ -69,7 +70,10 @@ class Signin extends Component {
                         />
                     </fieldset>
                     {errorContent}
-                    <button className="btn" type="submit" disabled={submitting || invalid} >ログイン</button>
+                    <div className="u-flex u-space-between">
+                        <Link className="signIn__form__link" to="/auth/forgotpassword">パスワードを忘れた方</Link>
+                        <button className="btn" type="submit" disabled={submitting || invalid} >ログイン</button>
+                    </div>
                     <hr />
                     <h4>もしくは</h4>
                     <TwitterLogin />

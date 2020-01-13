@@ -2,6 +2,11 @@ const Joi = require('joi');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const bcrypt = require('bcrypt');
+const crypto = require('crypto');
+
+const { sendEmailVerification, sendPasswordResetLink } = require('../utils/mailer');
+const { Token, TOKEN_TYPE_PASSWORD, TOKEN_TYPE_VERIFY } = require('../models/token');
 
 const TwitterProfile = new mongoose.Schema({
     userName: {
@@ -28,6 +33,10 @@ const userSchema = new mongoose.Schema({
         index: true,
         unique: true,
         sparse: true
+    },
+    verified: {
+        type: Boolean,
+        default: false
     },
     password: {
         type: String,
@@ -65,9 +74,68 @@ const userSchema = new mongoose.Schema({
     }
 },{ versionKey: false });
 
+/*======================================================
+// User pre hooks
+=======================================================*/
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) return next();
+    try {
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+        return next();
+    } catch (err) {
+        return next(err);
+    }
+});
+
+/*======================================================
+// User methods
+=======================================================*/
 userSchema.methods.generateAuthToken = function () {
     const token = jwt.sign({ _id: this._id, displayName: this.displayName, isAdmin: this.isAdmin }, config.get('jwtPrivateKey'));
     return token;
+}
+
+userSchema.methods.sendPasswordResetEmail = async function () {
+    await Token.deleteOne({ _userId: this._id, type: TOKEN_TYPE_PASSWORD });
+
+    let token = new Token({
+        _userId: this._id,
+        type: TOKEN_TYPE_PASSWORD,
+        token: crypto.randomBytes(16).toString('hex')
+    });
+    await token.save();
+
+    var link = config.get('clientUrl') + "auth/resetpassword/" + token.token;
+
+    try {
+        await sendPasswordResetLink(this.email, this.displayName, link)
+        console.log("Email sent");
+    }
+    catch (errors) {
+        console.log(JSON.stringify(errors));
+    }
+}
+
+userSchema.methods.sendVerifyEmail = async function () {
+    await Token.deleteOne({ _userId: this._id, type: TOKEN_TYPE_VERIFY });
+
+    let token = new Token({
+        _userId: this._id,
+        type: TOKEN_TYPE_VERIFY,
+        token: crypto.randomBytes(16).toString('hex')
+    });
+    await token.save();
+
+    var link = config.get('clientUrl') + "auth/verifyemail/" + token.token;
+
+    try {
+        await sendEmailVerification(this.email, this.displayName, link)
+        console.log("Email sent");
+    }
+    catch (errors) {
+        console.log(JSON.stringify(errors));
+    }
 }
 
 const User = mongoose.model('user', userSchema);

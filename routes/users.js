@@ -37,15 +37,24 @@ router.post('/', async (req, res) => {
     if( error) return res.status(400).send(error.details[0].message);
     
     let user = await User.findOne({email: req.body.email});
-    if(user) return res.status(400).send("そのＥメールアドレスは既に使用されています");
+    if(user && user.verified) return res.status(400).send("そのＥメールアドレスは既に使用されています");
     
-    user = new User(_.pick(req.body, ['email', 'password', 'displayName']));
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(user.password, salt);
+    if(!user)
+    {
+        user = new User(_.pick(req.body, ['email', 'password', 'displayName']));
+    }
+    else{
+        user.password = req.body.password;
+        user.displayName = req.body.displayName;
+    }
+    // const salt = await bcrypt.genSalt(10);
+    // user.password = await bcrypt.hash(user.password, salt);
     await user.save();
+    await user.sendVerifyEmail();
 
-    const token = user.generateAuthToken();
-    res.header('x-auth-token', token).send(user);
+    // const token = user.generateAuthToken();
+    // res.header('x-auth-token', token).send(user);
+    res.send(user);
 })
 
 router.post('/photo', passport.authenticate('jwt', { session: false }), formDataHandler, async(req, res) => {
@@ -129,14 +138,14 @@ router.put('/', passport.authenticate('jwt', { session: false }), async ( req, r
  
     let data = req.body;
 
-    if(data.password)
-    {
-        const salt = await bcrypt.genSalt(10);
-        user.password = await bcrypt.hash(data.password, salt);
-    } 
-    else {
-        data.password = user.password;
-    }
+    // if(data.password)
+    // {
+    //     const salt = await bcrypt.genSalt(10);
+    //     user.password = await bcrypt.hash(data.password, salt);
+    // } 
+    // else {
+    //     data.password = user.password;
+    // }
     const { error } = validate(data);
     if( error) return res.status(400).send(error.details[0].message);
 

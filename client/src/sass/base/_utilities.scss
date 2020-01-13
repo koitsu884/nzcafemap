@@ -37,6 +37,20 @@
     text-align: right;
 }
 
+.u-flex { display:flex;}
+.u-flex-justify { justify-content:center;}
+.u-space-between { justify-content:space-between;}
+.u-space-around { justify-content:space-around;}
+.u-flex-align { align-items:center;}
+.u-flex-wrap { flex-wrap:wrap;}
+.u-flex-grow { flex-grow:1;}
+.u-flex-responsive {
+    display: flex;
+    @include respond(tab-port){
+        flex-direction: column;
+    }
+}
+
 .no-image {
     background-image: url(../img/SVG/bell.svg);
     object-fit: cover;

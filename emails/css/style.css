@@ -1,0 +1,81 @@
+.wrapper {
+    border: 1px solid #3a3939;
+    font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','Hiragino Maru Gothic Pro',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic' 
+}
+.header {
+    padding: 0;
+    background-color: #260e04;
+    color: white;
+}
+
+.header h1 {
+    font-size: 26px;
+    font-family: 'メイリオ';
+    text-align: center;
+    padding: 5px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.header h2 {
+    padding: 5px;
+    margin: 0;
+    text-align: center;
+    color: #260e04;
+    background-color: #ffcc80;
+    font-size: 16px;
+}
+
+.logo{
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    font-size: 10px;
+}
+
+.container {
+    padding: 10px 20px;
+    background-color: #fcfce5;
+}
+
+.info {
+    font-size: 12px;
+    color: red;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.button{
+    text-decoration: none;
+    text-align: center;
+    background-color: #260e04;
+    border-radius: 10px;
+    font-size: 18px;
+    margin: auto;
+    padding: 3px 6px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid #7b5e57;
+}
+
+.button:hover{
+    background-color: #4e342e;
+}
+
+.footer {
+    padding: 10px;
+    background-color: #260e04;
+    color: white;
+}
+
+.footer a {
+    color: white;
+}
+
+.message {
+    white-space: pre-wrap;
+}

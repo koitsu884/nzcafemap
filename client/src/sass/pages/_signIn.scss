@@ -12,6 +12,12 @@
             width: 100%;
         }
 
+        &__link {
+            margin-top: 1.5rem;
+            color: $color-primary;
+            text-decoration: underline
+        }
+
         @include respond(tab-port){
             width: 100%;
         }

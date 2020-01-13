@@ -27,7 +27,6 @@ class Signup extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("here??");
         if (nextProps.authError) {
             this.setState({ authError: nextProps.authError });
             this.props.clearError();

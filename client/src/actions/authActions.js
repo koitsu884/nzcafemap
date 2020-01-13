@@ -12,12 +12,13 @@ export const signUp = (formData) => dispatch => {
     formData.confirmPassword = undefined;
     axios.post('/users', formData, {baseURL: baseURL})
     .then( result => {
-        const token = result.headers['x-auth-token'];
-        setAuthToken(token);
-        localStorage.setItem('jwtToken', token)
-        dispatch(setCurrentUser(result.data));
+        // const token = result.headers['x-auth-token'];
+        // setAuthToken(token);
+        // localStorage.setItem('jwtToken', token)
+        // dispatch(setCurrentUser(result.data));
         dispatch(clearError());
-        history.push('/');
+        sessionStorage.setItem('email', formData.email);
+        history.push('/static/emailsent');
     })
     .catch( error => {
         dispatch({

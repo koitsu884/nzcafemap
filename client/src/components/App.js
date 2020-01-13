@@ -31,6 +31,10 @@ import ScrollToTopButton from './common/ScrollToTopButton';
 import Help from './static/Help';
 import MapSearch from './cafe/MapSearch';
 import OAuthRedirect from './auth/OAuthRedirect';
+import EmailSent from './static/EmailSent';
+import VerifyEmail from './auth/VerifyEmail';
+import ForgotPassword from './auth/ForgotPassword';
+import ResetPassword from './auth/ResetPassword';
 
 // const apiKey = process.env.REACT_APP_GOOGLEAPI_KEY;
 
@@ -84,6 +88,9 @@ const App = () => {
                         <Route path="/search" exact component={CafeSearch} />
                         <Route path="/signin" exact component={Signin} />
                         <Route path="/signup" exact component={Signup} />
+                        <Route path="/auth/verifyemail/:token" exact component={VerifyEmail} />
+                        <Route path="/auth/forgotpassword" exact component={ForgotPassword} />
+                        <Route path="/auth/resetpassword/:token" exact component={ResetPassword} />
                         <Route path="/oauth/:token" exact component={OAuthRedirect} />
                         <PrivateRoute path="/mypage" exact component={MyPage} />
                         <Route path="/cafes" exact component={CafeSearch} />
@@ -99,6 +106,7 @@ const App = () => {
                         <Route path="/static/privacy" exact component={Privacy} />
                         <Route path="/static/terms" exact component={Terms} />
                         <Route path="/static/help" exact component={Help} />
+                        <Route path="/static/emailsent" exact component={EmailSent} />
                     </Switch>
                     <Footer />
                     <ScrollToTopButton />

@@ -1,10 +1,3 @@
-.container {
-    font-size: inherit;
-    // display: grid;
-    // grid-template-rows: 6rem  50vh 10rem; //Hader nav main footer
-    // grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] minmax(min-content, 1280px) [center-end] minmax(6rem, 1fr) [full-end];
-}
-
 .grid-contents {
     display: grid;
     grid-gap: 4rem;
@@ -28,4 +21,11 @@
         border-radius: 0;
         padding: 1rem;
     }
+}
+
+.container {
+    @extend %container;
+    // display: grid;
+    // grid-template-rows: 6rem  50vh 10rem; //Hader nav main footer
+    // grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] minmax(min-content, 1280px) [center-end] minmax(6rem, 1fr) [full-end];
 }

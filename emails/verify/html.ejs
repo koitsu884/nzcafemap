@@ -1,0 +1,28 @@
+<html>
+<%- include('../partials/head.ejs') -%>
+<body>
+    <div class="wrapper">
+        <%- include('../partials/header.ejs') -%>
+        <div class="container">
+            <p><%=name %> 様,</p>
+            <br />
+            <p>この度はニュージーカフェマップのアカウント登録をして頂き、誠にありがとうございます。<br />
+                ご本人様確認のため、下記URLへ「1時間以内」にアクセスしアカウントの本登録を完了させて下さい。</p>
+            <div class="text-center">
+                <a class="button" href="<%=link %>">認証リンク</a>
+            </div>
+            <hr />
+            <p class="info">
+                ※当メール送信後、１時間を超過しますと、セキュリティ保持のため有効期限切れとなります。　その場合は再度、最初からお手続きをお願い致します。
+            </p>
+            <p class="info">
+                ※当メールは送信専用メールアドレスから配信されています。　このままご返信いただいてもお答えできませんのでご了承ください。
+            </p>
+            <p class="info">
+                ※当メールに心当たりの無い場合は、誠に恐れ入りますが　破棄して頂けますよう、よろしくお願い致します。
+            </p>
+        </div>
+        <%- include('../partials/footer.ejs') -%>
+    </div>
+</body>
+</html>
