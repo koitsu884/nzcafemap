@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Image from '../common/CloudinaryImage';
 import LinkCard from '../common/LinkCard';
 import PhotoGarelly from '../common/PhotoGarelly';
@@ -19,16 +20,16 @@ export default function ReviewRow(props) {
             <div className="reviewRow__header">
                 <h3>{review.title}</h3>
             </div>
-            <div className="reviewRow__user">
+            <Link to={`/users/${review.user._id}`}className="reviewRow__user">
                 <div className="reviewRow__user__image">
                     {
                         review.user.mainPhotoURL
                             ? <Image thumb={true} public_id={review.user.mainPhotoURL} alt={review.user.displayName} />
-                            : 'No Image'
+                            : <span>No Image</span>
                     }
                 </div>
                 {review.user.displayName}
-            </div>
+            </Link>
             <div className="reviewRow__content">
                 {review.comment}
             </div>

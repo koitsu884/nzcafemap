@@ -1,26 +1,31 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
-const TwitterProfile = () => {
-    const user = useSelector(state => state.myPage.user);
+const TwitterProfile = ({profile}) => {
+    // const user = useSelector(state => state.myPage.user);
 
-    if (!user) return <div>Loading...</div>;
+    // if (!user) return <div>Loading...</div>;
+    if(!profile) return null;
 
     return (
-        <div>
-            <a className="twitterProfile" href={`https://twitter.com/${user.twitterProfile.userName}`}>
+        <div className="twitterProfile">
+            <a className="twitterProfile__header" href={`https://twitter.com/${profile.userName}`}>
                 {
-                    user.twitterProfile.imageUrl
-                        ? <div className="twitterProfile__image">
-                            <img src={user.twitterProfile.imageUrl} alt="Profile" />
+                    profile.imageUrl
+                        ? <div className="twitterProfile__header__image">
+                            <img src={profile.imageUrl} alt="Profile" />
                         </div>
                         : null
                 }
                 <div>
-                    <div >{user.twitterProfile.displayName}</div>
-                    <div>({user.twitterId})</div>
+                    <div >{profile.displayName}</div>
+                    {/* <div>({user.twitterId})</div> */}
                 </div>
             </a>
+            <hr />
+            <div className="twitterProfile__content">
+                {profile.description}
+            </div>
         </div>
     )
 }

@@ -75,13 +75,14 @@ export default class ToggleInput extends Component {
     reunderButtons = () => {
         if (this.state.disabled) {
             return (
-                <span onClick={this.onStartEdit}>
-                    <SvgEdit className="ibtn" />
-                </span>
+                // <span onClick={this.onStartEdit}>
+                //     <SvgEdit className="ibtn" />
+                // </span>
+                <button className="btn" type="button" onClick={this.onStartEdit}>編集</button>
             )
         }
         return (
-            <button className="btn" type="button" onClick={this.onUpdate}>更新</button>
+            <button className="btn btn--secondary" type="button" onClick={this.onUpdate}>更新</button>
         );
     }
 

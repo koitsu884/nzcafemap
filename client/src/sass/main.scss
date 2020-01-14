@@ -36,7 +36,10 @@
 @import "components/toggleInput";
 @import "components/twitterProfile";
 @import "components/updateProfile";
+@import "components/userCard";
 @import "components/userPhotoEditor";
+
+@import "elements/heading";
 
 @import "layout/footer";
 @import "layout/container";
@@ -44,15 +47,17 @@
 @import "layout/globalNav";
 
 @import "pages/home";
-@import "pages/signIn";
-@import "pages/signUp";
-@import "pages/myPage";
 @import "pages/cafeSearch";
 @import "pages/cafeDetails";
-@import "pages/editUserPhoto";
-@import "pages/reviewForm";
-@import "pages/reviewList";
-@import "pages/staticPages";
 @import "pages/contact";
+@import "pages/editUserPhoto";
 @import "pages/help";
 @import "pages/mapSearch";
+@import "pages/myPage";
+@import "pages/reviewForm";
+@import "pages/reviewList";
+@import "pages/signIn";
+@import "pages/signUp";
+@import "pages/staticPages";
+@import "pages/userDetail";
+@import "pages/userList";

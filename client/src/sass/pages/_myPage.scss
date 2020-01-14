@@ -28,13 +28,16 @@
 
 }
 
-.editUserProfile{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+.editAccountInfo{
+    // display: flex;
+    // align-items: center;
+    // flex-wrap: wrap;
 
     &__item{
         margin: 0 1rem;
+        input{
+            max-width: 30rem;
+        }
     }
 
     a {
@@ -42,7 +45,7 @@
         cursor: pointer;
     }
 
-    @include respond(phone){
-        flex-direction: column;
-    }
+    // @include respond(phone){
+    //     flex-direction: column;
+    // }
 }

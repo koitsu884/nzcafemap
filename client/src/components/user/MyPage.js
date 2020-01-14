@@ -9,8 +9,10 @@ import { signOut } from '../../actions/authActions';
 import UserPhotoEditor from './MyPage/UserPhotoEditor';
 import MyCafeList from './MyPage/MyCafeList';
 import MyReviewList from './MyPage/MyReviewList';
-import EditUserProfile from './MyPage/EditUserProfile';
+import EditAccountInfo from './MyPage/EditAccountInfo';
 import TwitterProfile from './MyPage/TwitterProfile';
+import ToggleInput from '../common/ToggleInput';
+import EditIntroduction from './MyPage/EditIntroduction';
 
 const baseURL = process.env.REACT_APP_API_URL;
 
@@ -43,7 +45,7 @@ class MyPage extends Component {
                             (
                                 <div>
                                     <h3>ツイッタープロファイル</h3>
-                                    <TwitterProfile />
+                                    <TwitterProfile profile={this.props.user.twitterProfile} />
                                 </div>
                             )
                             : null
@@ -51,7 +53,10 @@ class MyPage extends Component {
                 </div>
                 <div className="myPage__section u-margin-bottom-medium">
                     <h2>アカウント管理</h2>
-                    <EditUserProfile />
+                    <div className="myPage__section__container editAccountInfo form">
+                    <EditAccountInfo />
+                    <EditIntroduction />
+                    </div>
                 </div>
                 <div className="myPage__section u-margin-bottom-medium">
                     <h2>カフェ情報管理</h2>

@@ -1,6 +1,10 @@
 .toggleInput {
     display: flex;
     
+    .btn{
+        width: 9rem;
+    }
+
     input {
         margin-right: 1rem;
     }

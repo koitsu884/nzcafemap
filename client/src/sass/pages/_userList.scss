@@ -1,0 +1,10 @@
+.userList {
+    min-height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    &__item{
+        margin: 1rem 0;
+    }
+}

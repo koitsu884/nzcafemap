@@ -2,8 +2,8 @@ import React from 'react';
 import ReactPaginate from 'react-paginate';
 
 export default function Pagination({ itemCount, pageSize, onPageChange, className }) {
+    if(pageSize >= itemCount) return null;
     let pageCount = Math.ceil(itemCount / pageSize);
-    if (pageCount <= 1) return null;
 
     const handlePageClick = data => {
         let selected = data.selected + 1;

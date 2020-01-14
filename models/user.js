@@ -17,9 +17,8 @@ const TwitterProfile = new mongoose.Schema({
         type: String,
         required: true
     },
-    introduction: {
+    description: {
         type: String,
-        maxlength: 1000
     },
     url:{
         type: String
@@ -53,6 +52,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 2,
         maxlength: 50
+    },
+    introduction: {
+        type: String,
+        maxlength: 1000
     },
     photo: {
         type: mongoose.Schema.Types.ObjectId,
@@ -142,6 +145,8 @@ userSchema.methods.sendVerifyEmail = async function () {
     }
 }
 
+userSchema.index({verified: 1, isDisabled:1 , isAdmin: 1 })
+
 const User = mongoose.model('user', userSchema);
 
 function validateUser(user) {
@@ -150,7 +155,7 @@ function validateUser(user) {
         email: Joi.string().min(5).max(255).email().optional(),
         password: Joi.string().min(5).max(255).optional(),
         verified: Joi.boolean().optional(),
-        displayName: Joi.string().min(2).max(50).required(),
+        displayName: Joi.string().min(2).max(50).optional(),
         introduction: Joi.string().max(1000).optional().allow(''),
         mainPhotoURL: Joi.string(),
         twitterId: Joi.string().optional(),

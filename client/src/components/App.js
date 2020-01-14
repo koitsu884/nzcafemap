@@ -35,6 +35,8 @@ import EmailSent from './static/EmailSent';
 import VerifyEmail from './auth/VerifyEmail';
 import ForgotPassword from './auth/ForgotPassword';
 import ResetPassword from './auth/ResetPassword';
+import UserList from './user/UserList';
+import UserDetail from './user/UserDetail';
 
 // const apiKey = process.env.REACT_APP_GOOGLEAPI_KEY;
 
@@ -93,6 +95,8 @@ const App = () => {
                         <Route path="/auth/resetpassword/:token" exact component={ResetPassword} />
                         <Route path="/oauth/:token" exact component={OAuthRedirect} />
                         <PrivateRoute path="/mypage" exact component={MyPage} />
+                        <Route path="/users" exact component={UserList} />
+                        <Route path="/users/:userId" exact component={UserDetail} />
                         <Route path="/cafes" exact component={CafeSearch} />
                         <Route path="/cafes/map" exact component={MapSearch} />
                         <PrivateRoute path="/cafes/add" exact component={CafeCreate} />

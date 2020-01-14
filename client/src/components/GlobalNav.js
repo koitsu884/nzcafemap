@@ -7,7 +7,7 @@ export default class GlobalNav extends Component {
          <nav className="globalNav">
             <Link className="globalNav__item" to ="/cafes">サーチ</Link>
             <Link className="globalNav__item" to ="/cafes/map">マップ</Link>
-            <Link className="globalNav__item" to="/static/help">使い方</Link>
+            <Link className="globalNav__item" to="/users">ユーザー一覧</Link>
         </nav>
         )
     }

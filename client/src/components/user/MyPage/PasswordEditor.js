@@ -77,7 +77,7 @@ export default class PasswordEditor extends Component {
                         : ""
                 }
                 <button type="button" className="btn" onClick={this.handlePasswordChange}>OK</button>
-                <button type="button" className="btn" onClick={this.onCancel}>キャンセル</button>
+                <button type="button" className="btn btn--secondary" onClick={this.onCancel}>キャンセル</button>
             </div>
         )
     }

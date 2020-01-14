@@ -47,6 +47,10 @@ fieldset {
 ol {
   margin-left: 3rem; }
 
+a {
+  text-decoration: none;
+  color: inherit; }
+
 body {
   font-family: "Kosugi Maru", sans-serif;
   font-weight: 400;
@@ -57,10 +61,6 @@ body {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat; }
-
-a {
-  color: #fff;
-  text-decoration: none; }
 
 .error {
   color: red; }
@@ -122,8 +122,14 @@ a {
 .u-text-right {
   text-align: right; }
 
+.u-text-wrap {
+  white-space: pre-wrap; }
+
 .u-flex {
   display: flex; }
+
+.u-flex-left {
+  justify-content: left; }
 
 .u-flex-justify {
   justify-content: center; }
@@ -895,6 +901,7 @@ button.btn:disabled {
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
       border: solid 1px #4e342e;
       font-size: 1rem;
       width: 4rem;
@@ -1340,26 +1347,34 @@ button.btn:disabled {
 
 .toggleInput {
   display: flex; }
+  .toggleInput .btn {
+    width: 9rem; }
   .toggleInput input {
     margin-right: 1rem; }
 
 .twitterProfile {
   padding: 1rem;
   background-color: white;
-  color: #4e342e;
   border: 1px solid #ffcc80;
-  display: flex;
-  align-items: center; }
-  .twitterProfile__image {
-    display: block;
-    width: 5rem;
-    height: 5rem;
-    margin: 1rem; }
-    .twitterProfile__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%; }
+  max-width: 50rem; }
+  .twitterProfile__header {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #4e342e; }
+    .twitterProfile__header__image {
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      margin: 1rem; }
+      .twitterProfile__header__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%; }
+  .twitterProfile__content {
+    white-space: pre-wrap; }
 
 .updateProfile {
   max-width: 1200px;
@@ -1369,6 +1384,41 @@ button.btn:disabled {
     background-color: #fcfce5;
     display: flex;
     align-items: center; }
+
+.userCard {
+  width: 25rem;
+  background-color: #fff;
+  border: solid 1px #7b5e57; }
+  .userCard__image {
+    width: 22rem;
+    height: 22rem;
+    margin: 1rem auto;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: #ddd;
+    align-items: center;
+    font-size: 2rem;
+    color: #4e342e; }
+    .userCard__image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+  .userCard__content {
+    display: flex;
+    align-items: center; }
+  .userCard__name {
+    color: #ca9b52;
+    font-weight: 700;
+    font-size: 2.4rem;
+    margin: .5rem; }
+  .userCard__twitter {
+    fill: #00acee;
+    width: 2rem;
+    height: 2rem;
+    margin: .5rem; }
 
 .userPhotoEditor {
   margin: 0 2rem; }
@@ -1383,6 +1433,13 @@ button.btn:disabled {
     .userPhotoEditor__photo img {
       max-width: 100%;
       max-height: 70vh; }
+
+.heading--primary {
+  border-radius: 5px;
+  border: 1px solid #260e04;
+  background-color: #7b5e57;
+  color: #fff;
+  padding: 1.5rem 3rem; }
 
 .footer {
   color: #fff;
@@ -1404,9 +1461,9 @@ button.btn:disabled {
   grid-gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); }
 
-.cafeEditForm, .container, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
+.cafeEditForm, .container, .cafeDetails, .contact, .myPage, .reviewForm, .reviewList, .terms,
 .help,
-.privacy, .contact {
+.privacy {
   background-color: #fcfce5;
   max-width: 1200px;
   min-height: 50vh;
@@ -1414,14 +1471,14 @@ button.btn:disabled {
   border-radius: 5px;
   padding: 3rem; }
   @media only screen and (max-width: 75em) {
-    .cafeEditForm, .container, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
+    .cafeEditForm, .container, .cafeDetails, .contact, .myPage, .reviewForm, .reviewList, .terms,
     .help,
-    .privacy, .contact {
+    .privacy {
       margin: 3rem; } }
   @media only screen and (max-width: 37.5em) {
-    .cafeEditForm, .container, .myPage, .cafeDetails, .reviewForm, .reviewList, .terms,
+    .cafeEditForm, .container, .cafeDetails, .contact, .myPage, .reviewForm, .reviewList, .terms,
     .help,
-    .privacy, .contact {
+    .privacy {
       margin: 0;
       border-radius: 0;
       padding: 1rem; } }
@@ -1509,61 +1566,6 @@ button.btn:disabled {
       .home__newcafes {
         display: flex;
         overflow-x: auto; } }
-
-.signIn__form {
-  width: 80%;
-  margin: auto;
-  border-radius: 5px;
-  background-color: #fcfce5; }
-  .signIn__form input {
-    width: 100%; }
-  .signIn__form__link {
-    margin-top: 1.5rem;
-    color: #4e342e;
-    text-decoration: underline; }
-  @media only screen and (max-width: 56.25em) {
-    .signIn__form {
-      width: 100%; } }
-
-.signUp__form {
-  width: 80%;
-  margin: auto;
-  background-color: #fcfce5; }
-  .signUp__form input {
-    width: 100%; }
-  @media only screen and (max-width: 56.25em) {
-    .signUp__form {
-      width: 100%; } }
-
-.myPage__account {
-  display: flex; }
-  @media only screen and (max-width: 37.5em) {
-    .myPage__account {
-      flex-direction: column; } }
-
-.myPage__section {
-  margin-bottom: 2rem; }
-  .myPage__section__title {
-    font-size: 20rem; }
-  .myPage__section__container {
-    background-color: #fff;
-    border: solid 1px #ffcc80;
-    padding: 1rem; }
-  .myPage__section h3 {
-    background-color: #ffcc80; }
-
-.editUserProfile {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap; }
-  .editUserProfile__item {
-    margin: 0 1rem; }
-  .editUserProfile a {
-    color: #4e342e;
-    cursor: pointer; }
-  @media only screen and (max-width: 37.5em) {
-    .editUserProfile {
-      flex-direction: column; } }
 
 .cafeSearch__header {
   text-align: center;
@@ -1721,10 +1723,6 @@ button.btn:disabled {
     font-size: 2.2rem;
     fill: orangered; }
 
-.cafeDetails__reviews a {
-  color: #ca9b52;
-  border-bottom: solid 1px #ca9b52; }
-
 .cafeDetails__addReview {
   text-align: center; }
 
@@ -1738,10 +1736,6 @@ button.btn:disabled {
     .editUserPhoto {
       margin: 0;
       padding: 1rem; } }
-
-.reviewForm .btn {
-  margin: auto;
-  display: block; }
 
 .help .section {
   padding: 2rem;
@@ -1858,3 +1852,84 @@ button.btn:disabled {
 @keyframes Flash {
   50% {
     background-color: orangered; } }
+
+.myPage__account {
+  display: flex; }
+  @media only screen and (max-width: 37.5em) {
+    .myPage__account {
+      flex-direction: column; } }
+
+.myPage__section {
+  margin-bottom: 2rem; }
+  .myPage__section__title {
+    font-size: 20rem; }
+  .myPage__section__container {
+    background-color: #fff;
+    border: solid 1px #ffcc80;
+    padding: 1rem; }
+  .myPage__section h3 {
+    background-color: #ffcc80; }
+
+.editAccountInfo__item {
+  margin: 0 1rem; }
+  .editAccountInfo__item input {
+    max-width: 30rem; }
+
+.editAccountInfo a {
+  color: #4e342e;
+  cursor: pointer; }
+
+.reviewForm .btn {
+  margin: auto;
+  display: block; }
+
+.signIn__form {
+  width: 80%;
+  margin: auto;
+  border-radius: 5px;
+  background-color: #fcfce5; }
+  .signIn__form input {
+    width: 100%; }
+  .signIn__form__link {
+    margin-top: 1.5rem;
+    color: #4e342e;
+    text-decoration: underline; }
+  @media only screen and (max-width: 56.25em) {
+    .signIn__form {
+      width: 100%; } }
+
+.signUp__form {
+  width: 80%;
+  margin: auto;
+  background-color: #fcfce5; }
+  .signUp__form input {
+    width: 100%; }
+  @media only screen and (max-width: 56.25em) {
+    .signUp__form {
+      width: 100%; } }
+
+.userDetail__image {
+  width: 25rem;
+  height: 25rem;
+  margin: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: center;
+  background-color: #ddd;
+  align-items: center;
+  font-size: 2rem;
+  color: #4e342e; }
+  .userDetail__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+
+.userList {
+  min-height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+  .userList__item {
+    margin: 1rem 0; }

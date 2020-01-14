@@ -10,6 +10,7 @@ class Footer extends Component {
                         <Link to="/static/terms">利用規約</Link>
                         <Link to="/static/privacy">個人情報保護方針</Link>
                         <Link to="/contact">お問い合わせ</Link>
+                        <Link to="/static/help">ヘルプ</Link>
                     </div>
                     <div className="footer__copy">Copyright &copy; nzcafemap All Right Reserved. </div>
                 </div>

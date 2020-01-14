@@ -16,9 +16,43 @@ const {singleUpload, deleteFile, deleteFolder} = require('../helper/cloudinaryUp
 
 const formDataHandler = memoryUploadSingle('photo');
 
-router.get('/me', passport.authenticate('jwt', { session: false }), async ( req, res) => {
-    res.send(req.user);
-});
+router.get('/', async(req, res) => {
+    const pageSize = +req.query.pageSize;
+    const currentPage = + req.query.page;
+
+    let filters = {
+        verified: true,
+        isDisabled: false, 
+        isAdmin: false
+    }
+    const postQuery = User.find(filters);
+
+    if (pageSize && currentPage) {
+        postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
+    }
+    
+    // let orderConfig = getOrderConfig(req.query.order);
+    let orderConfig = {_id: -1}
+    
+    const itemCount = await User.countDocuments(filters);
+    const users = await postQuery.sort(orderConfig);
+
+    let returnData = {
+        currentPage: currentPage,
+        pageSize: pageSize,
+        totalCount: itemCount,
+        users: users
+    };
+
+    res.send(returnData);
+})
+
+router.get('/:id', async (req, res) => {
+    let user = await User.findById(req.params.id);
+    if(!user) return res.status(404).send('User not found')
+
+    res.send(user);
+})
 
 router.post('/', async (req, res) => {
     const { error } = validate(req.body);
@@ -135,7 +169,7 @@ router.patch('/', passport.authenticate('jwt', { session: false }), async ( req,
     const { error } = validate(data);
     if( error) return res.status(400).send(error.details[0].message);
 
-    if( user.email !== data.email){
+    if( data.email && (user.email !== data.email)){
         if(await User.findOne({email: data.email}))
             return res.status(400).send("そのＥメールアドレスは既に使用されています");
         // user.email = data.email

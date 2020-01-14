@@ -10,7 +10,7 @@ import { required, email, minLength2 } from '../../../helper/validation';
 import PasswordEditor from './PasswordEditor';
 import SvgEdit from '../../common/SvgIcons/SvgEdit';
 
-class EditUserProfile extends Component {
+class EditAccountInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,7 +62,7 @@ class EditUserProfile extends Component {
 
     renderEmailField = () => {
         return (
-            <div className="editUserProfile__item">
+            <div className="editAccountInfo__item">
                 <label>Eメールアドレス</label>
                 <input
                     label="Eメールアドレス"
@@ -78,7 +78,7 @@ class EditUserProfile extends Component {
 
     renderPasswordField = () => {
         return (
-            <div className="editUserProfile__item">
+            <div className="editAccountInfo__item">
                 <label>パスワード</label>
                 <div className="toggleInput">
                     <input
@@ -89,9 +89,10 @@ class EditUserProfile extends Component {
                         value="******"
                         disabled={'disabled'}
                     />
-                    <span onClick={this.openModal}>
+                    <button type="button" className="btn" onClick={this.openModal}>編集</button>
+                    {/* <span onClick={this.openModal}>
                         <SvgEdit className="ibtn" />
-                    </span>
+                    </span> */}
                 </div>
             </div>
         )
@@ -99,13 +100,13 @@ class EditUserProfile extends Component {
 
     render() {
         return (
-            <div className="myPage__section__container editUserProfile form">
+            <div>
                 {
                     this.props.user && this.props.user.twitterId
                         ? null
                         : this.renderEmailField()
                 }
-                <div className="editUserProfile__item">
+                <div className="editAccountInfo__item">
                     <label>表示名</label>
                     <ToggleInput
                         label="表示名"
@@ -139,4 +140,4 @@ const mapStateToProps = state => ({
     error: state.error,
 })
 
-export default connect(mapStateToProps, { getProfile, updateProfile, clearError })(EditUserProfile);
+export default connect(mapStateToProps, { getProfile, updateProfile, clearError })(EditAccountInfo);

@@ -22,6 +22,7 @@ const setupTwitterStrategy = passport => {
         let twitterProfile = {
             userName: profile.username,
             displayName: profile.displayName,
+            description: profile._json.description,
             url: profile._json.url,
             imageUrl: profile._json.profile_image_url_https
         }

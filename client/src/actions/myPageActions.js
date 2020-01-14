@@ -78,7 +78,7 @@ export const setRateLoading = () => {
 }
 
 export const getProfile = () => dispatch => {
-    axios.get('/users/me', {
+    axios.get('/auth/me', {
         baseURL:baseURL
     })
     .then(response => {

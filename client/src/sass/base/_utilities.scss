@@ -37,7 +37,12 @@
     text-align: right;
 }
 
+.u-text-wrap{
+    white-space: pre-wrap;
+}
+
 .u-flex { display:flex;}
+.u-flex-left { justify-content:left;}
 .u-flex-justify { justify-content:center;}
 .u-space-between { justify-content:space-between;}
 .u-space-around { justify-content:space-around;}
