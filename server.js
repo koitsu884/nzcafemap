@@ -1,13 +1,16 @@
 const winston = require('winston');
 const express = require('express');
+const config = require('config');
 const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 const helmet = require('helmet');
 const cors = require('cors');
 const path = require('path');
 const error = require('./middleware/error');
 const passport = require('passport');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const { getClient } = require('./helper/cache');
 
 const app = express();
 require('express-async-errors');
@@ -24,8 +27,9 @@ require('./startup/logging')();
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({ 
-    secret: 'super strong secret',
+    secret: config.get('sessionSecret'),
     name: 'id',
+    store: new RedisStore({client: getClient()}),
     resave: true,
     saveUninitialized: false,
     cookie : { secure: false }

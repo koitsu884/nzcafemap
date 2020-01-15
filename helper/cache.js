@@ -7,6 +7,9 @@ const client = redis.createClient(redisUrl);
 client.hget = util.promisify(client.hget);
 
 module.exports = {
+    getClient() {
+        return client
+    },
     cacheRecord(hashKey, key, data) {
         client.hset(JSON.stringify(hashKey), JSON.stringify(key), JSON.stringify(data));
     },
